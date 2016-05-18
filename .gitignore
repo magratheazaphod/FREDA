@@ -1,0 +1,11 @@
+*.pdf
+*.txt
+references.bib
+*.aux
+*.synctex.gz
+*.log
+*.fff
+*.lof
+*.lot
+*.ttt
+

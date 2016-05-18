@@ -1,472 +1,881 @@
+%% Version 4.3.2, 25 August 2014
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template.tex --  LaTeX-based template for submissions to the 
+% American Meteorological Society
+%
+% Template developed by Amy Hendrickson, 2013, TeXnology Inc., 
+% amyh@texnology.com, http://www.texnology.com
+% following earlier work by Brian Papa, American Meteorological Society
+%
+% Email questions to latex@ametsoc.org.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PREAMBLE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% The following two commands will generate a PDF that follows all the requirements for submission
-% and peer review.  Uncomment these commands to generate this output (and comment out the two lines below.)
-%
-% DOUBLE SPACE VERSION FOR SUBMISSION TO THE AMS
-\documentclass[12pt]{article}
-\usepackage{ametsoc}
-\linenumbers
-%
-% The following two commands will generate a single space, double column paper that closely
-% matches an AMS journal page.  Uncomment these commands to generate this output (and comment
-% out the two lines above. FOR AUTHOR USE ONLY. PAPERS SUBMITTED IN THIS FORMAT WILL BE RETURNED
-% TO THE AUTHOR for submission with the correct formatting.
-%
-% TWO COLUMN JOURNAL PAGE LAYOUT FOR AUTHOR USE ONLY
-%\documentclass[10pt]{article}
-%\usepackage{ametsoc2col}
 
-\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
-\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
-%\geometry{landscape}                		% Activate for for rotated page geometry
-%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
-\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
-								% TeX will automatically convert eps --> pdf in pdflatex		
-\usepackage{amssymb}
-\usepackage{multirow}				%allows for columns that span multiple rows in tables (cf Table 1)
-\usepackage[super]{nth}
-\usepackage{rotating}
-\usepackage{amsmath}
-\usepackage{textcomp}
-\usepackage{tabularx}
+%% Start with one of the following:
+% DOUBLE-SPACED VERSION FOR SUBMISSION TO THE AMS
+\documentclass{ametsoc}
 
-\newcommand{\mytilde}{\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}}	%silly command allows for inclusion of tildes'
+% TWO-COLUMN JOURNAL PAGE LAYOUT---FOR AUTHOR USE ONLY
+% \documentclass[twocol]{ametsoc}
 
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% To be entered only if twocol option is used
+
+\journal{jcli}
+
+%  Please choose a journal abbreviation to use above from the following list:
+% 
+%   jamc     (Journal of Applied Meteorology and Climatology)
+%   jtech     (Journal of Atmospheric and Oceanic Technology)
+%   jhm      (Journal of Hydrometeorology)
+%   jpo     (Journal of Physical Oceanography)
+%   jas      (Journal of Atmospheric Sciences)	
+%   jcli      (Journal of Climate)
+%   mwr      (Monthly Weather Review)
+%   wcas      (Weather, Climate, and Society)
+%   waf       (Weather and Forecasting)
+%   bams (Bulletin of the American Meteorological Society)
+%   ei    (Earth Interactions)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Citations should be of the form ``author year''  not ``author, year''
+\bibpunct{(}{)}{;}{a}{}{,}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% To be entered by author:
+
+%% May use \\ to break lines in title:
+
+\title{The Rainband Detection Algorithm (RDA): Frontal Rainfall in China. Part I: Climatology}
+
+%%% Enter authors' names, as you see in this example:
+%%% Use \correspondingauthor{} and \thanks{Current Affiliation:...}
+%%% immediately following the appropriate author.
+%%%
+%%% Note that the \correspondingauthor{} command is NECESSARY.
+%%% The \thanks{} commands are OPTIONAL.
+
+    %\authors{Author One\correspondingauthor{Author One, 
+    % American Meteorological Society, 
+    % 45 Beacon St., Boston, MA 02108.}
+% and Author Two\thanks{Current affiliation: American Meteorological Society, 
+    % 45 Beacon St., Boston, MA 02108.}}
+
+\authors{Jesse A. Day\correspondingauthor{Jesse Day, University of California, Department of Earth and Planetary Science, College of Letters and Science, 307 McCone Hall, Berkeley, CA 94720.}, Inez Y. Fung and Weihan Liu}
+
+%% Follow this form:
+    % \affiliation{American Meteorological Society, 
+    % Boston, Massachusetts.}
+
+\affiliation{Department of Earth and Planetary Science, University of California Berkeley, Berkeley, California}
+
+%% Follow this form:
+    %\email{latex@ametsoc.org}
+
+\email{jessed@berkeley.edu}
+
+%% If appropriate, add additional authors, different affiliations:
+    %\extraauthor{Extra Author}
+    %\extraaffil{Affiliation, City, State/Province, Country}
+
+%\extraauthor{}
+%\extraaffil{}
+
+%% May repeat for a additional authors/affiliations:
+
+%\extraauthor{}
+%\extraaffil{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ABSTRACT
 %
-% Enter your Abstract here
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\myabstract}{The concept of the ``Asian monsoon'' masks the existence of two separate summer rainfall r\'egimes: Convective storms over India, Bangladesh and Nepal (the South Asian monsoon), and frontal rainfall over China, Japan and Korea (the East Asian monsoon). In addition, the Himalayas and other orography, including the Arakan Mountains, Ghats and Yunnan Plateau, create smaller precipitation domains separated by sharp gradients. We find a mode of continental precipitation variability that spans both South and East Asia during July and August. Point-to-point correlations and EOF analysis with APHRODITE, a 57-year rain gauge record, show that a dipole between the Himalayan Foothills and the ``Monsoon Zone'' (Central India) dominates July-August interannual variability in South Asia, and is also associated in East Asia with a tripole between the Yangtze Corridor and North and South China. Lag-lead correlation of rainfall reveals that this covariation does not correspond to year-to-year shifts in storm tracks. Instead, we propose that interannual change in the strength of moisture transport from the Bay of Bengal to the Yangtze Corridor across the northern Yunnan Plateau induces widespread precipitation anomalies. Abundant moisture transport along this route requires both cyclonic monsoon circulation over India and sufficient heating over the Bay of Bengal, which occurs only in July-August. Preliminary results from the LMDZ5 model, run with a zoomed grid over Asia and circulation nudged to ECMWF reanalysis, support this hypothesis. Improved understanding of this coupling may help to project \nth{21} century precipitation changes in East and South Asia, home to over 3 billion people.}
+% Enter your abstract here
+% Abstracts should not exceed 250 words in length!
+%
+% For BAMS authors only: If your article requires a Capsule Summary, please place the capsule text at the end of your abstract
+% and identify it as the capsule. Example: This is the end of the abstract. (Capsule Summary) This is the capsule summary. 
 
+\abstract{The topography and land-sea contrast of East Asia favor year-round frontal storm tracks extending thousands of miles. We create a recursive image processing algorithm, the Rainband Detection Algorithm (RDA), that detects rainbands in maps of daily rainfall and quantifies their attributes. By applying RDA to the APHRODITE database of Asian monsoon rainfall, we produce a 57-year (1951-2007) daily catalog of rainband occurrences over China. Our catalog quantifies the seasonal progression of the East Asian monsoon and Meiyu Front in unprecedented fashion.
 \begin{document}
 
-%
+%% Necessary!
+\maketitle
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TITLE
-%
-% Enter your TITLE here
+% MAIN BODY OF PAPER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{\textbf{\large{{Coupling of South and East Asian Monsoon Precipitation in July-August}}}}
 %
-% Author names, with corresponding author information. 
-% [Update and move the \thanks{...} block as appropriate.]
-%
-\author{\textsc{Jesse A. Day}
-				\thanks{\textit{Corresponding author address:} 
-				Jesse Day, University of California, Department of Earth and Planetary Science, College of Letters and Science; 307 McCone Hall, Berkeley, CA 94720, USA.
-				\newline{E-mail: jessed@berkeley.edu}}\quad\textsc{and Inez Fung,}\\
-\textit{\footnotesize{Department of Earth and Planetary Science, University of California Berkeley, Berkeley, California}}
-\and 
-\centerline{\textsc{Camille Risi}}\\
-\centerline{\textit{\footnotesize{Laboratoire de M\'et\'eorologie Dynamique (LMD), CNRS, Paris, France}}}
-\and 
-\\
-\\
-\centerline{\textbf{Submitted to Journal of Climate}, May 19, 2014 }\\
-\centerline{\textbf{First round of revisions submitted}, October 10, 2014 }\\
-\centerline{\textbf{Second round of revisions submitted}, December 12, 2014 }\\
-}
-%
-% Formatting done here...Authors should skip over this.  See above for abstract.
-\ifthenelse{\boolean{dc}}
-{
-\twocolumn[
-\begin{@twocolumnfalse}
-\amstitle
 
-% Start Abstract (Enter your Abstract above.  Do not enter any text here)
-\begin{center}
-\begin{minipage}{13.0cm}
-\begin{abstract}
-	\myabstract
-	\newline
-	\begin{center}
-		\rule{38mm}{0.2mm}
-	\end{center}
-\end{abstract}
-\end{minipage}
-\end{center}
-\end{@twocolumnfalse}
-]
-}
-{
-\amstitle
-\begin{abstract}
-\myabstract
-\end{abstract}
-\newpage
-}
+%% In all cases, if there is only one entry of this type within
+%% the higher level heading, use the star form: 
+%%
+% \section{Section title}
+% \subsection*{subsection}
+% text...
+% \section{Section title}
 
-\section{Introduction}
+%vs
 
-	The word ``monsoon," once used to denote the winds over the Arabian Sea that reverse yearly, has migrated in meaning over the centuries to refer to the accompanying season of high rainfall. Heavy rains over the Indian subcontinent from June to September sustain agriculture \citep{Gadgil2006} and bring devastating floods. In turn, peak rainfall intervals in other regions are also termed monsoons, most occurring in summer after the passage of peak insolation (the African, North American and Australian monsoons) but not all (the East Asian winter monsoon). This terminology allows for the umbrella of the Asian summer monsoon to cover both the South and East Asian summer monsoons, even though they differ in month of onset and decay, precipitation amount, diurnal cycle of rainfall, and fraction of local yearly rainfall supplied \citep{Zhou2008,Molnar2010,Biasutti2011}.
+% \section{Section title}
+% \subsection{subsection one}
+% text...
+% \subsection{subsection two}
+% \section{Section title}
 
-	The core months of the South Asian monsoon (July and August) together deliver over 50\% of yearly precipitation to most of India and Nepal and upwards of 20 mm day$^{-1}$ of rainfall to coastal Bangladesh, according to APHRODITE rain gauge data (described below). In summer, episodes of convective storms last for several weeks at a time, regulated by a strong diurnal cycle \citep{Romatschke2011a}. A core swath of central India including the states of Madhya Pradesh, Chhatisgarh and Odisha, previously named the ``Monsoon Zone'' by \cite{Gadgil2003}, receives about 10 mm day$^{-1}$ of rainfall averaged over summer (shown in Figure 1). Totals reach as much as 50 mm day$^{-1}$ in Meghalaya north of Bangladesh. Intense rainfall starts abruptly, first over southern India in May, next over the ``Monsoon Zone" in June and then over northern India in July, and ends over most of India by September. Traditionally, these characteristics are attributed to strong contrast between the low thermal capacity of land and high thermal capacity of the ocean, a theory dating back to the original monsoon study by \cite{Halley1686}. However, it has long been known that surface temperature over India maximizes in May-June, well ahead of peak rainfall \citep{Gadgil2003}. \nth{20} and \nth{21} century researchers have invoked an alternative thermal argument, which views the increased summer heating of the Tibetan Plateau relative to surrounding terrain as a primary driver of the continental-scale Asian monsoon \citep{Yeh1959,Li1996,Wu2007}. However, \cite{Rajagopalan2013} found that heating of the Tibetan Plateau (measured by near-surface moist static energy) is correlated with Indian rainfall before and after the monsoon  (May 20-June 15 and September 1-October 15 respectively), but uncorrelated during its peak (15 June-31 August).
+%%%
+% \section{First primary heading}
+
+% \subsection{First secondary heading}
+
+% \subsubsection{First tertiary heading}
+
+% \paragraph{First quaternary heading}
+
+
+\section{Introduction} 
+
+ 	Eastern China receives about 60\% of its precipitation from May to August via the East Asian summer monsoon. The period of peak rainfall lasting from early June to mid-July is called ``Meiyu season'' (lit. ``plum rains,'' referring to the spectacular growth of plum blossoms in central China with the onset of heavy rains). During this time, heavy rainfall occurs in zonal bands resulting from frontal synoptic conditions (the ``Meiyu front''). The rainfall climatology of Japan and Korea also features similar phenomena, known as Baiu and Changma respectively, that deliver key fractions of total yearly rainfall. A growing volume of evidence suggests a shift in rainfall over China beginning in the late 1970s, featuring a ``South Flood-North Drought'' pattern shown in Figure~\ref{fig:f31} \citep{Hu1997,Gong2002,Nigam2013}.  A permanent change would have major humanitarian impacts on densely-populated eastern China, where a sizable fraction of the population depends on agriculture for subsistence. Northern China already suffers from substantial depletion of freshwater resources along with increasing demand \citep{Currell2012,Gleeson2012}. The Chinese government has embarked on a project to reroute water from the Yangtze River to northern China, the South-North Water Transfer Project (\textit{nanshui beidiao gongcheng}), which is expected to become the most expensive hydraulic engineering project ever undertaken and will entail massive human and environmental impact \citep{Magee2011}. Under such circumstances, it is vital to understand whether this pattern will strengthen under global warming, or represents only a temporary deviation from the mean. 
 	
-	In recent years, the South Asian monsoon has been reinterpreted through the lens of fluid dynamics. The delay between peak solar forcing and rainfall response and the sudden onset of heavy rainfall have both been ascribed to nonlinearity in Hadley cell transitions and reproduced in idealized models \citep{Plumb1992,Schneider2008,Bordoni2008}. According to the framework of subcloud moist static energy and convective quasi-equilibrium \citep{Emanuel1995,Prive2007,Prive2007a}, the Himalayas strengthen the monsoon by shielding India from cold inland air \citep{Boos2010}. The debate over the relative importance of sensible heating and topographic blocking continues in the literature \citep{Wu2012,Boos2013,Qiu2013}.
+	The climatology of the East Asian monsoon is unique when compared to other monsoon circulations \citep{Ding2005}. Whereas understanding of tropical monsoons has progressed greatly via theoretical studies \citep{Plumb1992,Prive2007,Bordoni2008}, the dynamics that favor the existence of frontal convection over East Asia in summer remain a point of debate, centering around the interplay of the tropospheric jet and Tibetan Plateau \citep{Molnar2010,Sampe2010,Chen2014}. Therefore, no simple conceptual template exists for interpreting the South Flood-North Drought. However, it is known that the migration of the Meiyu front entails a series of large-scale circulation changes \citep{Chen2004}, and furthermore that anomalies in Meiyu front latitude produce corresponding rainfall anomalies \citep{Kosaka2011}. Therefore, the South Flood-North Drought should be describable in terms of changes in the mean properties of Meiyu rainbands, such as a shift in latitude, a change in intensity, or an earlier or delayed northward migration. In turn, such a characterization may elucidate the dynamics responsible for the change.
 	
-	The East Asian summer monsoon manifests unique characteristics compared to its South Asian counterpart and other tropical monsoons. From early June to mid-July, a persistent but migrating zonal front over China, Japan and Korea delivers 20 to 30 mm day$^{-1}$ of rain along its axis. This period of peak frontal activity is known in China as Meiyu season, in Japan as Baiu season and in Korea as Changma season. The latitude of the Meiyu front shifts northward with apparent jumps between preferred latitudes \citep{Ding2005}. The current debate on the dynamics of Meiyu season rainfall centers around the relative importance of downstream advection of Tibetan Plateau heating \citep{Sampe2010} versus meridional energy convergence induced by topographic forcing of stationary eddies \citep{Molnar2010,Chen2014}. Meiyu season generally supplies a lower percentage of yearly rainfall to East Asia compared with the South Asian monsoon: Cumulative May-July rainfall constitutes under 50\% of yearly rainfall in southern China, and at most 70\% in the northeast and arid west (from APHRODITE). The yearly rainfall climatology of China also features many distinct sub-r\'egimes such as the East Asian ``winter monsoon'' \citep{Jhun2004}, spring persistent rains \citep{Tian1998} and post-Meiyu rainfall (cf ``midsummer'' in \cite{Kosaka2011}). Finally, many authors have reported a ``South Flood North Drought'' trend in the East Asian summer monsoon since the late 1970s \citep{Gong2002,Ding2008}, attributed either to anthropogenic influence or natural variability \citep{Song2014,Lei2014}.
+	We have developed a recursive fitting algorithm, the Rainband Detection Algorithm (RDA), that locates frontal rainbands in a daily precipitation map and quantifies their attributes. Using the APHRODITE rain gauge product, we have created a 57-year (1951-2007) daily database of rainband attributes in China. Previous studies have investigated the statistics of the Meiyu front on decadal and even centennial timescales \citep{Chen2004,Ge2008,Xu2009}, but to our knowledge no previous author has compiled a multi-decadal daily catalog of events. We use this catalog to find the late \nth{20}-century changes in rainband statistics that have caused the South Flood-North Drought. Furthermore, since rainbands are produced by frontal atmospheric conditions, late \nth{20}-century changes in rainband attributes may reflect corresponding changes in East Asian monsoon dynamics, and ultimately be influenced by \nth{20}-century warming. We propose an altered progression of the tropospheric jet as proximal cause in the conclusion, and elaborate on this theory in Chapter 4.
 		
-	In summary, the South and East Asian monsoons share a name, but they are dynamically dissimilar, and their rainfall characteristics are different according to APHRODITE. Summer daily rainfall rates in India are about twice those of East Asia (10 mm day$^{-1}$ over the ``Monsoon Zone'' and Himalayan Foothills versus 5 mm day$^{-1}$ over central China, Figure 1). In the climatological mean, Meiyu rainfall in central China peaks around June 15-25. Rainfall rates over India increase sharply around this time, but the climax of the South Asian monsoon occurs only a month later during the period July 15-August 5. Summer storms over the Bay of Bengal show a weak midday peak, and storm occurrence along the Himalayan Foothills peaks at night when upslope winds reverse \citep{Romatschke2011a}, whereas station data from China show a complex diurnal cycle of precipitation that varies regionally \citep{Zhou2008}. The physics of the South Asian monsoon bear more in common with other summer circulations such as the African, North American or Australian monsoons than with the East Asian monsoon \citep{Rodwell2001}. The most pertinent shared characteristic of the Asian monsoon may instead be sociological: The reliance of the region's dense population on heavily stressed freshwater resources \citep{Gleeson2012} that may be vulnerable to \nth{21} century climate change \citep{JimenezCisneros2014}. 
-		
-	The South and East Asian monsoon, aside from their large-scale differences, each contain many precipitation subdomains. Precipitation has a correlation length scale of about 300 km \citep{Dai1997}, shorter than that of temperature (about 1000 km) and eddies (about 700 km) \citep{Hansen1987,Barnes2012}. In the South Asian monsoon region, orography can induce transitions across short distances, as seen previously in \cite{Xie2006}, \cite{Biasutti2011} and in our Figure 1. The Himalayas, less than 100 km wide and above 5 km high, function as a barrier that separates heavy precipitation at the Himalayan Foothills (\mytilde30 mm day$^{-1}$) from the arid Tibetan Plateau (\textless 3 mm day$^{-1}$). Lower ranges such as the Arakan Mountains (\mytilde2 km of altitude) and the Ghats (just \mytilde700m) anchor coastal bands of abundant rainfall (\textgreater25 mm day$^{-1}$) on their windward western slope through a combination of forced ascent and diabatic feedback \citep{Xie2006}, and also induce aridity (2 to 5 mm day$^{-1}$) on their leeward eastern flank. 
-	
-	We focus throughout this work on the impact of the Yunnan Plateau on rainfall climatology and variability. The Yunnan Plateau, a spur of the eastern Tibetan Plateau, slopes from \textgreater3 km of altitude in northern Myanmar and southern China down to \textless1 km further south (see Figure 1). Given the observation that other regional orography has a strong blocking effect, this elevated topography may be expected to similarly separate the South Asian monsoon from its East Asian counterpart. However, our subsequent results show that interannual precipitation anomalies cross the Yunnan Plateau in July and August. Not only are Northeastern India and the Sichuan Basin linked, but points across the entire Asian monsoon domain show robust correlation in these months, even those separated by more than 3000 kilometers. The goal of the rest of this work is to investigate the link between the interannual variability of the South and East Asian monsoons, and the dynamic role of intervening high topography in this linkage. 
-	
-	In Section 2, we introduce APHRODITE, a 57-year historical precipitation record used in our analysis. Section 3 shows the results of point-to-point correlations and uses an agreement map methodology to display their associated spatial pattern. In Section 4, we use empirical orthogonal function (EOF) analysis over different regions and months to further study the interannual variability of precipitation. Section 5 proposes several local rainfall indices that replicate the large-scale signal. Section 6 investigates storm tracks in the Asian monsoon. Section 7 proposes a mechanism that can explain our findings. In Section 8, we provide a first test our hypothesis using results from the LMDZ model. Section 9 offers some concluding remarks.
-	
 \section{APHRODITE}
 
-\subsection{A Rain Gauge Data Set for Asia}
+	The APHRO\_MA\_V1101 product from APHRODITE (Asian Precipitation - Highly-Resolved Observational Data Integration Towards Evaluation of the Water Resources) includes 57 years (1951-2007) of daily rainfall (PRECIP product) on a .25$^{\circ} \times .25^{\circ}$ grid over 60$^{\circ}$-150$^{\circ}$E and 15$^{\circ}$S-55$^{\circ}$N \citep{Yatagai2012}. Values are assimilated from weather station observations and therefore available over land only. We focus on the subregion inside of 100$^{\circ}$E-123$^{\circ}$E and 20$^{\circ}$N-40$^{\circ}$N, where Meiyu rainbands occur. Stations in this region are spaced at 100-200 km intervals (shown by RSTN product), such that rainbands are clearly resolved. APHRODITE's resolution cannot capture some features visible in TRMM satellite data \citet{Xu2009}, but its length allows for the study of decadal change. Since almost all precipitation in this region falls as rain, we use the words ``rainfall'' and ``precipitation'' interchangeably in the rest of this work.
+	
+\section{Rainband Detection Algorithm (RDA)}
 
-	In this study, we use a compilation of rain gauge data from weather stations, APHRODITE (Asian Precipitation - Highly-Resolved Observational Data Integration Towards Evaluation of the Water Resources) \citep{Yatagai2012}. The APHRO\_MA\_V1101 product includes 57 years (1951-2007) of daily precipitation (PRECIP product, units mm day$^{-1}$) and station coverage (RSTN product) on a .25\textdegree\ $\times$ .25\textdegree\ grid (roughly 25 km spacing) within 60\textdegree E-150\textdegree E and 15\textdegree S-55\textdegree N. Rainfall values are only available over land. Original station data are provided by national meteorological services, and do not always include all extant stations. Erroneous values are excised via a series of quality control algorithms. The data are then transferred to a fine .05\textdegree\ $\times$ .05\textdegree\ grid (roughly 5 km spacing) via topography-dependent spline interpolation, and finally onto a coarser .25\textdegree\ $\times$ .25\textdegree\ grid available to users. A complete description of the assimilation procedure is available in  \cite{Yatagai2012}. RSTN is expressed as the percentage of .05\textdegree\ $\times$ .05\textdegree\ subcells that contain a station within each .25\textdegree\ $\times$ .25\textdegree\ cell (usually either 0 or 4\%). We reexpress RSTN as a number of stations STN using the definition STN = RSTN/4. 
-	
-%The true number of stations could be greater than STN if multiple stations are contained within one .05\textdegree\ $\times$ .05\textdegree\ box, but in practice this should not influence results.
-	
-	APHRODITE roughly agrees with existing precipitation data sets, such as the 1\textdegree\ by 1\textdegree\ data set of \cite{Rajeevan2006}, but features improved station coverage and accuracy in regions with sharp topography gradients, in particular around the Himalayan Foothills and the Ghats \citep{Yatagai2012}. Analysis of station data is challenging because the distribution of stations is spatially uneven and changes with time. There many also be inherent flaws in measurements due to possible equipment bias and discrepancies in collection intervals between countries. However, alternative precipitation data sets suffer from weaknesses of their own. Reanalysis products such as NCEP-DOE fail to reproduce the intensity and spatial pattern of observed precipitation during monsoon season \citep{Pena-Arancibia2013}. Satellite precipitation products overestimate low precipitation rates and underestimate heavy precipitation, and also perform poorly in arid regions \citep{Gao2013a}. TRMM satellite data struggles with quantification of intense precipitation over land \citep{Iguchi2009}. The TRMM 3B42v6 product was found to perform well over low terrain in China but worse over high terrain  \citep{Zhao2013}. Mergers of rain gauge, satellite and reanalysis data exist \citep{Pena-Arancibia2013,Shen2014}, but for simplicity our analysis relies only on APHRODITE data.
-	
-\subsection{Normalized Monthly Precipitation Anomalies}
+\subsection{Overview}
 
-The daily PRECIP time series $d(x,y,day,year)$ at each point (360 $\times$ 280 points per day for 20,819 days) are converted into monthly precipitation rates $P(x,y,month,year)$ in order to attenuate high-frequency variability. Choices of 15-day, 10-day (decad) and 5-day (pentad) bins were also tested, with similar results. In order to compare points with different means and standard deviations, we find the precipitation anomaly in each month relative to monthly mean, defined as $P'$, and also the normalized anomaly $P''$ obtained by dividing $P'$ by the 57-year standard deviation $\sigma_{mth}$ of precipitation in that month. $P''$ is therefore in units of standard deviation. The means and standard deviations used to calculate $P'$ and $P''$ are different at each point $(x,y)$. Equivalently in equation form we have:
-\begin{align*}  
-	d(x,y,day,yr)& = \text{57-year daily time-series} \\
-	P(x,y,mth,yr) & =d(x,y,day,yr) \text{ converted to monthly} \\
-	\overline{P_{mth}}(x,y) & = \overline{P(x,y,mth,yr)}^{\mathrm{57\ years}} \text{ for mth = 1 to 12}  \\
-	\sigma_{mth}(x,y)& = \sigma(P(x,y,mth,yr)) \text{ for mth = 1 to 12} \\
-	P'(x,y,mth,yr)& =P(x,y,mth,yr)-\overline{P_{mth}}(x,y) \\
-	P''(x,y,mth,yr)& =\frac{P'(x,y,mth,yr)}{\sigma_{mth}(x,y)}
-\end{align*}   
+	For each day from 1 January 1951 to 31 December 2007 (20,819 days total), RDA determines whether a rainband exists inside the window of 105-123$^{\circ}$E and 20-40$^{\circ}$N, a region hereafter referred to as ``East China.'' A rainband is defined as a continuous chain of rainfall maxima exceeding 10 mm day$^{-1}$ spanning at least 5$^{\circ}$ of longitude. If a rainband exists, its properties are calculated including latitude, intensity, tilt, length and width, as well as a ``quality score'' $Q$, defined as the fraction of daily total East China rainfall falling within the band. Fits with poor $Q$ are discarded. We also test for the existence of two rainbands on a single day, an arrangement commonly found in August and September. In such a case, the first and second fitted rainbands are referred to as ``primary'' and ``secondary'' rainbands respectively. A description of algorithm functionality in greater detail follows.
+	
+	We cannot distinguish between the mechanisms that supply rainfall. Any storm that propagates zonally over the course of a day will be interpreted as a rainband, regardless even of whether it propagates westward or eastward. However, from observation, storms reaching East China during the rainiest months of the East Asian summer monsoon are predominantly westerly \citep{Day2015}. Therefore, we expect that RDA detects similar types of rainfall events from one summer to the next, allowing for meaningful analysis of decadal changes.  
+	
+\subsection{Recursive Convergent Image Processing}
+
+\begin{enumerate}
+	\item Given a daily map of East China rainfall (105-123$^{\circ}$E, 20-40$^{\circ}$N) at $.25^{\circ} \times .25^{\circ}$ resolution, the maximum rainfall intensity $int_{max}$ and its latitude $lat_{max}$ are recorded at each longitude. If there exists a continuous chain of maxima spanning $5^{\circ}$ of longitude (20 points in a row) where $int_{max}$ exceeds 10 mm day$^{-1}$, we proceed to step 2 and attempt a rainband fit (Figure~\ref{fig:f32}a). Otherwise, there is no rainband and no fit is attempted for that day (Figure~\ref{fig:f32}b).
+	
+	\item A weighted least-squares linear regression of $lat_{max}$ using $int_{max}$ as weighting approximates the position of the rainband with a straight line (a reasonable assumption from observation). To encourage convergence, the weight of outlying maxima is set to zero. An outlier is defined as any maximum where $lat_{max}$ is over $5^{\circ}$ of latitude away from  $\left<lat_{max}\right>$, the centroid of $lat_{max}$ weighted by $int_{max}$\footnote{In rare cases with two rainbands of roughly equal strength that are well-separated in latitude, the centroid of precipitation may lie midway between the bands such that all maxima will be thrown out as outliers. To avoid this scenario, we verify after removing outliers that
+
+%% FOOTNOTE
+	\begin{equation*}
+	 \sum\limits_{long} weights > 200 \mathrm{\ mm\ day}^{-1}
+	\end{equation*}
+	
+ 	When this condition is failed, which can only occur when too many of our maxima have been discarded, we return to step 1 and find maxima inside a subwindow with latitude range of 20$^{\circ}$N-$\left<lat_{max}\right>$ or $\left<lat_{max}\right>$-40$^{\circ}$N, depending on which half of our domain has a longer chain of maxima exceeding 10 mm day$^{-1}$. The remaining steps of our algorithm are applied as usual. The search for a secondary rainband and calculation of quality scores are performed over the whole East China window (20$^{\circ}$N-40$^{\circ}$N).}, calculated as %%END FOOTNOTE
+
+	\begin{equation*}
+	\left<lat_{max}\right>=\frac{\sum_{long} lat_{max}*int_{max}}{\sum_{long} \max}
+	\end{equation*}
+
+	\item A recursive algorithm converges from this initial fit to a best estimate of rainband position. In each iteration, we find a new set of maxima within \textit{k} degrees of the previous best fit line, and again perform a weighted linear fit of the maxima (Figure~\ref{fig:f33}a). $k$ is progressively decreased with each iteration from $5^{\circ}$ to $2^{\circ}$ by $.25^{\circ}$ increments, and then from $2^{\circ}$ to $.25^{\circ}$ by $.25^{\circ}$ increments repeating each width $k$ twice in a row (Figures~\ref{fig:f33}b-c). The fit obtained in the final iteration is taken as our best estimate (Figure~\ref{fig:f33}d).
+	
+	\item We define the ``quality score'' $Q$ as the fraction of daily total East China rainfall (the sum of all rainfall inside of 105-123$^{\circ}$E and 20-40$^{\circ}$N) that falls within $2.5^{\circ}$ degrees of the best estimate line (Figure~\ref{fig:f34}b). Other rainband properties are calculated as follows:
+	
+	 \begin{enumerate}
+	 
+	 	\item \textit{Latitude}: The latitude of the best fit line at 115$^{\circ}$E. 
+	 
+	 	\item \textit{Intensity}: Mean rainfall of all ``rainband points'' (points along the best fit line where daily rainfall exceeds 5 mm day$^{-1}$).
+	 
+	 	\item \textit{Length}: Total number of rainband points (units of degrees longitude)
+	 
+	 	\item \textit{Width}: Mean distance between half-maxima ($int_{max}$/2) on either side of each rainband point (units of degrees latitude).
+	 
+	 \end{enumerate}
+	
+	\item After finding a primary rainband, we check for the existence of a secondary rainband by removing all \textit{banded rainfall} associated with the primary band from the daily rainfall map. \textit{Banded rainfall} is defined as all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$ (see Figure~\ref{fig:f35}a for an example). After removing primary rainband rainfall, we reapply the continuous maximum criterion from step 1 (Figure~\ref{fig:f35}b). If passed, steps 2-4 are repeated to find a best estimate for the position of the secondary rainband, and its attributes calculated.
+	
+	\item If a secondary rainband is found, two additional \textit{conditional} quality scores $Q_1$ and $Q_2$ are calculated. $Q_1$ is the fraction of total daily East China rainfall that fell within $2.5^{\circ}$ degrees of the primary rainband \textit{after removing all rainfall associated with the secondary rainband} (effectively the $Q$ score if the secondary rainband didn't exist). Likewise, $Q_2$ is the $Q$ score of the second rainband \textit{after removing all rainfall from the primary rainband}. An example is shown in Figure~\ref{fig:f34}d.		
+	
+\end{enumerate} 
+
+\subsection{Quality Control}
+
+	After running the algorithm for all 20,819 days from 1 January 1951 to 31 December 2007, we obtained 11,228 days with at least one rainband and 1,116 days with two rainbands. Subsequently, we apply a quality control (QC) algorithm to eliminate days with poor fit, based on the quality scores $Q$, $Q_1$ and $Q_2$ as well as the ``Taiwan fraction'' $TW$, defined as the percentage of daily total East China rainfall falling over the island of Taiwan (roughly 120-$122^{\circ}$E and 22-$26^{\circ}$N). Rainband fits are deemed successful if they satisfy the following two criteria:
+
+\begin{enumerate}
+
+	\item $TW < 20\%$. If $TW > 20\%$, the day's fit is thrown out (238 cases total, 2.1\% of total fits). Such days are dominated by tropical storms reaching Taiwan and do not exhibit a strong rainband (example shown in Figure~\ref{fig:f34}a).  
+	
+	\item The quality scores of the fit must meet either of the two following benchmarks:
+	
+	\begin{enumerate} 
+	
+	\item If $Q>.6$, the fit is deemed successful (7,522 days, 67.0\% of total fits; Figure~\ref{fig:f34}b). If $Q_2$ is also greater than .6, the day will be classified as a double rainband day (Type I double rainband; 232 cases). 3.1\% of days where $Q>.6$ also achieve $Q_2>.6$.
 		
-In all subsequent analysis, the normalized anomaly from each month is treated as a separate data point. For instance, when we discuss a July-August (or JA) anomaly time series over all 57 years, we refer to a time series with 114 points - 57 Julys and 57 Augusts. Similarly, a May-October (MJJASO) time series from 1951-2007 has $57*6=342$ independent time points. The autocorrelation of normalized rainfall anomalies in consecutive months is low, which supports the claim that monthly normalized rainfall anomalies are independent from one another.
-		
-\subsection{Reference Points and Regions}
+	\item If $Q<.6$, the fit is discarded unless two rainbands are detected and both $Q_1 > .6\mathrm{\ \textbf{and}\ }Q_2 > .6$ (where again $Q_1$ and $Q_2$ are \textit{conditional} quality scores as defined above). In such cases, the presence of multiple rainbands of similar intensity initially obscures the goodness of fit (Figure~\ref{fig:f34}d). Such days are also classified as double rainband days (Type II double rainband; 466 cases).
 	
-	In Section 3, we focus on the $P''$ monthly rainfall anomaly time series at 22 reference points with good station coverage over the 57-year time period (Table 1). The nearest urban agglomeration to each point is listed for illustration. The results from Section 3 are robust to the selection of different nearby points. We also designate 6 reference regions, three each over South and East Asia (Figure 2). In South Asia, the three regions are the Himalayan Foothills + Bangladesh, the "Monsoon Zone", and South India east of the Ghats. The three regions in East Asia are South China (which also includes Taiwan and northern Vietnam), the``Yangtze Corridor" stretching from Sichuan to Shanghai, and North China along the Yellow River. 
+	\end{enumerate}
 	
-	$P''$ time series are calculated for each of the 22 points and 6 regions. All 22 reference points belong to one of the six regions, except for a point each in South Korea (Jinju) and Japan (Tokyo). Both of these points covary with the Yangtze Corridor in summer (Figures 3 and 4) but their surrounding regions are weakly correlated. Precipitation anomalies within each region are highly correlated. Regional time series are defined as $P''_{region}=\overline{P''(x,y)}^{x,y}$, the mean standardized anomaly over the region. We could also first construct a regional time series $P_{region}=\overline{P(x,y)}^{x,y}$ and calculate the corresponding mean and standard deviation, but such a procedure emphasizes points with high variance. In practice, the two methods produce highly similar time series except for the Himalayan Foothills + Bangladesh time series, which includes very rainy points near Meghalaya.
+	If neither criterion 2a nor 2b is satisfied, the fit is thrown out (Figure~\ref{fig:f34}c).
 	
-	The density of observations in APHRODITE varies widely (Figure 2). Japan features a nationwide dense station network, whereas almost no data are available from the western Tibetan Plateau. Several of our reference points (Nyingchi on the eastern Tibetan Plateau and Karachi at the edge of the Thar Desert) contain the only station within a 100 km radius and should be interpreted with caution. Station density also changes with time. The number of available stations in India drops abruptly from over 3000 during 1951-1970 to \textless1000 in 1971 and thereafter. In China, the number of stations remains roughly constant in time (\mytilde 700 stations). In response to concerns about station heterogeneity, we select reference points with as much continuous data as possible and account for station coverage later in our EOF analysis.
-	
-\section{Spatial Coherence of Precipitation Anomalies}
+\end{enumerate}	
 
-\subsection{Point-to-point Correlations}
+	The use of conditional quality scores $Q_1$ and $Q_2$ adds 466 double rainband fits (6.2\% of all successful fits) that would otherwise have been missed due to $Q<.6$. 33.2\% of double rainband days are Type I ($Q>.6$) and 66.8\% Type II ($Q<.6$) as defined above. Double rainbands are more common during certain months, particularly July-September. Tables~\ref{tab:t31}-~\ref{tab:t33} contain detailed results of the application of RDA to years 1951-2007 in APHRODITE. The entire catalog is publicly available on the author's website.
 
-\subsubsection{Formula}
+\subsection{Rainfall Types}
+	
+	RDA allows us to classify all rainfall on each day as either \textit{banded} (falls within a rainband) or \textit{local}. \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$, the same definition as in step 5 of the recursive algorithm above. An example is shown in Figure~\ref{fig:f35}a. Rainfall on each of the 20,819 available days was partitioned into its banded and local components. This allows us to determine what fraction of rainfall at each point in East China is supplied via banded rainfall (Figure~\ref{fig:frontpct}). We also test for the significance of decadal changes in banded and local rainfall separately (Figure~\ref{fig:decadal_front}). These results are discussed below. Videos of the climatological progression of banded and local rainfall are available at the author's website and on request, as well as daily maps of banded and local rainfall for the years 1951-2007.
+	
+\section{Methods}	
 
-Between two normalized precipitation anomaly time series $P_1$ and $P_2$, we define the Pearson product-moment correlation coefficient, usually referred to as the ``correlation coefficient'' or $r$, which also equals the mean product of normalized anomaly time series $P''_1$ and $P''_2$:
-\begin{displaymath}
-	r(P_1,P_2)=\frac{\sum\left(\left(P_1-\bar{P_1}\right)\left(P_2-\bar{P_2}\right)\right)}{n\sigma\left(P_1\right)\sigma\left(P_2\right)}=\frac{\overline{\left(P_1-\bar{P_1}\right)\left(P_2-\bar{P_2}\right)}}{\sigma\left(P_1\right)\sigma\left(P_2\right)}=\overline{P''_1P''_2}
-\end{displaymath}
+\subsection{Alternative Metrics of China Rainfall}
 
-	This formula assumes that monthly precipitation anomalies follow a normal distribution, whereas a gamma distribution may be more accurate \citep{Aksoy1999}. Anomalies at the 22 reference points do approach a normal distribution except for at Karachi, where the standard deviation exceeds the mean (Table 1). This results from occasional monthly surges of up to 8 mm day$^{-1}$ superimposed on a hyperarid (1 mm day$^{-1}$) background. We persist in using the standard formula for $r$ anyway in the interest of simplicity.
+Since the RDA method is complex, we must justify its use by proving that it supplies information about China rainfall beyond what simpler metrics can provide. We define a suite of potential daily rainfall metrics as follows: 
 
-\subsubsection{Results}
+\begin{itemize}
 
-	 We focus on rainfall in July-August because these months mark the peak of the South Asian monsoon. In Figure 3, we show the 57-year intercorrelation of monthly rainfall anomalies $P''$ for each reference point in July-August (JA, 114 time points; top-left), and also for summer half-year months (MJJASO, 342 time points; bottom-right). 95\%/99\% confidence levels are also displayed using single/double cross-hatching, estimated using Student's t-test with degrees of freedom $n=112$ for July-August and $n=340$ for summer half-year months. The number of effective degrees of freedom $n$ in cross-correlation is reduced when both time series share nonzero autocorrelation at a particular time lag \citep{Livezey1983}, which can increase the threshold for statistical significance. However, the shared autocorrelation of JA and MJJASO rainfall time series is found to be low.
+	\item $M_1$ - Latitude of maximum rainfall;
+	
+	\item $M_2$ - Intensity-weighted centroid of daily rainfall latitude;
+	
+	\item $M_3$ - Intensity of maximum rainfall over China (100-123$^{\circ}$E and 20-40$^{\circ}$N);
+	
+	\item $M_4$ - Area-averaged intensity of China rainfall; 
+	
+	\item $M_5$ - Area-averaged intensity of North China rainfall (107.5-125$^{\circ}$E and 37-42$^{\circ}$N); 
+	
+	\item $M_6$ - Area-averaged intensity of South China rainfall (107.5-122.5$^{\circ}$E and 27-33$^{\circ}$N); 
+	
+	\item $M_7$ - \% of days where $M_5$ exceeds 1 mm day$^{-1}$ (\textit{frequency} of North China rainfall);
+	
+	\item $M_8$ - \% of days where $M_6$ exceeds 1 mm day$^{-1}$ (\textit{frequency} of South China rainfall).
+	
+\end{itemize}
 
-	Intraregional correlations are generally strong for both July-August and for summer half-year months. In July-August, statistically significant correlations are found between different regions, even though the amplitude and seasonality of summer rainfall vary greatly between sites, as noted by \cite{Wang2002}. For instance, July-August mean rainfall varies by an order of magnitude between Chittagong (16.55 mm day$^{-1}$) and Karachi (1.68 mm day$^{-1}$). Mean rainfall peaks in June in southern China, July-August in northern India and fall in southern India. Nevertheless, July-August precipitation anomalies are coherent over more than 5000 kilometers, from Tokyo and Karachi ($r=-.23$, significant at a 95\% level) to points in between, whereas significant correlations during summer half-year months (May-October) are mostly limited to pairs of points within the same region.
-	
-	  To verify the robustness of these findings, we reproduced Figure 3 using different combinations of summer months, including June-September (JJAS). The choice of July-August was found to maximize interregional correlation strength. Correlations were also calculated between regional time series (not shown). Their magnitude mostly exceeds the 99\% confidence level with sign matching the pattern observed in Figure 3. The preceding analysis implicitly assumes that the spatial correlation fields associated with a positive and negative rainfall anomaly are mirror images of one another. This is not guaranteed to be true. For instance, the pattern of El Ni\~no and La Ni\~na teleconnections are not exact inverses \citep{Hoerling1997}. To test for this possibility, we compile two composites of years: a ``wet composite'' including the 5 most positive July-August anomaly years at Kathmandu and a ``dry composite'' with the 5 most negative years. We again reproduce Figure 3 with each composite, obtaining similar results (not shown).				
-	  	
-	 The strongest July-August interregional correlation is a dipole between points in the Himalayan Foothills (hereafter defined as +) and ``Monsoon Zone'' (-) ($r=-.59$ using regional time series). This dipole structure over South Asia recurs throughout this study. South India also simultaneously tends to experience positive anomalies. This spatial pattern has been known to the Indian Meteorological Department since the 1960s \citep{Krishnamurthy2000}. In East Asia, a tripole pattern emerges with precipitation increases over the Yangtze Corridor, Korean Peninsula and Japan (+) and corresponding decreases over South China, Taiwan and North Vietnam, as well as a smaller decrease in North China (-). This pattern is also found in previous studies \citep{Ding2008}, and should not be conflated with the variability of the Meiyu front, since Meiyu Season ends sometime in mid-July \citep{Wang2002}. The relatively low correlation of North China points with others may reflect chaotic forcing from the westerlies in that region \citep{Kosaka2012}. Finally, Figure 3 reveals that anomalies in South Asia are correlated to anomalies in East Asia for many pairs of points. In particular, anomalies over the Himalayan Foothills correspond to anomalies over the Yangtze Corridor ($r=.36$ using regional time series). Previous authors have investigated potential connections between the South and East Asian summer monsoons \citep{Lau2000,Liu2008}. In particular, \cite{Krishnan2001} found a June-July correlation between the ``Monsoon Zone'' and Baiu intensity (the Meiyu front over Japan) that is visible in Figure 3. The link between the two regions is investigated in following sections.
-		
-\subsection{Agreement Map}
+ The definitions of the North China and South China regions are the same as in \citet{Yu2010}. Each metric is subjected to the same tests of significance applied to changes in rainband behavior between time periods. The climatologies of $M_1-M_8$ are shown in Figure~\ref{fig:type_changes}a-d, and mean values during different seasons listed in Tables~\ref{tab:t39}-\ref{tab:t311}. The significance of changes in each metric between 1951-1979 and 1980-2007 is displayed in Table~\ref{tab:t312}. Section 3.6 discusses results.
 
-	According to Figure 3, July-August interannual precipitation anomalies are correlated across large distances. In order to elucidate their spatial structure, we employ an agreement map methodology that compares the pattern of anomalies predicted by each of our 22 reference points. The agreement $A(x,y)$ is defined via the following formulas:
-	\begin{align*}
-	R_i(x,y)& = r(P_i,P(x,y)) \\
-	S_i(x,y)& = R_i(x,y) \times sgn(r(P_i,P_{Nepal})) \\
-	Q_i(x,y)& = \left\{
-		\begin{array}{l l}
-	 		sgn(S_i(x,y)) & \quad \text{if $|S_i(x,y)|>.2$} \\
-	 		0 & \quad \text{if $|S_i(x,y)|<.2$}
-	 	\end{array} \right. \\
-	A(x,y)& = \sum_{i}Q_i(x,y)
-	\end{align*}	
+\subsection{Temporal Autocorrelation}
 
-	For each reference point $i$ with local time series $P_i$, we find the correlation of $P_i$ with $P(x,y)$ for all x and y during July-August, defined as $R_i(x,y)$ (360\ $\times$ 280 points for 114 months). In order to compare two different $R_i(x,y)$ maps, they must be defined with the same sign convention. We choose Kathmandu (85.4\textdegree E 27.6\textdegree N, reference point \#2) as our frame of reference because of its strong correlations and high station coverage. If reference point $i$ is negatively correlated with Kathmandu ($r(P_i,P_{Nepal})<0$), we flip the sign of $R_i$. The $R_i$ with adjusted sign are defined as $S_i(x,y)$ and can now be directly compared. The choice of other reasonable reference frames leads to similar results. We then isolate regions of robust correlation in each $S_i$ with a magnitude threshold. $Q_i(x,y)$ is defined as the sign of $S_i(x,y)$ (+1 or -1) if the magnitude of $S_i$ at that point exceeds .2, and 0 otherwise. The choice of .2 as threshold (roughly a 97 \% confidence level using degrees of freedom $n=114$) is arbitrary, and changing the threshold does not alter the overall pattern seen in Figure 4. Finally, the agreement $A(x,y)$ is obtained by summing all $Q_i$. A high magnitude of $A$ at a point $(x,y)$ indicates that most reference points would predict a strong anomaly at $(x,y)$ given the observation of a local anomaly. 
-	
-	Figure 4 shows an agreement map using all 57 years. We also tested agreement maps using the composites of wet and dry years defined in the previous section, and find that results are not substantially altered in either case except for increased noise due to smaller sample size (not shown). A weak branch of positive anomaly extends northward from the Bay of Bengal, on the western flank of the Arakan Mountains. When this branch reaches the Himalayas, it strengthens and bifurcates into northwestward and northeastward trajectories. The northwestward branch runs along the Himalayan Foothills to Nepal without encroaching onto the Tibetan Plateau. The northeastward branch follows a channel between the Himalayas to the north and the Arakan Mountains to the southeast, fills the northeastern notch of the Himalayan Foothills, and spills onto the southeastern Tibetan Plateau. From there, this branch crosses the Yunnan Plateau into Sichuan and the Yangtze Corridor, and stretches weakly across South Korea and Japan. The tilt of this band resembles that of the Meiyu front, but Meiyu Season in central China ends in July. In some places, sharp transitions between regions of positive and negative anomalies are collocated with orography, similar to the steep gradients in mean precipitation in Figure 2. For instance, both the Arakan Mountains and Ghats divide regions of opposite sign on their western and eastern flanks (+ and - respectively for the former, - and + for the latter).
-	
-	In contrast to these other topographic barriers, a continuous band of positive anomaly connects the eastern Tibetan Plateau (\mytilde4 km of altitude) with the low terrain of Bangladesh and the Himalayan foothills. It is also known from observation of $\delta^{18}$O isotopes in rainfall that moisture in summer storms on the eastern Tibetan Plateau originates from the Bay of Bengal \citep{Yao2009,Gao2011,Yang2011}. Therefore, the Himalayas to the west of Nepal (80-86\textdegree\ E) function as an apparent barrier, but the eastern half of the Himalayas (east of 86\textdegree\ E) does not. The role of topography in blocking or allowing flow is not immediately explicable within existing monsoon theory. We propose a hypothesis explaining these features in Section 7.
-	
-\section{Empirical Orthogonal Function (EOF) Analysis}
+	Fronts and rainbands tend to persist for several days. Therefore, rainfall amounts and front attributes on successive days are not fully independent observations, which reduces the effective number of degrees of freedom of these time series. This temporal autocorrelation must be accounted for in calculations of statistical significance such as estimating the $p$-value of a change in rainband frequency between two time periods. In this particular case, we use the analytic formula for a Bernoulli process (applicable for any time series where observations are binary) with effective number of degrees of freedom $n=\frac{N}{\tau}$ for number of days $N$ and decorrelation time $\tau$ given by
 
-\subsection{Technique}
+\begin{equation*}
+\tau=1+2\sum_{k=1}^m \rho(k)
+\end{equation*}
 
-	We seek to confirm the results of our point-to-point correlations and agreement map using an alternative technique. EOF analysis is commonly used in climate studies to reveal leading modes of variability in a set of time series without the assumption of periodicity or preselecting basis functions. This is achieved by finding the eigenmodes of the correlation or covariance matrix of the time series \citep{Lorenz1956,Wilks2006}. Each mode consists of a paired space and time component, hereafter referred to as spatial and temporal EOFs. These modes are ordered by the percentage of total variance that each explains, and typically a subset of several important modes is isolated. These are not guaranteed to have have physical significance, but nonetheless can help to characterize our system. EOFs of precipitation have been calculated for India \citep{Krishnamurthy2000} and China \citep{Ding2008}, but to our knowledge not for the entire Asian monsoon or with APHRODITE. 
-	
-	Normalized anomaly time series $P''$ are used throughout our EOF analysis in order to weight all points evenly. The algorithm used to compile APHRODITE provides daily data at every spatial point even if no stations are nearby. However, this leads to spurious modes with high amplitude in areas with poor station coverage, such as the western Tibetan Plateau and Taklamakan Desert. Therefore, we implement a method to include data only if a station is nearby. We define $s$ as the percentage of days in each month where there is an operating station within 100 km of a point $(x,y)$. If $s<.5$, P'' at that point is reported as missing for the month. Subsequently, if more than half of monthly values are missing over the 57 years, that point is omitted from the calculation of EOFs. This guarantees that all pairs of time series will overlap for at least one month according to the pigeonhole principle, which allows the calculation of their covariance. In practice, 30.8\% of points overlap on all months, 90\% of time series overlap on 75\% of months, and 99.7\% of time series overlap on at least 50\% of months. Different proximity criteria for data inclusion were also tested, but the current 100 km criterion sufficed in eliminating unwanted modes. The resulting EOF time series do not include gaps because they are filled in with values that minimized expected error in a least-squares sense, as described in the appendix of \cite{Chelton1982}. 
-	
-	In calculating EOFs, each monthly anomaly is treated as an independent time point, consistent with the analysis in Section 3. EOFs are calculated for June through September separately (57 time points), July-August (114 time points), each season (DJF, MAM, JJA, SON; 171 time points) and for the summer and winter half-year months (MJJASO and NDJFMA respectively; 342 time points). In addition, July-August EOFs are found for the entire Asian monsoon region (``All-Asia,'' 66\textdegree E-142\textdegree E, 5\textdegree N-45\textdegree N)  as well as India (71\textdegree E-95\textdegree E, 10\textdegree N-30\textdegree N) and China (100\textdegree E-123\textdegree E, 20\textdegree N-40\textdegree N) separately. The India and China subregions as defined each include parts of other countries (``India'' includes Bangladesh, Nepal, Bhutan, western Myanmar and southern Tibet, while ``China'' includes northern Vietnam and Laos), but are referred to by single country names for convenience. All-Asia EOFs are calculated at .5\textdegree\ $\times$ .5\textdegree\ resolution and regional EOFs are calculated at .25\textdegree\ $\times$ .25\textdegree\ resolution. Although APHRODITE also releases a .5\textdegree\ $\times$ .5\textdegree\ product, the All-Asia EOFs are instead obtained by calculating $s$ at .25\textdegree\ $\times$ .25\textdegree\ resolution and then including one out of every two points in each direction. The calculation of EOFs at .5\textdegree\ $\times$ .5\textdegree\ resolution produces very similar results to our procedure. 
-	
-	Preisendorfer's ``rule N'' \citep{Preisendorfer1981} and the \cite{North1982} ``rule of thumb'' are used to assess statistical significance and independence of EOFs. The modes of rainfall variability described below are all statistically significant by Rule N. However, leading EOFs  are generally not well-separated, which indicates that their physical significance should be interpreted with caution. We also test the sensitivity of computed EOFs to varimax rotation \citep{Kaiser1958}, which has been claimed to produce modes with greater physical significance \citep{Wilks2006}.
-	
-\subsection{Results}	
-	
-	Leading modes of precipitation variability explain low percentages of variance compared to the leading modes of other fields \citep{Dai1997}. They also change between seasons. During the winter half-year (NDJFMA), a north-south dipole with few local features dominates variability (11.8\% of variance explained, Supplementary Figure 1a). In fall (SON), the leading mode contrasts China with the Yunnan Plateau (8.6\%, Supplementary Figure 1f). No statistically significant correlation is found between temporal EOF1s from different seasons, or between the summer and winter half-year EOF1s.
+	where $\rho(k)$ is the autocorrelation function of rainband existence with lag $k$ \citep{VonStorch1999}. We calculate $\tau$ using a maximum lag of $m=10$ days. The yearly mean decorrelation timescale of rainband frequency is found to be $\tau = 1.81$ after removing the seasonal cycle. This value is used to calculate significance of changes in Figure 3b. The standard deviation and $p$-values of rainband frequency changes in Tables~\ref{tab:t35} and~\ref{tab:t37} use seasonal values of $\tau$ calculated in \ref{tab:t34}. Similarly, Table~\ref{tab:t311} shows the $\tau$ of alternative metrics of China rainfall, which is then used to calculate the significance of decadal changes in Table~\ref{tab:t312}. $\tau$ is also used to select block length for moving blocks bootstrap tests, as described below.
 
-	We first finding the EOFs of each month from June to September separately (Figure 5). July EOF1 closely resembles August EOF1, with a slight meridional displacement visible over China (centered pattern correlation of $r=.7$), but June and September EOF1 are both rather different. Furthermore, in July and August, EOF1 explains 10.4\% and 12.9\% of variance each, but only 9.9\% and 8.7\% in June and September respectively. June and September EOFs 2-4 are also distinct from their July and August counterparts (not shown). Therefore, in subsequent analysis we focus on joint July-August EOFs (Figure 6).
+%% BOOTSTRAPPING
+\subsection{Significance of Changes: Bootstrapping Algorithms}
 
-	July-August spatial EOF1 (9.4\% of variance explained, Figure 6a) closely resembles the agreement map in Figure 4. Spatial EOFs 2-4 (Figures 6b-d) all also feature competition between the ``Monsoon Zone'' and Himalayan Foothills, and either a north-south tripole or dipole pattern in China. In particular, EOF3 resembles EOF1 in South Asia but with flipped sign in East Asia (spatial correlation in South Asia: .32, in China: -.31; obtained by centered pattern correlation). The tripole and dipole pattern over East Asia are similar to SVDs 1 and 2 of East Asian summer rainfall in \cite{Kosaka2011}. The first four All-Asia EOFs cumulatively account for 25.7\% of total variance (9.4\%, 6.8\%, 5.2\% and 4.2\% respectively). 
+	Observations of rainband latitude and intensity during a given time period obey unknown distributions. Therefore, we require non-parametric tests to estimate the standard deviation of their mean and the significance of changes in mean. We employ bootstrapping with and without replacement (the latter also known as a permutation test), well-established techniques that estimate quantities of interest by constructing synthetic distributions with random sampling of original data \citep{Good2005}. We use bootstrapping with replacement to calculate the standard deviation of means (Tables~\ref{tab:t34},~\ref{tab:t36} and~\ref{tab:t38}). We focus on changes in front attributes between 1951-1979 and 1980-2007 (Tables~\ref{tab:t35} and~\ref{tab:t36}), and also repeat our methodology for 1979-1993 versus 1994-2007 (Tables~\ref{tab:t37} and~\ref{tab:t38}). $p$-values listed are from permutation testing with 10,000 iterations; the results of bootstrapping with and without replacement are very similar.
 	
-	The choice of a large region for EOF analysis may lead to mixing of independent modes \citep{Dai1997,Wilks2006}. Therefore, we repeat our EOF analysis of July-August rainfall for India and China separately (Figure 7). India spatial EOF1 again displays a Himalayan Foothills-``Monsoon Zone'' dipole, and is almost identical to Figures 4 and 6a. This mode dominates regional variability (22.5\% of variance explained). Furthermore, spatial EOFs 2-5 also retain a similar dipole but shifted zonally or meridionally (not shown). 
+	The bootstrap must be adapted for time series featuring temporal autocorrelation. In such time series, a single anomalous weather event will persist over several days, and a bootstrap method will tend to exaggerate the significance of differences between the two original distributions. To avoid this scenario, we use a \textit{moving blocks bootstrap} test, described for instance in \citet{Singh2014}. This technique is identical to bootstrapping with replacement except that samples are drawn in continuous blocks of length $n$ that preserve the time structure of the original data set. Block length is chosen based on decorrelation time scale $\tau$. The autocorrelation of daily rainfall in China is $\tau =\mytilde 3$ days, and therefore the significance estimates in Figure~\ref{fig:hov}a use a moving blocks bootstrap with block length of 3 days and 1000 iterations. The calculation of significance of change in alternative China rainfall statistics $M_1-M_6$ (Table~\ref{tab:t312}) uses the $\tau$ of each statistic in each season (Table~\ref{tab:t311}) rounded to the nearest integer as block length. In general, a choice of block lengths between 2 and 5 days leads to similar results. Our MATLAB code for the permutation test and the moving blocks bootstrap is included in the appendix.
 	
-	In China, three EOFs (hereafter referred to as C$_1$, C$_2$ and C$_3$) explain over 10\% of variance, while no other mode surpasses 7\%. C$_1$ and C$_2$ both feature tilted zonal bands and meridional contrast (16.1\% and 14.9\% of variance explained), while C$_3$ opposes low terrain in southern and eastern China with elevated regions inland (11.2\%, not shown). Neither C$_1$ nor C$_2$ matches the China component of All-Asia spatial EOF1 or EOF2, hereafter referred to as AA$_1$ and AA$_2$ (in contrast to All-Asia EOFs 1 and 2, which refer to the spatial patterns over the full domain seen in Figure 6). However, the application of a 45\textdegree\ rotation to the combination of  C$_1$ and C$_2$ reproduces AA$_1$ and AA$_2$ very closely (AA$_1$ = .59C$_1$+ .51C$_2$, AA$_2$ = -.51C$_1$ + .55C$_2$; coefficients obtained by correlation of temporal EOFs). This implies that both sets of EOFs (C$_1$/C$_2$ and AA$_1$/AA$_2$) describe the same variability.  
-	
-	Leading July-August All-Asia EOFs capture similar patterns of variability as regional EOFs, but also show an interregional coupling similar to Figures 3 and 4.  Specifically, positive anomalies along the Himalayan Foothills correspond to positive anomalies along the Yangtze Corridor and vice-versa. All-Asia EOF1 (+ over Himalayan Foothills, + over Yangtze Corridor) explains 9.4\% of variance versus 5.2\% explained by All-Asia EOF3 (+ over Himalayan Foothills, - over Yangtze Corridor). We create an AA$_1$ time series (China portion of All-Asia EOF1) by a linear combination of the C$_1$ and C$_2$ time series, and find a correlation with India temporal EOF1 of .46, which exceeds a 99.9\% confidence level. We also repeat EOF analysis for the India and China subregions for different summer time periods - June-September (JJAS) and Meiyu season (mid-May to mid-July, 10-day bins). In each case, the leading modes resemble those for July-August in Figure 7. This suggests that June and September All-Asia EOF1s are different from their July and August counterparts due to an absence or change in coupling. We test the effect of large domain size by applying varimax rotation to leading July-August All-Asia EOFs. The resulting leading mode resembles either India EOF1 or AA$_1$, with no interregional coupling. However, this could reflect that the magnitude of local variance exceeds that of the interregional signal. 
-	
-	In summary, the results of EOF analysis, in combination with the statistically significant point-to-point correlations and agreement map shown in Figures 3 and 4, support the existence of a July-August coupling of rainfall anomalies between India and China.
+	The moving blocks bootstrap cannot be used for time series with gaps. Therefore, we use a permutation test to estimate the significance of changes in mean latitude and intensity of rainbands between time periods (Tables~\ref{tab:t36} and~\ref{tab:t38}). These latter results are verified with Anderson-Darling and Kolmogorov-Smirnov tests, two methods which estimate the significance of shifts in distribution between two sample. These tests are described below.
 
-\section{Indices of All-Asia EOF1: All-Nepal Rainfall and Yangtze Rainfall}
-   
-	We seek an index of All-Asia EOF1 that can be calculated using a smaller region. All-India Monsoon Rainfall (AIMR) has been used in many previous studies \citep{Parthasarathy1994}, and is made freely available by the Indian Meteorological Department (IMD, cf Acknowledgments for website), but the national boundaries of India include subregions that are inversely correlated according to All-Asia EOF1 and India EOF1. Instead, we propose All-Nepal monsoon rainfall as a suitable index because of high positive amplitude of All-Asia EOF1 across the country and good station coverage from 1960 onward (Nepal borders shown in Figure 1). In subsequent sections, we argue that this high amplitude results from Nepal's sensitivity to changes in moisture transport from the Bay of Bengal. Previous authors have calculated All-Nepal monsoon rainfall time series \citep{Kansakar2004}, but the Nepal Department of Hydrology and Meteorology does not release such data publicly. APHRODITE contains a large subset of the 337 total precipitation stations in Nepal (number obtained from \url{http://dhm.gov.np}), and we have therefore compiled our own time series (Supplementary Table 1). 
+\subsection{Significance of Changes in Distribution}
+
+In addition to gauging the significance of changes in mean, we can also test the probability that two samples were drawn from the same distribution. The Kolmogorov-Smirnov and Anderson-Darling tests each define a test statistic based on the largest difference between the observed probability distribution of two samples. Similar to a $t$-test, the value of this test statistic can be translated into a $p$-value. We first define the \textit{empirical distribution function} $F_1(x)$ and $F_2(x)$ of each sample. All $n$ observations in each sample are ordered as $\left\{X_1 < ... < X_n\right\}$, after which $F(x)$ is calculated as follows:
+
+\begin{align}
+	F(x) =& \frac{1}{n}\sum_{i=1}^n I_{[-\infty,x]} (X_i) \\
+	I_{[-\infty,x]} =& 
+	\begin{cases}
+   		 1 & \text{if } X_i \leq x\\
+    		0 & \text{otherwise} \\
+    	\end{cases}
+\end{align}
+
+ The K-S test statistic $D$ is then defined as the maximal distance between the two empirical distribution functions:
+
+\begin{equation}
+	D=\max_{all\ x} |F_{1}(x)-F_{2}(x)|
+\end{equation}
+
+$D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test statistic $A^2$ resembles $D$, but is formulated to be more sensitive to the tails of the distribution:
+
+\begin{equation}
+	A^2 = -n-S \,,
+	\mathrm{where}
+\end{equation}
+
+\begin{equation}
+	S=\sum_{i=1}^n \frac{2i-1}{n}\left[\ln(F(X_i)) + \ln\left(1-F(X_{n+1-i})\right)\right].
+\end{equation}
+
+$A^2$ can likewise be translated into a $p$-value. The K-S and A-D tests cannot be used if values are repeated within samples, because $D$ and $A^2$ are then undefined. We solve this problem by using bootstrap versions of these tests. Bootstrap K-S and A-D tests were performed using the programming language R with 10,000 iterations. The significance of changes in the distribution of rainband latitude and intensity are presented in Tables~\ref{tab:t313} and~\ref{tab:t314}. Both tests produce fairly similar results.
+
+\section{Results}
+
+\subsection{Rainband Climatology}
+
+	We compile our daily rainband catalog into a 57-year daily climatology (1951-2007). The yearly progression of precipitation over eastern China is shown in Figure~\ref{fig:hov}a, longitudinally averaged over $100-123^\circ$E with a 5-day running mean, similar to Figure 7 in \citet{Ding2005}. China receives a substantial fraction of its yearly precipitation outside of summer, unlike other monsoonal regions which tend to be very dry in winter \citep{Wang2002}. Figure~\ref{fig:hov}b shows a Hovm\"oller diagram of the probability of rainband occurrence at each latitude, including both primary and secondary rainbands. Some periods of heavy rainfall, in particular the August peak over southern China (over 10 mm day$^{-1}$ around 20$^{\circ}$N), do not correspond to a surge in rainband frequency. Figure~\ref{fig:hov}c shows the probability of rainband occurrence and mean intensity on each day. Figure~\ref{fig:hov}d shows mean rainband tilt and length, as well as the conditional probability of observing a secondary rainband given the presence of a primary rainband. Frontal rainbands over China can appear in any month, with their probability of occurrence and intensity maximizing in late June (80\% probability of occurrence, mean intensity of 31 mm day$^{-1}$) and minimizing in January (10\% probability occurrence, mean intensity of 12 mm day$^{-1}$).
 	
-	July and August All-Asia EOF1 are very similar spatially, as seen in Figure 5 (centered pattern correlation of $r = .70$). Furthermore, August All-Nepal rainfall is not significantly correlated with that in preceding July during 1951-2007 ($r=-.14$), which implies that successive July and August monthly rainfall anomalies in Nepal are independent. Therefore, we treat each July and August anomaly as a separate point in a joint time series. Our index is expressed in units of standard deviation, with July rainfall anomalies normalized using July mean and variance and the equivalent procedure for August. In China, the Yangtze Corridor corresponds to a region of high AA$_1$ amplitude and AA$_2$ near zero. We define Yangtze monsoon rainfall as mean rainfall during July-August over a region bounded by the points (104.5\textdegree E 29\textdegree N), (108\textdegree E 32\textdegree N), (120\textdegree E 34\textdegree N) and (122\textdegree E 31.5\textdegree N) that includes parts of Sichuan, Hubei, Anhui and Jiangsu Provinces (Figure 1). We also compile a time series of July-August normalized anomalies for the ``Monsoon Zone'' shown in \cite{Gadgil2003}.
+	Abrupt climatological shifts occur simultaneously in both rainfall and rainband climatology. We define 5 periods of distinct behavior as demarcated in Figure~\ref{fig:hov}: 
+
+\begin{enumerate}
+
+\item The Spring Rains (days 60-120, March 1-April 30), previously studied in \citet{Tian1998}, marked by frequent but relatively weak rainbands (47\% occurrence, 20 mm day$^{-1}$ mean);
+
+\item Pre-Meiyu season (days 121-160, May 1-June 9), during which rainfall and front intensity steadily increase (56\% occurrence, 25.5 mm day$^{-1}$ mean);
+
+\item Meiyu season (days 161-200, June 10-July 19) when a remarkable 7-degree northward shift in mean rainband latitude occurs over the course of several weeks, and rainband frequency and intensity peaks (66\% occurrence, 28.3 mm day$^{-1}$ mean); 
+
+\item Post-Meiyu season (days 201-273, July 20-September 30), when rainbands are less common than during the Spring Rains (42\% occurrence) but double rainbands occur more frequently (28\% chance of observing a secondary rainband if a primary rainband is observed); 
+
+\item The Fall Rains (days 274-320, October 1-November 16), when mean rainband latitude shifts back southward from its northern maximum of 30$^\circ$N and rainband frequency decreases to just 27\%. 
+
+\end{enumerate}
+
+	The Pre-Meiyu, Meiyu and Post-Meiyu are equivalent to the three stages of Meiyu rainfall described in \citet{Ding2005}. The transition from Pre-Meiyu to Meiyu and from Meiyu to Post-Meiyu both entail striking, sudden changes in rainband behavior. The onset of the Meiyu is marked by a climatological jump in rainband frequency and intensity around day 160 (June 9) that persists for 20 days when rainbands are concentrated between 26$^\circ$ and 30$^\circ$N. Yet by day 200 (July 19), this same region is less likely than any other latitude to feature a rainband, roughly an 80\% local decline in frequency in the span of 3 weeks (Figure~\ref{fig:hov}b). Rainbands are generally more probable and stronger during spring than in fall, and the intensification of rainband activity during the Meiyu and abrupt northward jump have no counterpart in the Fall Rains. The causes of this seasonal asymmetry merit further study.
 	
-	Table 2 shows the correlation of All-Nepal and Yangtze monsoon rainfall with All-Asia EOF1 and other time series of interest, calculated using all Julys and Augusts from 1951 to 2007 (114 time points total). \cite{Wang2012} found that All-Nepal and All-India rainfall are uncorrelated, and thence claimed that Nepal experiences independent precipitation variability from the rest of the South Asian monsoon. Instead, we find that All-Nepal monsoon rainfall matches India EOF1 closely, and is also significantly correlated with leading EOFs in China, even though its correlation with All-India Monsoon Rainfall is indeed near-zero. The ``Monsoon Zone'' time series shows even better correspondence to leading modes, but the number of stations within the region drops precipitously from over 3000 for 1951-1970 to \textless800 beginning in 1971 due to delays in archiving data \citep{Rajeevan2006}. This leads us to prefer All-Nepal monsoon rainfall as index of All-Asia EOF1. All-India Monsoon Rainfall remains strongly correlated with leading temporal EOFs because most of India lies in a region of negative All-Asia EOF1. However, All-India Monsoon Rainfall misses the connection to Yangtze monsoon rainfall that is revealed by the use of either All-Nepal monsoon rainfall or ``Monsoon Zone'' rainfall.
-	
-	ENSO induces the leading mode of global interannual precipitation variability \citep{Dai1997}. \cite{Xie2009} showed that El Ni\~no events, which peak in December, lead to robust changes in precipitation and atmospheric circulation in East Asia in the subsequent June to August through the Indian Ocean ``capacitor effect.'' We would like to determine whether All-Asia EOF1 reflects this process or some other mechanism. Therefore, we test the correlation of the Oceanic Ni\~no Index (ONI) in preceding December with the time series in Table 2. ONI is a three-month running mean of the Ni\~no 3.4 time-series (sea surface temperature (SST) anomalies averaged over the region 5\textdegree S-5\textdegree N and 120\textdegree W-170\textdegree W). SST measurements are derived from ERSSTv3b, identical to ERSSTv3 as described in \cite{Smith2008} but with satellite SST observations excluded due to known bias. This index matches that used in \cite{Xie2009}. The baseline used to calculate anomalies by ONI is periodically adjusted to account for global increase in mean SST, but the difference in baseline between the 1950s and 2000s is only .3\textdegree C and does not influence results. ONI is correlated with All-India rainfall at a 95\% confidence level, but not with any other time series. This suggests that All-Asia EOF1 is not a direct reflection of ENSO variability.
+	These results can be compared with the frontal event catalog of \citet{Xu2009}, which finds a similar date for the northward transition of the Meiyu front. The total number of rainband counts as well as the mean and standard deviation of rainband frequency, latitude and intensity during each time period are presented in Table~\ref{tab:t34}. Figure~\ref{fig:frontpct} shows that frontal rainfall constitutes at least 40\% of yearly total for all of mainland China east of 105$^\circ$E between 21$^\circ$N and 37$^\circ$N, over 60\% for most of central China, and up to 74\% in the vicinity of Jiangxi Province (28$^\circ$N, 116$^\circ$E). Thus, banded rainfall is an essential component of East China's yearly rainfall budget.
 			
-\section{Storm Tracks with APHRODITE}
+\subsection{Rainband Changes}
 
-\subsection{Past Work}
-	
-	In the search for a process that connects South and East Asia, we investigate the propagation of storms. A simple first hypothesis is that the patterns observed in Figure 4 and All-Asia spatial EOF1 correspond to interannual changes in storm trajectories. Storms in the Asian monsoon can propagate across thousands of kilometers, but react to topography in complex ways \citep{Romatschke2011a}. \cite{Luo2011} used CloudSat and CALIPSO satellite data to determine the horizontal and vertical length scales of storms in different regions (India, the Tibetan Plateau and East Asia), and find that different regions have distinctive properties. This may be taken to imply that storms do not cross between regions. However, it has been known for decades that vortices on the Tibetan Plateau may, depending on synoptic conditions, propagate downstream to eastern China, where they induce heavy rainfall and potential flooding \citep{Tao1981,Murakami1984,Chen1984,Yasunari2006,Xu2011,Wang2012a}. Likewise, depressions from west Pacific tropical cyclones can cross Indochina and persist across India during July-September depending on background circulation \citep{Chen1999,Fudeyasu2006}.
-	
-\subsection{Technique}
+\subsubsection{1980-2007 versus 1951-1979}
 
-	Past studies have used HYSPLIT (Hybrid Single Particle Lagrangian Integrated Trajectory) analysis to create back-trajectories of air parcels in Asia during monsoon season \citep{Medina2010,Cai2012,Gao2013}. However, HYSPLIT uses circulation obtained from reanalysis products, which struggle to produce realistic frequency distributions of precipitation in the region \citep{Pena-Arancibia2013}. As an alternative, we use lag-lead correlation with APHRODITE to extract the propagation of precipitation anomalies across days. This analysis cannot show all storms, for instance storms that do not produce rainfall or non-propagating storms, but suffices to show the passage of storms between South and East Asia, which is our focus.
-	
-	For a reference point $i$ with normalized anomaly time series $P''_i$ and a phase lag of $\lambda$ days, the lag-lead correlation $c_i^\lambda(x,y,yr)$ with another point $x,y$ is given by:
-\begin{gather*}
-	c_i^\lambda(x,y,yr)=\sum_{days}P''_i(day,yr)*P''(x,y,day+\lambda,yr),\\
-	\text{for } \lambda \text{= -5 to +5 and year = 1951 to 2007}
-\end{gather*}
-	
-	 This is identical to the formula for the correlation coefficient $r$ with an offset of $\lambda$ days between time series (a lag or lead depending on the sign of $\lambda$). APHRODITE cannot provide information on sub-daily variation, propagation over oceans, or different mechanisms of propagation. However, the 57 years of data can be used to extract both mean storm trajectories and their interannual variability. The $c_i^\lambda$ require further processing to isolate propagation because there tends to be a nonzero positive background field \textit{independent of the value of} $\lambda$. This background field, different for each reference point $i$, results from several effects, including the false positive correlation of two points without rain, even if they are distant from one another, and also the deviation of precipitation anomalies from a normal distribution. We define the background field $b_i(x,y)$ as the mean lag-lead correlation averaged over all $\lambda$ and years, and thereafter analyze the anomaly from this background, $C_i^\lambda(x,y,yr)$, and its 57-year mean $K_i^\lambda(x,y)$:
-\begin{align*}
-	b_i(x,y)=\overline{c_i^\lambda(x,y,yr)}^{57\text{ years, }\lambda} \\
-	C_i^\lambda(x,y,yr)=c_i^\lambda(x,y,yr)-b_i(x,y) \\
-	K_i^\lambda(x,y)=\overline{C_i^\lambda(x,y,yr)}^{57\text{ years}}
-\end{align*}
+%% NEW PARAGRAPH - SIMPLY DESCRIBES THE YEARLY CUMULATIVE SOUTH FLOOD-NORTH DROUGHT
+	The yearly mean change in rainfall rate between 1951-1979 and 1980-2007 over the region 100$^{\circ}$-142$^{\circ}$E and 20$^{\circ}$-48$^{\circ}$N is shown in Figure~\ref{fig:f31}. The South Flood-North Drought refers in particular to a meridional dipole of decadal rainfall change over eastern China (110$^{\circ}$-125$^{\circ}$E and 22$^{\circ}$-42$^{\circ}$N), where most of China's population resides. Pronounced local shifts are also visible in Taiwan, South Korea and parts of Japan. This work focuses on eastern China. Annual changes in northern China between 35$^{\circ}$-40$^{\circ}$N are significant at a 95\% confidence level, whereas changes in central and southern China are not. However, there are substantial changes in central and southern China rainfall during particular Meiyu stages, as shown in Figure~\ref{fig:changes}a and discussed below.
 		
-	We calculate $C_i^\lambda(x,y,yr)$ and $K_i^\lambda(x,y)$ at every reference point for $\lambda =$ -5 to 5 and from 1951 to 2007. Figure 8 shows $K_i^\lambda$ for reference points $i=$ 2, 6, 13, 16 and 21 (Kathmandu, Durg, Shenzhen, Enshi and Baotou) as well as two additional sites, Lijiang (100.4\textdegree E 26.9\textdegree N) and Lake Qinghai (100.1\textdegree E 37.4\textdegree N). In addition, for each reference point and lag $\lambda$, we find the location of maximum $C_i^\lambda(x,y,yr)$ in each of the 57 years, and then draw the smallest circle that contains at least 50\% of these maxima. This quantifies interannual variability. Figure 9 condenses propagation information from Figure 8 into a single composite image by showing the lag $\lambda$ for which $K_i^\lambda(x,y)$ is maximized, with 50\% variance circles for selected $\lambda$ and connecting arrows superimposed. Using these tools, we focus on whether storms propagate between South and East Asia, whether storm tracks change between years, and what trajectories reveal about underlying dynamics.
-	
-\subsection{Steering by 200 mb-level Winds}	
-		 	 		
-	 In Figure 8, $K_i^0$ ($\lambda =$ 0) reveals the correlation length scale of storms at each reference point, typically around 300 km. Interannual variability is generally small for $\lambda$ = -2 to 2. Negative values of $K_i^\lambda(x,y)$ may result from a strong positive $K_i^{\lambda}$  on another day, and should not necessarily be interpreted as storm suppression. All reference points show coherent propagation of anomalies across days. 
-	 
-	 We focus first on the South Asian monsoon domain. At Durg (Figure 8b, ``Monsoon Zone''), storms propagate north-northwestward from the Bay of Bengal with little variance in trajectory, also seen in past work such as Figure 1 of \cite{Sikka1977}. These storms, known in the literature as ``monsoon depressions'' or ``low-pressure systems''\citep{Sikka1977,Chen1999,Krishnamurthy2010}, generally do not reach tropical cyclone intensity. Tropical cyclone occurrence in the Bay of Bengal is confined mostly to October-November and April-May \citep{Li2013}. Several previous studies show that monsoon depressions can originate from further east over Indochina or the South China Sea \citep{Saha1981}. Storms reaching Kathmandu (Figure 8a) also propagate westward, but their primary source is the Yunnan Plateau to the east, with a smaller contribution from Bangladesh and the Bay of Bengal visible at $\lambda =$ -1. In turn, Figure 8d (Lijiang) shows that these Yunnan Plateau storms originate from the mid-latitude westerlies north of the Tibetan Plateau ($\lambda =$ -5 to -2). Bay of Bengal depressions do not reach the Yunnan Plateau. The Himalayas divide regions of westerly and easterly propagation. Figures 8a and 8b also indicate that rainfall peaks over the Himalayan Foothills and South India 5 days before and after a storm passes through the ``Monsoon Zone,'' and vice-versa. This reflects the spatial pattern associated with ''intraseasonal oscillations,'' or ISOs, an extensively studied 10-20 day mode of variability associated with the cycle of active and break periods in the South Asian monsoon \citep{Krishnamurti1980,Chen1993,Annamalai2001,Han2006,Fujinami2011,Fujinami2014}.
-	 	 
-	 In East Asia, the direction of propagation also shifts from westerly north of 30\textdegree N to easterly over South China. In Figures 8c and 9c (Shenzhen), storms from the Philippines and Taiwan move northwestward to South China and then westward toward the Yunnan Plateau, with low interannual variability for $\lambda =$ -2 to 2. This behavior has been seen both in observation \citep{Chen1999,Liu2003} and in idealized monsoon studies \citep{Prive2007a}. Baotou, our northernmost reference point (Figures 8g and 9g), sits at the July-August latitude of the tropospheric jet \citep{Schiemann2009}, and propagation is therefore strictly westerly. Central China marks the transition between westerly and easterly storm advection. Over Enshi (Figures 8e and 9e, Yangtze Corridor), westerly storms are sheared into northeast-southwest tilted bands. This phenomenon, also seen in Figures 8f and 9f (Lake Qinghai), can be understood by considering upper-level winds at this latitude (Figure 10a). If a storm is perturbed southward, it will gain westward velocity from mean flow, whereas storms further north continue eastward. The Himalayas block the passage of storms between the Tibetan Plateau and India, which instead occurs across the Yunnan Plateau.
-	 
-	 In all regions, the direction of propagation agrees closely with 200 mb-level winds (Figure 10a). For the previously discussed ``monsoon depressions,'' this observation is in fact a coincidence. The west-northwestward travel of monsoon depressions instead results from an unusual secondary circulation that advects disturbances against lower-level flow without interacting with the upper troposphere \citep{Chen2000,Chen2005}, even though the predecessors of monsoon depressions are brought by upper-level winds from the east. In the rest of Asia, upper-level winds steer disturbances. We verify this claim by also performing lag-lead correlations for the months of June and September (not shown). Trajectories are mostly similar, and all substantial changes (notably over India) also correspond to changes in 200 mb-level winds. The low interannual variability of storm trajectories results from the relative constancy of upper-level winds between years, as seen for instance with tropical cyclones in the western Pacific \citep{Kumar2005}. In our results, no shift in storm tracks is apparent that can directly explain All-Asia EOF1. Figures 10c and 10d show the 200-mb level winds associated with the 5 most positive EOF1 years (``wet'' years) and 5 most negative years (``dry'' years). The steering direction of storms remains steady in both, although some changes occur. A check of the $K_i^\lambda$ in these ``wet'' and ``dry'' years also does not reveal major differences (not shown). Therefore, we propose that the interannual variability of storm trajectories does not explain the correlation of precipitation anomalies between South and East Asia.
-	 
-\subsection{An Apparent Contradiction}
-	 
-	 Storms are the proximate cause of precipitation, and yet Figure 9 shows that July-August storm trajectories behave differently from monthly rainfall anomalies. Both respond to blocking by the Himalayas, but storm trajectories are less responsive to other low topography. The propagation direction of storms is roughly a function of latitude, without the local heterogeneity observed in rainfall. Lastly, storm tracks do not change much from year to year. Storms produce rainfall and yet appear incapable of explaining its variations on longer time scales.
-	 
-	 A solution can be identified by considering northeastern India and the southeastern Tibetan Plateau. Although Figure 9d shows that storms in the region come from the Yunnan Plateau to the east, local observations of $\delta^{18}$O show a Bay of Bengal origin and isotopic depletion from convection \citep{Gao2011}. The seeming incompatibility of storms and vapor history helps us to isolate two separate processes: Storm propagation and moisture transport, both of which interact with mean flow in different ways. Storms are an eddy process superimposed on the mean state of the atmosphere. Synoptic depressions are steered by the upper troposphere and recycle whatever water vapor is locally available as they propagate. In contrast, because the scale height of water vapor is about 3 km, moisture transport depends on the state of the lower troposphere, where patterns of convergence change greatly from year to year \citep{Annamalai2001,Yoon2005}. The fixity of storm trajectories points to changes in moisture transport as the root of interannual precipitation anomalies. In the next section, we propose a mechanism whereby such changes may induce coupling between South and East Asia.
-	
-\section{Coupling between India and China}
-
-\subsection{Proposed Mechanism}
-
-	We propose that years of anomalously heavy July-August rainfall over the Himalayan Foothills reflect increased transport of water vapor from the Bay of Bengal. In turn, some of this surplus vapor travels via northeastern India to the eastern Tibetan Plateau and northern Yunnan Plateau, and onward to the Yangtze Corridor. In \cite{Sampe2010}, a linear baroclinic model (LBM) with prescribed heating over the Yangtze Corridor produced a zonal band of ascent, as well as anomalous descent to the north and south (Figures 13 and 14 of their paper). We suggest that increased latent heating associated with an increase in water vapor along the Yangtze Corridor may supply a diabatic forcing similar to the Sampe and Xie experiment. This could force local ascent and descent to the north and south, thereby generating the observed tripole pattern of rainfall anomalies over China. In months with reduced moisture transport across the Yunnan Plateau, we therefore propose that the decrease in latent heating along the Yangtze Corridor would lead to anomalous local descent and an inverted spatial pattern of rainfall anomalies.
-	
-	We further theorize that the coupling between India and China begins in July, when the onset of monsoon circulation in northern India initiates abundant moisture transport toward the Himalayas and onward to the Yunnan Plateau, and ends in September due to the shift of peak insolation back to the Equator. The interannual variability of moisture transport over India may result from variability in the latitude of the ITCZ over India between continental and oceanic positions, as argued in \cite{Gadgil2003}. In turn, shifts in the ITCZ could be forced by the state of ENSO and Indian Ocean SST. Moisture transport and precipitation are not in one-to-one correspondence because a full moisture budget also includes evaporation over land en route (e.g. \cite{Chen2014b}), but the latter term is relatively small during monsoon season according to our subsequent model results.
+	We test whether the rainband catalog reflects the South Flood-North Drought by calculating changes in rainband frequency during 1980-2007 relative to 1951-1979 (shown as a Hovm\"oller diagram in Figure~\ref{fig:changes}b). We also calculate the significance of changes in rainband attributes during each of the five Meiyu stages (Tables~\ref{tab:t35} and~\ref{tab:t36}). During the Pre-Meiyu (days 121-160), the probability of observing a primary rainband has declined from $59.0\% \pm 2.0\%$ to $53.0\% \pm 2.1\%$ ($p=0.020$; Table~\ref{tab:t35}. Figure~\ref{fig:changes} shows matching decreases in front occurrence and rainfall over central China during this time period. The Pre-Meiyu decrease in rainfall was previously reported by \citet{Xin2006}, who linked it to decadal change in the North Atlantic Oscillation (NAO), and also by \citet{Wang2009}. We propose that diminished rainband occurrence has caused this decrease.
 		
-\subsection{Potential Vorticity and Moist Static Energy}
+	In addition, a southward shift in mean rainband latitude has occurred during the Post-Meiyu (days 201-273, or July 20-Sep 30). We focus on rainbands north of 27$^{\circ}$N; rainbands occurring south of this latitude are produced by the westward-propagating remnants of tropical storms, and therefore dynamically unrelated to other storminess during Meiyu season \citep{Day2015}. Considering both primary and secondary rainbands north of 27$^{\circ}$N, mean latitude during 1951-1979 was $33.6^\circ \textrm{N} \pm .3^\circ$ versus $32.9^\circ \textrm{N} \pm .3^\circ$ during 1980-2007 ($p=.0003$; Table~\ref{tab:t36}). This shift remains significant if we do not restrict by front latitude ($p=.0048$). A Post-Meiyu rainfall increase in central China and decrease in northern China has also occurred, producing a South Flood-North Drought pattern (Figure~\ref{fig:changes}c). As a result, yearly rainfall has increased in central China even though Pre-Meiyu rainfall changes in that region are actually negative (Figure~\ref{fig:changes}a). Unlike \citet{Yu2010}, our catalog does not exhibit a \nth{20}-century decrease in the intensity of Yangtze River region frontal rainbands during July-August. A significant southward shift in rainband latitude is also found for the whole year ($p=.0032$, Table~\ref{tab:t36}), but this signal is dominated by the Post-Meiyu shift.
+	
+	%SHORT PARAGRAPHLET on the 1979-1993 v 1994-2007 jump.
+\subsubsection{1979-1993 versus 1994-2007}
+	
+	We test this methodology also with the set of years 1979-1993 versus 1994-2007, when past authors have reported a shift in South China rainfall \citep{Kwon2007,Wu2010,Yim2013}. The most distinctive change between these two sets of years occurred during Meiyu season, during which rainband latitude shifted southward from $30.0^\circ \textrm{N} \pm .4^\circ$ to $28.9^\circ \textrm{N} \pm .4^\circ\ (p=.0002)$ and the \textit{intensity} of rainbands also jumped from $27.3 \pm 1.1$ mm day$^{-1}$ to $29.8 \pm 1.1$ mm day$^{-1}\ (p=.9994)$, leading to increased rainfall over central and southern China. \citet{Zou2015} also found that China experienced a more intense Meiyu during the 1990s, as well as generally more severe rainfall events. Unlike the comparison between 1951-1979 and 1980-2007, rainband \textit{frequency} remained unchanged. We infer that changes in frequency versus changes in intensity may signal the existence of two different types of external forcing, an idea further explored in the conclusion.
+	
+	%% ANDERSON-DARLING AND KOLMOGOROV-SMIRNOV TESTING 
+\subsection{Significance of Changes in Distribution of Latitude and Intensity}
 
-	The linkage of July-August rainfall anomalies in India and China can be understood in terms of conservation of potential vorticity (PV). The PV of an air parcel is given by
-	\begin{displaymath}
-			PV  \thickapprox \frac{\left(\xi+f\right)}{H}  = \mathrm{ constant}
-	\end{displaymath}
-	
-	where $\xi = \frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}$ is the relative vorticity of the parcel, $f=2\Omega\mathrm{sin}\phi$ is the planetary vorticity with rotation rate of the Earth $\Omega$ and latitude $\phi$, and $H$ is the height of the column. This approximation is valid for a barotropic fluid. In this simple framework, heating acts by stretching a parcel and topography by compressing it. This helps to explain the sensitivity of flow even to low topography, and why moisture does not simply pass over the Arakan Mountains. 
-	
-	A moisture parcel propagating northward from the Bay of Bengal cannot overcome the steep topography gradient of the Himalayas (which sharply decreases $H$). Instead, trajectories bifurcate between a westward branch towards Nepal ($\xi > 0$) and eastward forced channel flow between the Himalayas and Arakan Mountains into northeastern India ($\xi < 0$). These two trajectories encounter different topography. To the west, the Himalayas exceed 5 km of altitude, preventing access of moisture to the quasi-desertic Western Tibetan Plateau. To the east, the Himalayas are slightly lower, the slopes are less steep, and river valleys allow access to the high terrain of the eastern Tibetan Plateau and Yunnan Plateau. During monsoon season, moisture is observed to propagate as far as Lhasa and up the Brahmaputra and Zayu river valleys, which run from the plateau's southeastern edge into northeastern India \citep{Gao2011,Yang2011}. Propagation may also be aided by the phenomenon described in \cite{Holton2004} that perturbations in easterly flow are damped whereas westerly flow excursions are amplified due to the gradient of planetary vorticity. Lastly, moist flow upslope may be abetted by surface heating, which should lift isentropes \citep{Molnar1999,Prive2007a}. 
-	
-	In practice, we lack information about individual parcels. Instead, moist static energy $h$, and in particular the subcloud quantity $h_b$, reveals information about the strength and extent of the monsoon \citep{Prive2007,Prive2007a}. $h$ tracks total potential energy per kilogram of air (units of J kg$^{-1}$ or m$^2$ s$^{-2}$), including latent heating, sensible heating and potential energy:
-	\begin{displaymath}
-			h= L_v q+c_p T+gz
-	\end{displaymath}
-		
-	$L_v$ is the latent heat of vaporization of water and $c_p$ the specific heat of dry air. In the absence of diabatic heating, this quantity remains conserved. Following \cite{Boos2010}, $h$ is expressed in units of Kelvin by dividing by $c_p$. The resulting quantity can be interpreted as the equivalent temperature the parcel would have at sea level if all moisture was condensed. According to both idealized studies and observation, the maximum of $h_b$ occurs at the northernmost extent of monsoon circulation  \citep{Emanuel1995,Prive2007,Boos2010,Nie2010}. Therefore, if our hypothesis of abundant moisture transport from the Bay of Bengal to northeastern India and onward is correct, we should observe an associated $h_b$ maximum there that also diffuses downstream onto the southern Tibetan Plateau, northern Yunnan Plateau and beyond. The Himalayas amplify the $h_b$ maximum along the Himalayan Foothills both by shielding warm air over India from cold air further north \citep{Boos2010} and by forced wind convergence. The Arakan Mountains may further induce convergence and strengthen $h_b$ by restricting flow to a narrow channel.
+	As discussed in Section 3.5, a permutation test of changes in rainband latitude and intensity may exaggerate their significance. We use two independent techniques, a bootstrap Kolmogorov-Smirnov and bootstrap Anderson-Darling test, to verify the results in Table~\ref{tab:t34}. The results of comparing the years 1980-2007 to 1951-1979 is presented in Table~\ref{tab:t313}. Neither test captures the Pre-Meiyu decline in rainband frequency after 1979 since rainband latitude and intensity distributions remain similar. On the other hand, the Post-Meiyu southward shift in rainband latitude is found to be highly significant by both tests ($p<.001$). As before, no significant changes in rainband intensity are found between 1951-1979 and 1980-2007. This suggests that the estimates of significance from permutation testing are trustworthy.
 
-\subsection{Supporting Evidence}
+	Also, a substantial southward shift in latitude and decrease in intensity of rainbands is found during Meiyu season between 1979-1993 and 1994-2007 ($p<.001$ for both changes; Table~\ref{tab:t314}). This further confirms that rainfall changes observed between 1979-1993 and 1994-2007 are fundamentally different from the South Flood-North Drought pattern of changes between 1951-1979 and 1980-2007.
+	
+\subsection{Decadal Changes in Alternative Metrics $M_1-M_8$}
 
-	APHRODITE shows that Northeastern India experiences intense summer rainfall of 20 to 30 mm day$^{-1}$ (Figure 1). Such rates require substantial moisture advection inland. Several past studies demonstrate this transport. \cite{Zhang2013}, using AIRS satellite retrievals corroborated by radiosonde observations, find a deep layer of water vapor on the Tibetan Plateau in summer, with up to 15 mm of precipitable water over the southeastern Tibetan Plateau and northern Yunnan Plateau. In \cite{Medina2010}, analysis of TRMM satellite data shows massive stratiform storms that advect moisture from the Bay of Bengal and wetlands of Bangladesh to the eastern Himalayas. Two sites on the eastern Tibetan Plateau with daily ${\delta}^{18}$O measurements register the arrival of monsoon storms during summer \citep{Gao2011}. Tagging of water in isotope-enabled GCM runs with the LMDZ model (which we use in the next section) show some transport of Bay of Bengal water vapor to central and southern China \citep{Yao2013}.
+	We compare the results above with the magnitude of changes in a suite of simple metrics for China rainfall $M_1-M_8$, as defined in Section 3.5. We focus on differences in $M_1-M_8$ between 1980-2007 and 1951-1979 (Tables~\ref{tab:t39}-\ref{tab:t312}). No alternative metric supplies a complete picture of late-\nth{20}-century China rainfall change. From 1951-1979 to 1980-2007, area-averaged North China rainfall ($M_5$) during the Post-Meiyu season declined from 3.20 mm day$^{-1}$ to 2.70 mm day$^{-1}$. This change is significant at a 99\% level ($p=.0004$), and induced a yearly decrease in North China rainfall from 1.31 mm day$^{-1}$ to 1.20 mm day$^{-1}$  ($p=.0068$). However, the change in $M_5$ fails to capture the southward shift of rainband latitude during the Post-Meiyu that is ultimately responsible for the drought in North China, as seen in Figure~\ref{fig:changes}a. Similarly, the intensity-weighted centroid of precipitation latitude ($M_2$) shifted southward during the Pre-Meiyu by $.3^\circ$ ($p=.017$) from 1951-1979 to 1980-2007, but RDA suggests that the most notable change in rainfall between these time periods is the \textit{frequency of occurrence of rainbands} that supply the rainfall (Table~\ref{tab:t35}). No other metric shows any notable change during the Pre-Meiyu season. 
 	
-	Direct observations of water vapor transport are unavailable. Several previous studies have suggested that changes in moisture transport induce precipitation anomalies in China \citep{Feng2012,Cao2014}, but the resolution of the reanalysis products used in these studies (2.5\textdegree\ $\times$ 2.5\textdegree\ and 1.25\textdegree\ $\times$ 1.25\textdegree\ resolution respectively) may be unable to produce realistic fields of moisture transport. \cite{Pausata2011} argued that, on the millennial time scale, East Asian speleothem records reflect decreased Indian monsoon rainfall due to downstream advection of isotopically enriched water vapor. However, their proposed pathway is further south over Indochina and does not correspond to All-Asia EOF1.	
-		
-	The covariation of precipitation anomalies in South and East Asia does not require a direct link, since each region could be independently responding to the same external forcing. Nonetheless, we propose a pathway of moisture transport from India to China across the Yunnan Plateau as a simple mechanism whose variations can explain our results.  In the following section, we test our hypothesis by analyzing results from a model with highly resolved topography around the Tibetan Plateau.
+	In summary, the use of RDA captures key features of the South Flood-North Drought that are not revealed by analyzing simpler metrics.
 
-\section{Model Results}
+\subsection{Change in Rainfall Types}
 
-\subsection{Specifications}
-	
-	We employ the LMDZ5 (Laboratoire M\'et\'eorologique de Dynamique - Zoom) model to investigate the proposed mechanism, specifically the LMDZ5A package used in Coupled Model Intercomparison Project Phase 5 (CMIP5) as part of the Fifth Assessment Report of the Intergovernmental Panel on Climate Change (IPCC AR5, \cite{Christensen2011}). LMDZ is the flagship atmospheric model of Institut Pierre Simon Laplace (IPSL). Details of model function are available in \cite{Hourdin2006} and \cite{Hourdin2012}. The run analyzed below uses the AMIP protocol, which fixes CO$_\mathrm{2}$ and prescribes monthly fields of SST and sea ice with some interannual variability. A high-resolution nested grid (\mytilde50 km resolution) is included over East Asia (0\textdegree to 55\textdegree N and 60\textdegree E to 130\textdegree E) inside of a coarse global grid. The transition from coarse to fine resolution occurs over an area far outside of the region of interest in order to avoid edge effects. In addition, winds are nudged to ECMWF reanalysis with a dissipation time constant $\tau$ of 1 hour/4 hours (inside/outside zoomed region). 
-	
-	The combination of zoomed grid and nudged winds substantially improves precipitation and $\delta^{18}$O climatologies relative to observation \citep{Gao2011}. An isotope-enabled version of LMDZ (LMDZ-iso) has been tested across a range of climates with good performance \citep{Risi2010}. LMDZ has also been extensively tested in the vicinity of the Tibetan Plateau and consistently outperforms other isotopically-enabled models \citep{Gao2011,Lee2012,Eagle2013,Gao2013,Yao2013}. We present results for the year 2006 as a case study, leaving in-depth testing and investigation of interannual variability for future runs. Rainfall climatology roughly resembles observations from APHRODITE, with correct seasonality over South and East Asia (not shown). Figure 10b shows that LMDZ produces a field of 200-mb level wind similar to NCEP reanalysis (Figure 10a).
-	
-\subsection{Moist Static Energy and Moisture Transport in LMDZ}
-	
-	To analyze model treatment of the South Asian monsoon, we calculate near-surface moist static energy $h_b$ and streamlines of column-integrated moisture transport $qu$-$qv$ for June-September (Figure 11). LMDZ's estimate of $h_b$ can be compared to the July climatology of 10-meter moist static energy in Figure 1 of \cite{Nie2010} and Figure 3a of \cite{Boos2013a}, which it mostly resembles. LMDZ correctly generates a July-August maximum along the Himalayan Foothills and east of the Hindu Kush, a feature absent from almost all CMIP5 GCMs \citep{Boos2013a}. This maximum is due to the abundant advection of moisture from the Bay of Bengal by cyclonic mean circulation. In June, the $h_b$ maximum is instead situated over the Arabian Ocean and Bay of Bengal because winds over India are westerly, bringing dry air from the continental interior. May-June is also the annual peak of Bay of Bengal SST in observation \citep{Bhat2004}. In September, $h_b$ is lower everywhere due to decreased insolation, although cyclonic circulation and northward moisture transport from the Bay of Bengal persist in weakened form. Over the northern Bay of Bengal (88\textdegree E-92\textdegree E and 18\textdegree N-22\textdegree N), column-integrated moisture transport onto land is 5.2 $\times$ 10$^{-2}$ kg m$^{-1}$s$^{-1}$ in July, 4.1 $\times$ 10$^{-2}$ kg m$^{-1}$s$^{-1}$ in August and 2.9 $\times$ 10$^{-2}$ kg m$^{-1}$s$^{-1}$ in September. This agrees with the observation that water vapor from the Bay of Bengal still reaches Lhasa in September, but less frequently than in July and August \citep{Gao2011}. Abundant moisture transport from the Bay of Bengal to the Himalayan Foothills requires cyclonic circulation over India and sufficient heating. In this run, these conditions are only met in July and August.
-	
-	LMDZ also shows moisture transport from from India downstream to China in July and August, and corresponding local maxima in moist static energy over the southeastern Tibetan Plateau and Sichuan Basin. In the model, moisture transport occurs primarily across the Himalayas to the southern Tibetan Plateau. We hypothesize that transport south of the Himalayas through northeastern India is too weak in the model, since rainfall in northeastern India is underestimated by up to 20 mm day$^{-1}$ and moist static energy by 20 to 25K. A corresponding positive bias in moist static energy and rainfall occurs over the southern Tibetan Plateau, and precipitation over Indochina further south is also exaggerated by up to 20 mm day$^{-1}$.
+	Using our method for partitioning daily rainfall into its banded and local components, we can test whether one of these components accounts for the majority of decadal change. In Figure~\ref{fig:decadal_front}, we compare banded and local rainfall changes between the periods 1980-2007 and 1951-1979 over the whole year, and also during the Pre-Meiyu and Post-Meiyu seasons during which we have already identified substantial change. The significant decrease in yearly rainfall in northern China (Figure~\ref{fig:f31}) is overwhelmingly due to a regional decrease in banded rainfall (significant at a 99\% level) without a corresponding decrease in local rainfall (Figure~\ref{fig:decadal_front}a). During the Pre-Meiyu season (Figure~\ref{fig:decadal_front}b), a marked decrease in banded rainfall over the Yangtze River Valley ($p<.005$) is partially offset by a general increase in local rainfall across all of China, especially in the vicinity of Hunan, Guizhou and Chongqing Provinces (108$^\circ$-114$^\circ$E, 26$^\circ$-30$^\circ$N). The Post-Meiyu dipole between northern and southern China is clearly visible in changes in banded rainfall, and indistinct in local rainfall changes (Figure~\ref{fig:decadal_front}c). In contrast, the sharp decrease in yearly rainfall in Taiwan is overwhelmingly due to changes in local rainfall. Banded rainfall only makes up 20-30\% of total rainfall on the island (Figure~\ref{fig:f31}).
+
+	In conclusion, \textbf{the North Flood-South Drought has resulted primarily from changes in banded rainfall}. In turn, these changes in banded rainfall are zonally symmetric and coherent across thousands of kilometers, which suggests that they are caused by changes in the large-scale dynamics of the East Asian summer monsoon. We explore possible causes in the conclusion and Chapter 4.
 
 \section{Conclusion}
 
-	In this work, we find that July-August monthly rainfall anomalies in South and East Asia are correlated across thousands of kilometers, as shown by point-to-point correlations, an agreement map method and EOF analysis. Further investigation with lag-lead correlations shows that interannual variations in storm tracks cannot explain this result. Instead, we postulate that changes in moisture transport from the Bay of Bengal to the Himalayan Foothills, Yunnan Plateau and Yangtze Corridor lead to the observed pattern of anomalies. This link is confined to July-August, when cyclonic monsoon circulation sets in over India and insolation remains high. During the peak of the South Asian monsoon, circulation delivers moisture from the Bay of Bengal not only toward Nepal and the western Himalayan Foothills, but also to the southeast quadrant of the Tibetan Plateau and northern Yunnan Plateau. We propose All-Nepal and Yangtze monsoon rainfall as two local indices that reflect this leading mode of Asian rainfall variability. The LMDZ model, featuring a high resolution grid around the Tibetan Plateau, produces a realistic monsoon climatology and confirms basic elements of our hypothesis, which offers promise for future modeling efforts.
+	The goal of this work has been to present a clear summary of late-\nth{20}-century rainfall change in China as characterized by changes in frontal rainfall, a core element of the East Asian summer monsoon that constitutes 56\% of yearly rainfall to the region. We used the Rainband Detection Algorithm (RDA), a recursive image processing algorithm, to compile a 57-year catalog of daily rainband occurrence over China and the properties of each event, such as latitude, intensity, tilt, width and length, all of which we have made available to other researchers. The progression of the East Asian summer monsoon in China is displayed in unprecedented fashion as a sequence of 5 stages, each with preferred position, frequency and strength of frontal rainfall. With approximate duration listed, these are: 1) the Spring Rains (March 1-April 30); 2) the Pre-Meiyu (May 1-June 9); 3) the Meiyu (June 10-July 19); 4) the Post-Meiyu (July 20-September 30) and 5) the Fall Rains (October 1-November 16). The climatological transitions from one period to the next are abrupt rather than smooth. 
 	
-	It is important to understand the role of storms. On the daily time scale, the passage of a storm induces a positive rainfall anomaly. They also alter their synoptic environment by processes such as the release of CAPE, such that storms and synoptic conditions evolve in tandem. Yet, at the monthly level, our results suggest that the leading mode of July-August rainfall variability in Asia cannot be understood as a shift in storm tracks. Storms function as a passive, stochastic process that registers the state of the atmosphere by precipitating available water vapor. Since the scale height of water vapor is about 3 km, lower tropospheric conditions dictate its distribution. Increased moisture transport to the Himalayas should entail corresponding changes in large-scale circulation, lower-level convergence and the distribution of moist static energy, whose variations \cite{Hurley2013} finds correlated with precipitation anomalies in monsoon regions. In contrast, the steering direction of storms remains relatively constant between years. The agreement of storm tracks with 200-mb level winds suggests that, their propagation is generally an upper tropospheric process (with some local exceptions). Therefore, they are insensitive to orography besides the high barrier of the Himalayas. The sharp spatial gradients of rainfall and rainfall anomalies reflect sensitivity to lower tropospheric processes, where topography dictates flow. 
+	We are able to ascribe previously reported decadal rainfall change (the South Flood-North Drought) to modified rainband properties during particular rainfall stages. Two statistically significant occurred between the years 1951-1979 and 1980-2007: 
+
+\begin{enumerate} 
+\item A decrease in rainband frequency during the Pre-Meiyu ($p=.020$);
+\item A southward shift in mean rainband latitude during the Post-Meiyu ($p=.0003$, permutation test; $p=.0001$, Anderson-Darling test). 
+\end{enumerate}
+	
+	The first change led to a decrease in central China rainfall in May, while the second has been the principal contributor to the South Flood-North Drought trend in total yearly rainfall (Figure~\ref{fig:f31}). Furthermore, we find that rainfall changes during the Pre-Meiyu and Post-Meiyu in China are primarily due to changes in frontal rainfall, as opposed to a change in the contribution from local storms (Figure~\ref{fig:decadal_front}). These robust decadal changes in rainbands suggest the influence of large-scale climate change, which may have altered the synoptic conditions in the East Asian monsoon that produce frontal rainfall.
 		
-	The lack of observations along the proposed route of moisture transport hinders the corroboration of our theory. Many locations traversed are remote or politically sensitive, such as the eastern Tibetan Plateau in China, Arunachal Pradesh in India or Kachin State in Myanmar. Meteorological data alone may be insufficient to characterize the behavior of water vapor. Studies have compiled event-based measurements of isotopes at downstream sites in China \citep{Yang2011a,Wu2014}, but the complexity of their $\delta ^{18}$O signals makes interpretation of parcel origin and history a challenge. An ideal study would feature daily or sub-daily measurement of water vapor at multiple sites en route, including northeastern India, the Yunnan Plateau and Sichuan, similar to measurements performed at several sites along the Brahmaputra River valley on the Tibetan Plateau by \cite{Gao2011}.
-	
-	We note an additional connection between Bay of Bengal sea surface temperature (SST) and Indian rainfall variability. Using HadSST 3.1 \citep{Kennedy2011a,Kennedy2011}, which features SST from 1850 to present-day on a 5\textdegree\ $\times$ 5\textdegree\ grid, we test the correlation of July-August rainfall in India at every point with SST in the northern Bay of Bengal (defined as the mean of SST at 87.5\textdegree E 22.5\textdegree N and 92.5\textdegree E 22.5\textdegree N). The resulting pattern again resembles All-Asia spatial EOF1 (not shown), with positive correlations over the Himalayan Foothills, eastern Tibetan Plateau and Yangtze Corridor and negative correlation over the ``Monsoon Zone'', all exceeding a 95\% confidence level ($\lvert r \rvert >$ .18). However, the time series of northern Bay of Bengal SST is not significantly correlated with All-Asia temporal EOF1 ($r$ = .11) or India temporal EOF1 ($r$ = .09). This result is robust to different definitions of Bay of Bengal SST. Indian monsoon rainfall variability and Bay of Bengal SST have previously been shown to covary on weekly time scales \citep{Vecchi2002,Han2006}, in addition to the monthly time scale that we consider. This covariance of local SST and rainfall anomalies implies a mutual response to external forcing that we will investigate in future work.
-	
-	The results above have only briefly considered the source of the variability described. Previous work has shown the ability of El Ni\~no conditions in the central Pacific to induce droughts over India in following summer \citep{Kumar2006}, as well as circulation and rainfall anomalies over East Asia via the ``capacitor effect'' \citep{Xie2009}. We found no significant correlation between the Ni\~no 3.4 index (ONI) in December and All-Asia EOF1, India EOF1 or China EOFs 1 and 2, but the correlation of December Ni\~no 3.4 and All-India rainfall exceeds a 95\% confidence level, suggesting that ENSO-related anomalies may have a particular spatial character distinct from India EOF1. Both equatorial Indian Ocean zonal wind and SST anomalies have been linked to variations in rainfall over India \citep{Ihara2007,Mishra2012}. Thus, leading modes of global and regional variability such as the Western Pacific Anticyclone \citep{Kosaka2011}, the Pacific Decadal Oscillation \citep{Mantua2002} and the Indian Ocean Dipole \citep{Saji1999} may influence the Indian monsoon by changing circulation or SSTs. However, the atmospheric response is sensitive to the exact distribution of such anomalies \citep{Xie2009}.
-	
-	Statistically significant \nth{20} century trends in rainfall have been found across Asia \citep{Christensen2011,Singh2014}. The leading temporal EOFs in our study (Figures 6 and 7) generally show that precipitation has increased along the Himalayan Foothills and China south of 30\textdegree N (Hunan and Jiangxi Provinces in particular), and decreased over the ``Monsoon Zone'' and in northern China (Shaanxi and Henan Provinces). This agrees with previous studies that discuss a ``South Flood North Drought'' pattern in China \citep{Ding2008} and a decrease in All-India Monsoon Rainfall since the 1970s \citep{Annamalai2013}. These results could reflect a change in mean moisture transport from the Bay of Bengal to China in the past few decades. A better physical understanding of the coupling between the South and East Asian monsoons may improve projections of \nth{21} century precipitation changes in Asia, which remain uncertain \citep{Christensen2011}.
-	
-\begin{acknowledgment} 
-	This work was supported by NSF funds EAR-0909195 and EAR-1211925. We also acknowledge NSFC (National Natural Science Foundation of China) grant \#40921120406 for encouraging the feedback and support of colleagues in China. We thank Jinqiang Chen, Peter Molnar and two anonymous reviewers for their valuable suggestions. APHRODITE precipitation data is publicly available at \url{http://www.chikyu.ac.jp/precip/index.html}. FERRET, a NOAA product, was used for data analysis and preliminary plot generation. The official All-India Monsoon Rainfall time series was obtained from the Indian Meteorological Department (IMD) website at \url{http://www.imd.gov.in/section/nhac/dynamic/Monsoon_frame.htm}. The Oceanic Ni\~no Index (ONI) time series was retrieved from NOAA at \url{http://www.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ensoyears.shtml}. Monthly 200 mb-level reanalysis winds were obtained from NCEP/NCAR reanalysis available at \url{http://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanalysis.derived.surface.html}. Bay of Bengal SST was obtained from HadSST 3.1, provided by the UK Met Office at \url{http://www.metoffice.gov.uk/hadobs/hadsst3/data/download.html}. Data, figures used and animations of relevant data are available at: \url{http://www.atmos.berkeley.edu/~jessed/figures.html}.
-\end{acknowledgment}
-
-% Create a bibliography directory and place your .bib file there.
-% -REMOVE ALL DIRECTORY PATHS TO REFERENCE FILES BEFORE SUBMITTING TO THE AMS FOR PEER REVIEW
-\pagestyle{plain}
-\ifthenelse{\boolean{dc}}
-{}
-{\clearpage}
-\bibliographystyle{ametsoc}
-\bibliography{precip_rev_2}
+	It is essential to understand whether the South Flood-North Drought will persist under \nth{21}-century warming, or manifests an ephemeral decadal change. However, the CMIP5 (Climate Model Intercomparison Project) model suite contained in the Intergovernmental Panel on Climate Change's Fifth Assessment Report (IPCC AR5) does not even agree on the sign of future summer rainfall changes in East Asia \citep{Christensen2011}. Some studies attribute the South Flood-North Drought to natural variability \citep{Zhang1999,Xin2006,Lei2014}, but \citet{Zhou2009} claimed that the South Flood-North Drought was distinct from other patterns of \nth{20}-century variability. Since regional climate projection in Asia poses such a challenge, the most hopeful approach may be to link the South Flood-North Drought with other large-scale climate changes that can be more reliably modeled and projected into the future. \citet{Zhao2010} previously suggested that the South Flood-North Drought was associated with the late \nth{20}-century rise in global mean surface temperature. In Chapter 4, we propose that \nth{20}-century global warming has influenced frontal rainfall in China by changing the seasonal cycle of the East Asian jet. Many recent studies have studied the influence of global warming on the Hadley Cells and tropospheric jets \citep{Frierson2007,Kang2012}. A link between changes in the East Asian jet and rainfall could reveal the future of the South Flood-North Drought.
+		
+%%1979-1993 v 1994-2007 - conclusion paragraph.
+	We also investigated a change in China rainfall between 1979-1993 and 1994-2007 reported by other authors. We find a highly significant uptick in the \textit{intensity} of rainbands during Meiyu season ($p=.0006$) as well as a southward shift in their mean latitude ($p=.0002$). The resulting mid-summer rainfall increase over the Yangtze River basin has increased the risk of flooding \citep{Gemmer2008}. We suggest that a different mechanism explains this surge in frontal rainfall severity than explains the 1951-1979/1980-2007 changes, which are characterized by frequency changes. A potential culprit are the aerosols produced during the industrialization and urbanization of East China beginning in 1979 with Deng Xiaoping's Revolutionary Reform and Opening (\textit{gaige kaifang}). Recent research highlights the potentially substantial impact of aerosols on atmospheric temperature and cloud properties across Asia \citep{Menon2002,Fan2012,Streets2013}. We suggest that the intensification of frontal storms during Meiyu season from 1994 to 2007 is linked to the rise in aerosols, and that they may be further impacted by the anticipated decrease of anthropogenic aerosols in the \nth{21} century \citep{Westervelt2015}.
+		
+	Our study also shows that the whole of Taiwan has experienced a deficit in rainfall during the end of the twentieth century. In particular, the south and eastern coast on the east of the Central Mountain Range saw the largest decrease during 1980-2007 versus 1951-1979 in all of East Asia according to APHRODITE (almost 2 mm day$^{-1}$). According to RDA, Taiwan receives relatively little banded rainfall (less than 40\%; Figure~\ref{fig:frontpct}), and the yearly aggregate depends substantially on typhoons and the locally favorable rainfall conditions in their wake \citep{Chen2011}. No consensus exists on the overall impact of global warming on tropical cyclone rainfall \citep{Wehner2015}. The suggestion has been made that tropical cyclone tracks in the vicinity of Taiwan have shifted due to global warming \citep{Wang2011}, but the shifts in question are only on the order of several hundred kilometers and may reflect natural variability instead \citep{Chan2006}. An upsurge in Taiwanese rainfall from tropical cyclones occurred at the beginning of the \nth{21} century \citep{Tu2009}, but further analysis suggested that it was unrelated to global warming \citep{Chang2013}. Thus, the \nth{20}-century decrease in Taiwanese rainfall remains to be explained. This example highlights the potential versatility of our rainband catalog in isolating different aspects of East Asian rainfall change.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% FIGURES-REMOVE ALL DIRECTORY PATHS TO FIGURE FILES BEFORE SUBMITTING TO THE AMS FOR PEER REVIEW
+% ACKNOWLEDGMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc]{fig1precipandtopo}\\
-  \caption{July-August mean precipitation from APHRODITE (units of mm day$^{-1}$, 1951-2007) plotted with a log base 2 color scale. Topography contours are at 700 and 3000 meters (light and thick contour respectively). No data are available over water (deep blue shading) since APHRODITE is a composite of station data. Important regions are abbreviated as MZ - ``Monsoon Zone'' and YC - Yangtze Corridor. Key topographic features are labeled as follows: A - Arakan Mountains; G - Ghats; YP - Yunnan Plateau; SB - Sichuan Basin.}\label{f1}
-\end{figure}
+%
+\acknowledgments
+	APHRODITE precipitation data is publicly available at \url{http://www.chikyu.ac.jp/precip/index.html}. Ferret, a NOAA product, was used for some data analysis and preliminary plot generation and is freely available at \url{http://ferret.pmel.noaa.gov/Ferret/}. The rainband detection algorithm and the majority of data analysis code were written in MATLAB. A full database of rainband statistics from 1 January 1951 to 31 December 2007 and associated MATLAB and Ferret codes used to produce results are available at the author's website: \url{http://www.atmos.berkeley.edu/~jessed/data.html}, and key figures are reproduced at \url{http://www.atmos.berkeley.edu/~jessed/myfigures.html}. This work was supported by NSF grants EAR-0909195 and EAR-1211925, which allowed the presentation of preliminary results in conference settings and the feedback of our peers. We also acknowledge NSFC (National Natural Science Foundation of China) grant \#40921120406 for enabling our collaboration with Professor Yanjun Cai of IEECAS in Xi'an, which led to the present work. We thank Jinqiang Chen and an anonymous reviewer for valuable suggestions on a previous version of this manuscript.
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIXES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Use \appendix if there is only one appendix.
+%\appendix
 
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc,angle=0]{fig2regions}\\
-  \caption{Mean station coverage STN in APHRODITE (1951-2007), with the 22 reference points (stars) and 6 regions (Himalayan Foothills, ``Monsoon Zone,'' South India, South China, Yangtze Corridor and North China) used to calculate correlations and agreement maps.}\label{f2}
-\end{figure}
+% Use \appendix[A], \appendix}[B], if you have multiple appendixes.
+%\appendix[A]
 
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc,angle=0]{fig3correl}\\
-  \caption{Correlation coefficient $r$ of normalized monthly precipitation anomaly time series $P''$ between each of the 22 reference points for the years 1951-2007. Each monthly anomaly is treated as an independent time point. Upper-left: July-August (JA, 114 time points). Bottom-right: May-October (MJJASO, 342 time points). Confidence levels above 95\% and 99\% are indicated by single and double diagonal hashes respectively. Given degrees of freedom $n$, the threshold for significance is listed. July-August ($n=112$) - 95\%/99\%: $\lvert r\rvert >.184/.240$. May-October ($n=340$) - 95\%/99\%: $\lvert r\rvert>.106/.139$. Shared autocorrelation between monthly rainfall anomaly time series is small and does not affect the number of effective degrees of freedom. Region-to-region correlations reproduce point-to-point results closely (not shown).}\label{f3}
-\end{figure}
+%% Appendix title is necessary! For appendix title:
+%\appendixtitle{}
 
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc,angle=0]{fig4agreement}\\
-  \caption{Agreement map $A(x,y)$ of July-August rainfall anomalies predicted by all 22 reference points, using method described in Section 3b, with 700 meter and 3000 meter topography isolines superimposed.}\label{f4}
-\end{figure}
+%%% Appendix section numbering (note, skip \section and begin with \subsection)
+% \subsection{First primary heading}
 
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc,angle=0]{fig5eof_monthly}\\
-  \caption{EOF1 of normalized anomaly precipitation computed separately for June, July, August and September (units of standard deviation) for the region 68E-140E and 5-45N with .5\textdegree\ $\times$ .5\textdegree\ resolution. Percentage of variance explained by each EOF is listed alongside.}\label{f5}
-\end{figure}
+% \subsubsection{First secondary heading}
 
-\begin{figure}[t]
-  \noindent\includegraphics[width=32pc,angle=0]{fig6eof_allasia}\\
-  \caption{Leading July-August spatial and temporal EOFs of normalized anomaly precipitation $P''$ for the region 64E-142E and 5N-45N (All-Asia) with .5\textdegree\ $\times$ .5\textdegree\ resolution. Percentage of variance explained by each EOF is listed alongside. July (white shading) and August (gray shading) value of temporal EOF are shown separately. Time series are normalized to unit variance ($\sigma=1$).}\label{f6}
-\end{figure}
+% \paragraph{First tertiary heading}
 
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc,angle=0]{fig7eof_region}\\
-  \caption{Leading EOFs of July-August normalized anomaly precipitation for India (71E-95E and 10N-30N) and China (100E-123E and 20N-40N) with .25\textdegree\ $\times$ .25
-  textdegree\ resolution. Percentage of variance explained by each EOF is listed alongside. July (white shading) and August (gray shading) are both shown. Time series are normalized to unit variance ($\sigma=1$).}\label{f7}
-\end{figure}
+%% Important!
+%\appendcaption{<appendix letter and number>}{<caption>} 
+%must be used for figures and tables in appendixes, e.g.,
+%
+%\begin{figure}
+%\noindent\includegraphics[width=19pc,angle=0]{figure01.pdf}\\
+%\appendcaption{A1}{Caption here.}
+%\end{figure}
+%
+% All appendix figures/tables should be placed in order AFTER the main figures/tables, i.e., tables, appendix tables, figures, appendix figures.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make your BibTeX bibliography by using these commands:
+\bibliographystyle{ametsoc2014}
+\bibliography{jdbiblio}
 
-\begin{figure}[t]
-  \noindent\includegraphics[width=42pc,angle=0]{fig8laglead}\\
-  \caption{July-August $K_i^\lambda$ (57-year mean of $C_i^\lambda$) given a reference point $(x_i,y_i)$ (red star), defined as anomalous correlation of precipitation anomalies relative to background field with a lag or lead of $\lambda$ days (see main text for formula). Variance circles are drawn to include at least 50\% of yearly $C_i^\lambda$ maxima out of all 57 years for each reference point and $\lambda$, with X marking their center.}\label{f8}
-\end{figure}
-
-\begin{figure}[t]
-  \noindent\includegraphics[width=31pc,angle=0]{fig9kmax}\\
-  \caption{July-August plot of the day $\lambda$ for which $C_i^\lambda(x,y)$ is maximized at each point. Variance circles from Figure 9 (black with yellow highlights) are superimposed for a range of $\lambda$ listed above each figure, with connecting arrows showing propagation (also black with yellow highlights).}\label{f9}
-\end{figure}
-
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc,angle=0]{fig10u200}\\
-  \caption{July-August streamlines of mean 200 mb-level winds from NCEP reanalysis (a) and LMDZ (b). Figures c and d are NCEP reanalysis 200 mb-level wind for composites of ``wet'' years (c) and ``dry'' years (d). The ``wet'' composite includes the five years with the most positive value of All-Asia EOF1, while the ``dry'' composite is the equivalent with the five most negative years.}\label{f10}
-\end{figure}
-
-\begin{figure}[t]
-  \noindent\includegraphics[width=36pc,angle=0]{fig11lmdz}\\
-  \caption{Near-surface moist static energy $h_b$ (shading) and column-integrated moisture transport $\overline{q}\overline{u}$\textendash $\overline{qv}$ (streamlines, magnitude shown by size of arrowheads) from June to September in LMDZ for the region 65E-110E and 5N-35N. Moist static energy is given by the formula $h_b=c_pT+L_vq+gz$, with specific heat of dry air $c_p$ and latent heat of condensation of water $L_v$, as described in main text. Units of moist static energy are Kelvin, obtained by dividing $h_b$ by $c_p$ as practiced in \cite{Boos2013a}. Column-integrated moisture transport is given by $\overline{qu}=\frac{1}{g}\int q\vec{u}\ \mathrm{d}p $. Note unusual color scale of moist static energy used to emphasize changes over continental India.}\label{f11}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TABLES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[t]
+%% Enter tables at the end of the document, before figures.
+%%
+%
+%\begin{table}[t]
+%\caption{This is a sample table caption and table layout.  Enter as many tables as
+%  necessary at the end of your manuscript. Table from Lorenz (1963).}\label{t1}
+%\begin{center}
+%\begin{tabular}{ccccrrcrc}
+%\hline\hline
+%$N$ & $X$ & $Y$ & $Z$\\
+%\hline
+% 0000 & 0000 & 0010 & 0000 \\
+% 0005 & 0004 & 0012 & 0000 \\
+% 0010 & 0009 & 0020 & 0000 \\
+% 0015 & 0016 & 0036 & 0002 \\
+% 0020 & 0030 & 0066 & 0007 \\
+% 0025 & 0054 & 0115 & 0024 \\
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table}
 
-\caption{The 22 reference points used in the point to point comparisons and agreement map.}\label{t1}
-\begin{center}
-\begin{tabularx}{1\textwidth}{ >{\setlength\hsize{2.35\hsize}\centering}X >{\setlength\hsize{.15\hsize}\centering}X >{\setlength\hsize{1.85\hsize}\centering}X >{\setlength\hsize{.8\hsize}\centering}X >{\setlength\hsize{.8\hsize}\centering}X >{\setlength\hsize{1.1\hsize}\centering}X >{\setlength\hsize{.4\hsize}\centering}X >{\setlength\hsize{.4\hsize}\centering}X }
-Region & \# & Nearest City & Long & Lat & JA Precip (mm day$^{-1}$) & St. Dev. & STN \tabularnewline
-\hline
-\multirow{5}{*}{\parbox[t]{3.6cm}{Himalayan Foothills\\ + Bangladesh}} & 1 & Chittagong & 91.9\textdegree E & 22.4\textdegree N & 16.55 & 6.58 & .88 \tabularnewline
-& 2 & Kathmandu & 85.4\textdegree E & 27.6\textdegree N & 12.34 & 3.33 & 5.09 \tabularnewline
-& 3 & Patna & 85.1\textdegree E & 25.6\textdegree N & 7.78 & 2.92 & 2.42 \tabularnewline
-& 4 & Eastern Assam & 95.1\textdegree E & 27.4\textdegree N & 12.62 & 3.27 & 1.04 \tabularnewline
-& 5 & Nyingchi & 94.4\textdegree E & 29.6\textdegree N & 3.71 & 1.47 & 1.28 \tabularnewline
-\hline
-\multirow{4}{*}{``Monsoon Zone''} & 6 & Bhubaneswar & 85.9\textdegree E & 20.4\textdegree N & 10.06 & 3.04 & 1.98 \tabularnewline
-& 7 & Durg & 81.4\textdegree E & 21.1\textdegree N & 9.26 & 2.98 & 1.83 \tabularnewline
-& 8 & Ahmedabad & 72.6\textdegree E & 23.1\textdegree N & 7.11 & 3.85 & 1.74 \tabularnewline
-& 9 & Karachi & 67.1\textdegree E & 24.9\textdegree N & 1.68 & 2.01 & .86 \tabularnewline
-\hline
-\multirow{2}{*}{South India} & 10 & Bangalore & 77.6\textdegree E & 12.9\textdegree N & 3.04 & 1.78 & 1.89 \tabularnewline
-& 11 & Kumbakonam & 79.4\textdegree E & 10.9\textdegree N & 2.29 & 1.62 & 2.94 \tabularnewline
-\hline
-\multirow{3}{*}{\parbox[t]{3.6cm}{South China}} & 12 & Namh Dinh & 106.1\textdegree E & 20.4\textdegree N & 7.64 & 3.80 & 1.56 \tabularnewline
-& 13 & Shenzhen & 114.1\textdegree E & 22.6\textdegree N & 9.78 & 4.41 & 1.01 \tabularnewline
-& 14 & Taipei & 121.6\textdegree E & 25.1\textdegree N & 6.59 & 4.62 & 3.36 \tabularnewline
-\hline
-\multirow{6}{*}{\parbox[t]{3.6cm}{Yangtze Corridor\\+ Korea + Japan}} & 15 & Chongqing & 106.4\textdegree E & 29.6\textdegree N & 4.41 & 2.15 & 1.49 \tabularnewline
-& 16 & Enshi & 109.4\textdegree E & 30.4\textdegree N & 5.80 & 3.09 & 1.32 \tabularnewline
-& 17 & Anqing & 117.1\textdegree E & 30.6\textdegree N & 4.58 & 3.03 & 1.42 \tabularnewline
-& 18 & Changzhou & 119.9\textdegree E & 31.9\textdegree N & 4.39 & 2.37 & 1.14 \tabularnewline
-& 19 & Jinju (Korea) & 128.1\textdegree E & 35.1\textdegree N & 7.66 & 4.10 & 1.67 \tabularnewline
-& 20 & Tokyo & 139.4\textdegree E & 35.9\textdegree N & 5.35 & 2.86 & 3.33 \tabularnewline
-\hline
-\multirow{2}{*}{North China} & 21 & Baotou & 109.9\textdegree E & 40.6\textdegree N & 2.47 & 1.26 & 1.08 \tabularnewline
-& 22 & Chengde & 117.9\textdegree E & 40.9\textdegree N & 4.50 & 1.99 & 1.98 \tabularnewline
 
-\end{tabularx}
+%% TABLE 3.1 - ALGORITHM FUNCTIONALITY - BIG PICTURE	
+\begin{table}[!ht]
 
-\end{center}
+\caption{Statistics on the functionality of the rainband detection algorithm. Number in parentheses indicates the percentage of days that fall into that category out of all 20,819 days.}
+\centering
 
+\begin{tabular}{ l c c c}
+	  & Total Fits & Passes Quality Control & Percent Passing QC\\
+	 \hline
+	 Primary rainband found & 11,228 (53.9\% of days) & 7,988 (38.4\% of days) & 71.1\% \\
+	 Secondary rainband found & 1,116 (5.4\% of days) & 698 (3.4\% of days) & 62.5\% \\
+\end{tabular}
+\label{tab:t31}
 \end{table}
 
-\begin{table}[t]
+%%% TABLE 3.2 - ALGORITHM FUNCTIONALITY - DETAILS, PRIMARY RAINBAND
+\begin{table}[h]
 
-\caption{July-August correlation coefficients $r$ from 1951 to 2007 of All-Nepal rainfall, All-India rainfall (calculated from APHRODITE),``Monsoon Zone'' rainfall and Yangtze rainfall (mean rainfall over the region bounded by (104.5\textdegree E 29\textdegree N), (108\textdegree E 32\textdegree N), (120\textdegree E 34\textdegree N) and (122\textdegree E 31.5\textdegree N)), as well as Oceanic Ni\~no Index (ONI) in preceding December, or equivalently the N(0)-D(0)-J(1) mean of Ni\~no 3.4 (SST anomaly averaged over the region 5\textdegree S-5\textdegree N and 120\textdegree W-170\textdegree W). Each time series is compared with All-Asia temporal EOF1, India temporal EOF1, China temporal EOFs 1 \& 2 and official All-India Monsoon Rainfall from the Indian Meteorological Department (IMD). Although All-Nepal Monsoon Rainfall is reliable only for 1961-2007 due to station coverage limitations and the Monsoon Zone time series likewise degrades after 1970, all 57 years are used for consistency, and results are not substantially affected. July and August are treated as separate time points except for correlation with ONI, which uses yearly values. 95\% and 99\% confidence levels are indicated by bold font and asterisks respectively, and are calculated to account for the shared autocorrelation between time series, which reduces the effective degrees of freedom \citep{Livezey1983}.}\label{t3}
-\begin{center}
-\begin{tabularx}{1\textwidth}{>{\setlength\hsize{.16\hsize}\centering\arraybackslash}X >{\setlength\hsize{.09\hsize}\centering\arraybackslash}X >{\setlength\hsize{.09\hsize}\centering\arraybackslash}X >{\setlength\hsize{.08\hsize}\centering\arraybackslash}X >{\setlength\hsize{.07\hsize}\centering\arraybackslash}X >{\setlength\hsize{.13\hsize}\centering\arraybackslash}X >{\setlength\hsize{.10\hsize}\centering\arraybackslash}X >{\setlength\hsize{.18\hsize}\centering\arraybackslash}X  >{\setlength\hsize{.10\hsize}\centering\arraybackslash}X}
-Index & All-Nepal & All-India & MZ & YZ & EOF1 (All-Asia) & EOF1 (India) & EOF1/2 (China) & All-India (IMD) \tabularnewline
-\hline
-All-Nepal & \textbf{1*} & -.07 & \textbf{-.52*} & \textbf{.28*} & \textbf{.59*} &  \textbf{.70*} &  \textbf{.37*}/.14 & .02 \tabularnewline
-All-India & -.07 & \textbf{1*} & \textbf{.76*} & -.08 & \textbf{-.43*} &  \textbf{-.54*} &  -.04/ \textbf{-.27*} &  \textbf{.94*} \tabularnewline
-Monsoon Zone &  \textbf{-.52*} &  \textbf{.76*} & \textbf{1*} & \textbf{-.23} &\textbf{-.74*} &  \textbf{-.90*} & \textbf{-.27*}/\textbf{-.30*} &  \textbf{.67*} \tabularnewline
-Yangtze & \textbf{.28*} & -.08 & \textbf{-.24} & \textbf{1*} & \textbf{.62*} & \textbf{.31*} & \textbf{.62*}/\textbf{.61*} & -.11 \tabularnewline
-Oceanic Ni\~no Index & .11 & \textbf{.26} & .15 & .15 & .10 & -.02 & .17/-.11 & .24 \tabularnewline
-\end{tabularx}
-\end{center}
+\caption{Details on the application of quality control (QC) criteria to primary rainbands.}
+\centering
 
+\begin{tabular}{ l c}
+	 Criterion & Number (\% of total) \\
+	 \hline
+	 Primary rainband days before QC & 11,228 \\
+	 Taiwan days (TW$>20\%$) & 238 (2.1\%) \\
+	 $Q>.6$ (strong rainband) & 7,522 (67.0\%) \\
+	 Double rainband ($Q_1>.6$ and $Q_2>.6$) & 466 (4.2\%) \\
+	 Poor fit (Fails QC) & 3002 (26.8\%) \\
+	 
+\end{tabular}
+\label{tab:t32}
 \end{table}
+
+%%% TABLE 3.3 - ALGORITHM FUNCTIONALITY - DETAILS, SECONDARY RAINBAND
+\begin{table}[h]
+
+\caption{Details on the application of quality control (QC) criteria to secondary rainbands. Type I and Type II fits are explained in greater detail in Section 3.4.}
+\centering
+
+\begin{tabular}{ l c}
+	 Criterion & Number (\% of total) \\
+	 \hline
+	 Secondary rainband days before QC & 1,116 \\
+	 Type I fit ($Q>.6$ and $Q_2>.6$) & 232 (20.8\%) \\
+	 Type II fit ($Q_1>.6$ and $Q_2>.6$) & 466 (41.8\%) \\
+	 Poor fit (Fails QC) & 418 (37.5\%) \\
+	 
+\end{tabular}
+\label{tab:t33}
+\end{table}
+
+%%%% TABLE 3.4 - MEIYU STATISTICS %%%%
+\begin{landscape} %rotates the page of the PDF showing this table (too big otherwise)
+\begin{table}[h]
+\centering
+\small
+\caption{Total number of rainband counts $N$ (both primary counts $N_1$ and secondary counts $N_2$), frequency of primary and secondary rainbands and latitude and intensity (mm day$^{-1}$) of rainbands during the Spring Rains, Pre-Meiyu, Meiyu, Post-Meiyu, Fall Rains and for the full year. Post-Meiyu rainbands are further categorized by whether they occur north or south of 27$^\circ$N, since events in that season have very different properties depending on latitude. We also list the decorrelation timescale $\tau_1$  and $\tau_2$ of primary and secondary fronts (units of days). Statistics are compiled using both primary and secondary rainbands, and are very close to results using primary rainbands alone, except during the Post-Meiyu period when secondary rainbands are common. Standard deviations for latitude and intensity are obtained by a permutation method with 10,000 iterations.}
+
+\begin{tabular}{ l c c c c c c c c c}
+	 \multicolumn{10}{c}{1951-2007 Means} \\
+	 Time Period & $N$ & $N_1$ & 1f. (\%) & $\tau_1$ (days) & $N_2$ & 2f. (\%) & $\tau_2$ (days) & Lat. ($^\circ$) & Int. (mm day$^{-1}$) \\
+	 \hline
+	\textbf{Spring Rains} (60-120) 		& 1661 & 1635 	& $47.0 \pm 1.2$ 	& 1.96	& 26 	&$0.7 \pm 0.1$ 	& .95 	& $27.5 \pm .1$ & $20.1 \pm .4$ \\
+	\textbf{Pre-Meiyu} (121-160) 		& 1371 & 1279  	& $56.1 \pm 1.5$ 	& 2.01	& 92 	&$4.0 \pm 0.4$	& .98 	& $27.4 \pm .2$ & $25.5 \pm .5$ \\
+	\textbf{Meiyu} (161-200) 			& 1688 & 1499 		& $65.8 \pm 1.5$ 	& 2.19	& 189 	&$8.3 \pm 0.6$ 	& 1.11	& $29.5 \pm .2$ & $28.3 \pm .5$ \\
+	\textbf{Post-Meiyu} (201-273) & 2113 & 1757 			& $42.2 \pm 1.1 $	& 1.91 	& 356 	&$8.6 \pm 0.5$ 	& 1.44	& $29.9 \pm .2$ & $25.6 \pm .5$ \\
+	\textbf{Post-Meiyu}, $>27^\circ$N 	& 1368 & 1215 	& $27.1 \pm 1.0 $ 	& -		& 153 	&$3.4 \pm 0.3$ 	& -	& $33.3 \pm .2$ & $23.9 \pm .5$ \\
+	\textbf{Post-Meiyu}, $<27^\circ$N 	& 745 & 556 		& $15.2 \pm 0.8 $ 	& -		& 189 	&$5.1 \pm 0.4$ 	& -		& $23.7 \pm .1$ & $28.8 \pm .9$ \\
+	\textbf{Fall Rains} (274-320) 			& 744 & 714 				& $26.6 \pm 1.3 $ 	& 2.15	& 30 	&$1.1 \pm 0.2$	& 1.48 		& $29.2 \pm .3$ & $20.5 \pm .7$ \\
+	\textbf{Full Year} (1-365)			& 8682 & 7984 					& $38.4 \pm 0.5$ 	& 1.81 	& 698 	&$3.4 \pm 0.1$ 	& 1.12	& $28.6 \pm .1$ & $23.5 \pm .2$ \\
+\end{tabular}
+\label{tab:t34}
+\end{table}
+\end{landscape}
+
+
+%% TABLE 3.5 - change in rainband frequency between 1951-1979 and 1980-2007
+\begin{table}
+
+\centering
+
+\caption{Change in frequency of primary and secondary rainbands between 1951-1979 and 1980-2007, with standard deviation of mean and $p$-value of change calculated analytically. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c c c}
+	& \multicolumn{3}{c}{Primary rainband \%} & \multicolumn{3}{c}{Secondary rainband \%} \\
+	Time Period & '51-'79 & '80-'07 & $p$ & '51-'79 & '80-'07 & $p$ \\
+	\hline	
+	\textbf{Spring Rains} (60-120)		& $46.4 \pm 1.7$ & $47.7 \pm 1.7$ & $ .70 $ 	& $0.8 \pm .2$ & $0.7 \pm .2$ & $.38$ \\
+	\textbf{Pre-Meiyu} (121-160) 		& $\boldsymbol{59.0 \pm 2.0}$ & $\boldsymbol{53.0 \pm 2.1}$ & $ \boldsymbol{.020} $ & $4.2 \pm .6$ & $3.8 \pm .6$ & $.32$ \\
+	\textbf{Meiyu} (161-200)			& $66.8 \pm 2.0$ & $64.6 \pm 2.1$ & $ .23 $ 	& $7.4 \pm .8$ & $9.2 \pm .9$  & $.93$ \\
+	\textbf{Post-Meiyu} (201-273)		& $42.5 \pm 1.5$ & $42.0 \pm 1.5$ & $ .41 $	& $9.2 \pm .8$ & $7.8 \pm .7$ & $.084$ \\
+	\textbf{Post-Meiyu}, $>27^\circ$N 	& $27.8 \pm 1.3$ & $26.4 \pm 1.3$ & $ .24 $ 	& $3.8 \pm .5$ & $2.9 \pm .4$ & $.082$ \\
+	\textbf{Post-Meiyu}, $<27^\circ$N 	& $14.7 \pm 1.1 $ & $15.6 \pm 1.1$ & $ .71 $ 	& $5.4 \pm .6$ & $4.9 \pm .6$ & $.27$  \\
+	\textbf{Fall Rains} (274-320)			& $25.8 \pm 1.7 $ & $27.6 \pm 1.8$ & $ .77 $ 	& $1.0 \pm .3$ & $1.2 \pm .4$ & $.65$ \\
+	\textbf{Full Year} (1-365)			& $38.6 \pm 0.6 $ & $38.1 \pm 0.6$ & $ .31 $ 	& $3.4 \pm .2$ & $3.3 \pm .2$ & $.36$ \\
+
+\end{tabular}
+\label{tab:t35}
+\end{table}
+
+%% TABLE 3.6 - change in rainband latitude and intensity between 1951-1979 and 1980-2007
+\begin{table}
+
+\centering
+
+\caption{Change in latitude and intensity of rainbands between 1951-1979 and 1980-2007, with standard deviation of mean and $p$-value of change both calculated by a permutation test with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c c c}
+	& \multicolumn{3}{c}{Rainband latitude ($^\circ$)} & \multicolumn{3}{c}{Intensity (mm day$^{-1})$} \\
+	Time Period & '51-'79 & '80-'07 & $p$ & '51-'79 & '80-'07 & $p$ \\
+	\hline	
+	\textbf{Spring Rains} (60-120)		& $\boldsymbol{27.6 \pm .2}$ & $\boldsymbol{27.3 \pm .2}$ & $ \boldsymbol{.020} $ 		& $\boldsymbol{19.7 \pm .5}$ 	& $\boldsymbol{20.5 \pm .5} $ & $\boldsymbol{.984}$ \\
+	\textbf{Pre-Meiyu} (121-160) 		& $27.5 \pm .3$ & $27.4 \pm .3$ & $ .29 $ 		& $25.4 \pm .7$ 	& $25.6 \pm .8	$ & $.72$ \\
+	\textbf{Meiyu} (161-200)			& $29.6 \pm .3$ & $29.4 \pm .3$ & $ .24 $ 		& $28.2 \pm .8$ 	& $28.4 \pm .8	$  & $.71$ \\
+	\textbf{Post-Meiyu} (201-273)		& $\boldsymbol{30.2 \pm .3^*}$ & $\boldsymbol{29.6 \pm .3^*}$ & $\boldsymbol{.0048^*} $	& $25.5 \pm .7$ 	& $25.7 \pm .7	$ & $.71$ \\
+	\textbf{Post-Meiyu}, $>27^\circ$N 	& $\boldsymbol{33.6 \pm .2^*}$ & $\boldsymbol{32.9 \pm .3^*}$ & $\boldsymbol{.0003^*} $ 	& $23.5 \pm .7$ 	& $24.2 \pm .7	$ & $.92$ \\
+	\textbf{Post-Meiyu}, $<27^\circ$N 	& $23.7 \pm .1 $ & $23.8 \pm .2$ & $ .83 $ 	& $29.1 \pm 1.3$ 	& $28.3 \pm 1.4	$ & $.20$  \\
+	\textbf{Fall Rains} (274-320)			& $29.1 \pm .4 $ & $29.3 \pm .4$ & $ .79 $ 	& $20.3 \pm 1.0$ 	& $20.8 \pm .9	$ & $.76$ \\
+	\textbf{Full Year} (1-365)			& $\boldsymbol{28.7 \pm .1^*}$ & $\boldsymbol{28.5 \pm .1^*}$ & $\boldsymbol{.0032^*}$ 	& $23.3 \pm .3$ 	& $23.6 \pm .3	$ & $.95$ \\
+
+\end{tabular}
+\label{tab:t36}
+\end{table}
+
+%% TABLE 3.7 - change in rainband frequency between 1979-1993 and 1994-2007
+\begin{table}
+
+\centering
+
+\caption{Change in frequency of primary and secondary rainbands between 1979-1993 and 1994-2007, with standard deviation of mean and $p$-value of change calculated analytically. No changes below are statistically significant at a 95\% level.}
+
+\begin{tabular}{ l c c c c c c}
+	& \multicolumn{3}{c}{Primary rainband \%} & \multicolumn{3}{c}{Secondary rainband \%} \\
+	Time Period & '79-'93 & '94-'07 & $p$ & '79-'93 & '94-'07 & $p$ \\
+	\hline	
+	\textbf{Spring Rains} (60-120)		& $50.0 \pm 2.3$ & $45.4 \pm 2.4$ & $ .087 $ 	& $0.9 \pm .3$ 	& $0.5 \pm .2$ & $.14$ \\
+	\textbf{Pre-Meiyu} (121-160) 		& $53.0 \pm 2.9$ & $53.2 \pm 3.0$ & $ .52$ 	& $3.5 \pm .7$ 	& $4.1 \pm .8$ & $.71$ \\
+	\textbf{Meiyu} (161-200)			& $63.7 \pm 2.9$ & $64.8 \pm 3.0$ & $ .61 $ 	& $8.7 \pm 1.2$ 	& $9.5 \pm 1.3$  & $.67$ \\
+	\textbf{Post-Meiyu} (201-273)		& $41.6 \pm 2.1$ & $42.7 \pm 2.1$ & $ .63 $	& $8.0 \pm 1.0$ 	& $8.0 \pm 1.0$ & $.50$ \\
+	\textbf{Post-Meiyu}, $>27^\circ$N 	& $27.2 \pm 1.9$ & $25.2 \pm 1.9$ & $ .23 $ 	& $3.1 \pm .6$ 	& $2.9 \pm .6$ & $.42$ \\
+	\textbf{Post-Meiyu}, $<27^\circ$N 	& $14.4 \pm 1.5 $ & $17.4 \pm 1.6$ & $ .91 $ 	& $4.9 \pm .8$ 	& $5.1 \pm .8$ & $.55$  \\
+	\textbf{Fall Rains} (274-320)			& $26.4 \pm 2.4 $ & $27.0 \pm 2.5$ & $ .58 $ 	& $1.6 \pm .6$ 	& $0.8 \pm .4$ & $.13$ \\
+	\textbf{Full Year} (1-365)			& $37.9 \pm 0.9 $ & $38.2 \pm 0.9$ & $ .59 $ 	& $3.3 \pm .3$ 	& $3.3 \pm .3$ & $.52$ \\
+
+\end{tabular}
+\label{tab:t37}
+\end{table}
+
+%% TABLE 3.8 - change in rainband latitude and intensity between 1979-1993 and 1994-2007
+\begin{table}
+
+\centering
+
+\caption{Change in latitude and intensity of rainbands between 1979-1993 and 1994-2007, with standard deviation of mean and $p$-value of change both calculated by a permutation test with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c c c}
+	& \multicolumn{3}{c}{Rainband latitude ($^\circ$)} & \multicolumn{3}{c}{Intensity (mm day$^{-1})$} \\
+	Time Period & '79-'93 & '94-'07 & $p$ & '79-'93 & '94-'07 & $p$ \\
+	\hline	
+	\textbf{Spring Rains} (60-120)		& $27.2 \pm .3 $ & $27.5 \pm .3 $ & $ .967 $ 	& $20.5 \pm .7$ 	& $20.6 \pm .8 	$ & $.54$ \\
+	\textbf{Pre-Meiyu} (121-160) 		& $27.4 \pm .4 $ & $27.2 \pm .4$ & $ .23 $ 	& $25.0 \pm 1.0$ 	& $26.2 \pm 1.1	$ & $.94$ \\
+	\textbf{Meiyu} (161-200)			& $\boldsymbol{30.0 \pm .4^*}$ & $\boldsymbol{28.9 \pm .4^*}$ & $\boldsymbol{.0002^*}$ & $\boldsymbol{27.3 \pm 1.1^*}$ 	& $\boldsymbol{29.8 \pm 1.1^*}$  & $\boldsymbol{.9994 ^*}$ \\
+	\textbf{Post-Meiyu} (201-273)		& $29.8 \pm .4 $ & $29.3 \pm .5 $ & $ .092 $	& $25.9 \pm .9$ 	& $25.4 \pm .9	$ & $.28$ \\
+	\textbf{Post-Meiyu}, $>27^\circ$N 	& $32.8 \pm .3 $ & $33.0 \pm .4 $ & $ .80 $ 	& $24.4 \pm 1.0$ 	& $23.9 \pm 1.1	$ & $.24$ \\
+	\textbf{Post-Meiyu}, $<27^\circ$N 	& $23.8 \pm .2 $ & $23.8 \pm .2 $ & $ .48 $ 	& $28.7 \pm 1.8$ 	& $27.9 \pm 1.7	$ & $.28$  \\
+	\textbf{Fall Rains} (274-320)			& $\boldsymbol{28.9 \pm .5} $ & $\boldsymbol{29.7 \pm .6} $ & $ \boldsymbol{.982} $ 	& $20.1 \pm 1.4$ 	& $21.7 \pm 1.4	$ & $.94$ \\
+	\textbf{Full Year} (1-365)			& $28.6 \pm .2 $ & $28.4 \pm .2 $ & $ .13 $ 	& $\boldsymbol{23.3 \pm .4}$ 	& $\boldsymbol{24.0 \pm .4}	$ & $\boldsymbol{.982}$ \\
+
+\end{tabular}
+\label{tab:t38}
+\end{table}
+
+
+%% TABLE 3.9 - ALTERNATIVE METRIC STATISTICS, 1951-1979
+\begin{landscape}
+\begin{table}[p]
+\footnotesize
+\centering
+
+\caption{Mean and standard deviation of mean for metrics $M_1$ to $M_8$ for 1951-1979. $M_1$: Latitude of maximum daily rainfall $(^\circ)$. $M_2$: Intensity-weighted centroid of daily rainfall $(^\circ)$. $M_3$: Intensity of maximum rainfall over China (100-123$^{\circ}$E and 20-40$^{\circ}$N, mm day$^{-1}$). $M_4$: Area-averaged intensity of China rainfall (mm day$^{-1}$). $M_5$: Area-averaged intensity of North China rainfall (107.5-125$^{\circ}$E and 37-42$^{\circ}$N,  mm day$^{-1}$). $M_6$: Mean intensity of South China rainfall (107.5-122.5$^{\circ}$E and 27-33$^{\circ}$N, mm day$^{-1}$). $M_7$: Frequency of North China rainfall (\%). $M_8$: Frequency of South China rainfall (\%). \textit{Frequency} denotes percentage of days where mean rainfall over specified area exceeds 1 mm day$^{-1}$. Standard deviations of means are obtained by a permutation method with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively as subsequently calculated in Table~\ref{tab:t312}.}
+
+\begin{tabular}{ l c c c c c c c c}
+	 \multicolumn{9}{c}{1951-1979 Means}  \\
+	 Time Period 								& $M_1$ 		& $M_2$ 					& $M_3$ 		& $M_4$ 		& $M_5$ 						& $M_6$ 		& $M_7$ 		& $M_8$ \\
+	 \hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120) 	& $26.3 \pm 0.2$ 	&  $\boldsymbol{27.9 \pm 0.1}$	&  $31.2 \pm 1.1$ 	&$2.6 \pm 0.1$ 	& $.52 \pm 0.05$ 					& $3.9 \pm .2$	& $25.0 \pm 2.0$	& $71.7 \pm 2.1$  \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160) 		& $25.7 \pm 0.2$ 	&  $27.6 \pm 0.1$				&  $59.4 \pm 1.9$ 	&$4.4 \pm 0.2$	& $1.20 \pm 0.11$ 				& $5.5 \pm .3$	& $47.1 \pm 3.0$ 	& $82.6 \pm 2.2$ \\
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120) 		& $27.9 \pm 0.3$ 	&  $29.1 \pm 0.2$				&  $72.5 \pm 2.1$ 	&$5.1 \pm 0.1$ 	& $2.78 \pm 0.18$					& $5.9 \pm .3$ 	& $81.1 \pm 2.4$ 	& $91.0 \pm 1.7$ \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& $27.4 \pm 0.3 $	&  $29.4 \pm 0.1$ 				&  $69.1 \pm 1.9$ 	&$4.1 \pm 0.1$ 	& $\boldsymbol{3.20 \pm 0.16^*}$	& $3.7 \pm .2$ 	& $76.4 \pm 1.8$ 	& $82.0 \pm 1.7$ \\
+	\textbf{Fall Rains} (Oct 1-Nov 16) 				& $25.6 \pm 0.2 $ 	&  $28.5 \pm 0.2$				&  $36.9 \pm 1.8$ 	&$1.9 \pm 0.1$	& $.76 \pm 0.09$ 					& $2.3 \pm .2$ 	& $30.7 \pm 2.5$ 	& $57.2 \pm 2.6$ \\
+	\textbf{Full Year} (1-365) 					& $26.2 \pm 0.1$ 	&  $28.3 \pm 0.1$ 				&  $43.5 \pm 0.7$ 	&$2.8 \pm 0.1$ 	& $\boldsymbol{1.31 \pm 0.05}$		& $3.4 \pm .1$ 	& $40.0 \pm 1.0$ 	& $67.7 \pm 1.0$ \\
+\end{tabular}
+\label{tab:t39}
+\end{table}
+
+
+%% TABLE 3.10 - ALTERNATIVE METRIC STATISTICS, 1980-2007 %%%%
+\begin{table}[p]
+\footnotesize
+\centering
+
+\caption{Mean and standard deviation of mean of metrics $M_1$ to $M_8$ for 1980-2007. Standard deviations of means are obtained by a permutation method with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively as subsequently calculated in Table~\ref{tab:t312}.}
+
+\begin{tabular}{ l c c c c c c c c}
+	 \multicolumn{9}{c}{1980-2007 Means} \\
+	 Time Period 								& $M_1$ 		& $M_2$ 					& $M_3$ 		& $M_4$ 		& $M_5$ 						& $M_6$ 		& $M_7$ 		& $M_8$ \\
+	\hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120)  	& $26.2 \pm 0.2$ 	&  $\boldsymbol{27.6 \pm 0.1}$	&  $32.4 \pm 1.0$ 	&$2.6 \pm 0.1$ 	& $.51 \pm 0.06$ 					& $3.8 \pm .2$ 	& $24.1 \pm 2.1$ 	& $72.5 \pm 2.2$  \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160)  	& $25.4 \pm 0.2$ 	&  $27.7 \pm 0.2$				&  $57.0 \pm 1.8$ 	&$4.2 \pm 0.2$	& $1.31 \pm 0.12$ 				& $5.0 \pm .3$ 	& $48.8 \pm 3.0$ 	& $79.6 \pm 2.4$ \\
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120)		& $27.6 \pm 0.3$ 	&  $29.1 \pm 0.1$				&  $73.6 \pm 2.2$ 	&$5.2 \pm 0.1$ 	& $2.79 \pm 0.18$					& $6.4 \pm .3$ 	& $81.3 \pm 2.3$ 	& $92.1 \pm 1.6$ \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& $27.0 \pm 0.2 $	&  $29.2 \pm 0.1$ 				&  $67.5 \pm 1.9$ 	&$4.0 \pm 0.1$ 	& $\boldsymbol{2.70 \pm 0.14^*}$	& $3.9 \pm .2$ 	& $75.3 \pm 1.9$ 	& $85.5 \pm 1.6$ \\
+	\textbf{Fall Rains} (Oct 1-Nov 16) 				& $26.0 \pm 0.3 $ 	&  $28.5 \pm 0.2$				&  $36.4 \pm 2.1$ 	&$1.8 \pm 0.1$	& $.65 \pm 0.08$ 					& $2.4 \pm .2$ 	& $28.0 \pm 2.5$ 	& $54.7 \pm 2.8$ \\
+	\textbf{Full Year} (1-365)					& $26.2 \pm 0.1$ 	&  $28.2 \pm 0.1$ 				&  $43.1 \pm 0.7$ 	&$2.8 \pm 0.1$ 	& $\boldsymbol{1.20 \pm 0.04}$		& $3.4 \pm .1$ 	& $39.4 \pm 1.0$ 	& $68.6 \pm 1.0$ \\
+\end{tabular}
+\label{tab:t310}
+\end{table}
+\end{landscape}
+
+%% TABLE 3.11 - AUTOCORRELATION TIME SCALE OF ALTERNATIVE METRICS
+\begin{table}[p]
+
+\centering
+
+\caption{Autocorrelation timescale of metrics $M_1$-$M_8$. In subsequent calculations of significance, the block length for moving blocks bootstrapping is chosen for each season by rounding to the nearest whole number. Alternative choices of block length do not strongly influence estimations of significance.}
+
+\begin{tabular}{ l c c c c c c c c}
+	 \multicolumn{9}{c}{\textbf{1980-2007 Means}} \\
+	 \textbf{Time Period} 						& $\boldsymbol{M_1}$ & $\boldsymbol{M_2}$ & $\boldsymbol{M_3}$ & $\boldsymbol{M_4}$ & $\boldsymbol{M_5}$ & $\boldsymbol{M_6}$ & $\boldsymbol{M_7}$ & $\boldsymbol{M_8}$ \\	
+	 \hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120) 	& 2.20 & 2.52 & 2.49 & 1.77 & 1.94 & 1.57 & 1.60 & 1.92 \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160) 		& 2.08 & 2.22 & 2.02 & 1.97 & 1.66 & 1.66 & 1.92 & 1.92 \\		
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120) 		& 2.71 & 3.65 & 2.32 & 3.38 & 2.22 & 3.47 & 2.01 & 2.10 \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& 1.93 & 2.76 & 2.05 & 3.20 & 2.31 & 3.24 & 2.13 & 2.46 \\
+	\textbf{Fall Rains} (Oct 1-Nov 16) 				& 1.58 & 2.69 & 3.32 & 3.14 & 1.37 & 1.37 & 1.44 & 3.57 \\
+	\textbf{Full Year} (1-365)	 				& 2.16 & 3.03 & 2.56 & 2.75 & 2.14 & 2.14 & 1.84 & 2.82 \\
+\end{tabular}
+\label{tab:t311}
+\end{table}
+
+
+%% TABLE 3.12 - p-value of change in metrics M_1-M_8 between 1951-1979 and 1980-2007
+\begin{table}[p]
+
+\centering
+
+\caption{Significance level $p$ of changes in metrics $M_1$-$M_8$ between 1951-1979 and 1980-2007, as calculated by a moving blocks bootstrap for latitude and intensity metrics with 10,000 iterations and block length of $\tau$ rounded up to nearest integer, and analytically calculated using effective degrees of freedom $N=n/\tau$ for frequency metrics $M_7$ and $M_8$. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c c c c c}
+	 \multicolumn{9}{c}{\textbf{1980-2007 Means}} \\
+	 \textbf{Time Period} 						& $\boldsymbol{M_1}$ & $\boldsymbol{M_2}$ & $\boldsymbol{M_3}$ & $\boldsymbol{M_4}$ & $\boldsymbol{M_5}$ & $\boldsymbol{M_6}$ & $\boldsymbol{M_7}$ & $\boldsymbol{M_8}$ \\	 
+	 \hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120) 	& .180 & \textbf{.017} 	& .850 & .414 	& .346 			& .320 & .298 & .649 \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160) 		& .077 & .819 			& .080 & .154 & .871 			& .038 & .729 & .091 \\		
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120) 		& .091 & .468 			& .696 & .808 & .503 			& .943 & .538 & .745 \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& .046 & .150 			& .162 & .132 & \textbf{.0004*} 	& .848 & .296 & .975 \\
+	\textbf{Fall Rains} (Oct 1-Nov 16) 				& .965 & .412 			& .442 & .154 & .049 			& .620 & .107 & .244 \\
+	\textbf{Full Year} (1-365)	 				& .726 & .068 			& .314 & .302 & \textbf{.0068} 	& .776 & .242 & .784 \\
+	
+\end{tabular}
+\label{tab:t312}
+\end{table}
+
+
+%% TABLE 3.13 - p-value of change in distribution between 1951-1979 and 1980-2007, as calculated by an Anderson-Darling and Kolmogorov-Smirnov test
+\begin{table}[p]
+
+\centering
+
+\caption{Statistical significance (express as $p$-value) of change in distribution of latitude and intensity of rainbands between 1951-1979 and 1980-2007, as calculated by a bootstrap Kolmogorov-Smirnov (K-S) and bootstrap Anderson-Darling (A-D) test, each with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c}
+												& \multicolumn{2}{c}{Latitude ($^\circ$)} & \multicolumn{2}{c}{Intensity  (mm day$^{-1}$)} \\
+	 \textbf{Time Period} 							& K-S 			& A-D 			& K-S 	& A-D \\
+	 \hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120)  		& .086			& .037			& .19	& .083 \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160)  		& .24 			&  .086 			& .94	& .90 \\
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120)			& .30			&  .21			&  .25	& .40 \\	
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 				& \textbf{.0073}	&  \textbf{.0018*}  	&  .28 	& .24 \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30), $>28^{\circ}N$   & \textbf{.0010*}	&  \textbf{.0001*} 	&  .04 	& .10 \\	
+	\textbf{Post-Meiyu} (Jul 20-Sep 30), $<28^{\circ}N$   & .38			&  .33			&  .53	& .62 \\	
+	\textbf{Fall Rains} (Oct 1-Nov 16) 					& .23 			&  .15			&  .94 	& .83 \\	
+	\textbf{Full Year} (1-365)						& .075			&  \textbf{.016} 	&  .26 	& .12 \\	
+	
+\end{tabular}
+\label{tab:t313}
+\end{table}
+
+
+%% TABLE 3.14 - p-value of change in distribution between 1979-1993 and 1994-2007, as calculated by an Anderson-Darling and Kolmogorov-Smirnov test
+\begin{table}[p]
+
+\centering
+
+\caption{Statistical significance (expressed as $p$-value) of change in distribution of latitude and intensity of rainbands between 1979-1993 and 1994-2007, as calculated by a bootstrap Kolmogorov-Smirnov (K-S) and bootstrap Anderson-Darling (A-D) test, each with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c}
+												& \multicolumn{2}{c}{Latitude ($^\circ$)} & \multicolumn{2}{c}{Intensity (mm day$^{-1}$)} \\
+	 \textbf{Time Period} 							& K-S 			& A-D 			& K-S 			& A-D \\
+	 \hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120)  		& .34			& .12			& .35			& .60 \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160)  		& .76			&  .57 			& .32			& .29 \\
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120)			& \textbf{.0006*}	&  \textbf{.0002*}	&  \textbf{.0009*}	& \textbf{.0006*} \\	
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 				& .14			&  .15 			&  .48			& .87 \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30), $>28^{\circ}N$   & .13			&  .35 			&  .26 			& .35 \\	
+	\textbf{Post-Meiyu} (Jul 20-Sep 30), $<28^{\circ}N$   & .67			&  .60			&  .70			& .36 \\	
+	\textbf{Fall Rains} (Oct 1-Nov 16) 					& .16	 		&  .092			&  .40 			& .17 \\	
+	\textbf{Full Year} (1-365)						& .14			&  .29			&  .090	 		& .062 \\	
+	
+\end{tabular}
+\label{tab:t314}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FIGURES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Enter figures at the end of the document, after tables.
+%%
+%
+%\begin{figure}[t]
+%  \noindent\includegraphics[width=19pc,angle=0]{figure01.pdf}\\
+%  \caption{Enter the caption for your figure here.  Repeat as
+%  necessary for each of your figures. Figure from \protect\cite{Knutti2008}.}\label{f1}
+%\end{figure}
+
+
+%%%% FIGURES %%%%
+
+
+
+%%FIGURE 3.1 - the South Flood-North Drought shown in a single figure.
+\begin{figure}
+\centering
+\noindent\includegraphics[width=36pc]{Figures/changes_2d_nojet}
+\caption{Difference in yearly mean rainfall between 1980-2007 and 1951-1979. The South Flood-North Drought pattern is visible between 110-124$^{\circ}$E and 22-42$^{\circ}$N over mainland China (marked by box). Changes significant at a 95\%/99\% level are marked with single/double cross-hatches respectively.}
+\label{fig:f31}
+\end{figure}
+
+\clearpage
+
+%%EXPLANATORY FIGURES SHOWING ALGORITHM FUNCTIONALITY
+
+%%FIGURE 3.2 - displaying continuous maximum criterion required to attempt rainband fit
+\begin{figure}[htbp]
+\centering
+\noindent\includegraphics[width=40pc]{Figures/S1}
+\caption{On each day, RDA first checks whether a continuous band of precipitation maxima exceeding 10 mm day$^{-1}$ exists that spans over 5 degrees of longitude. If so, a rainband fit is attempted. In panels a and b, the latitude of maximum precipitation at each longitude is marked with a black X. The longest continuous chain of maxima exceeding 10 mm day$^{-1}$ is marked in red. a) 25 May 2007 - the continuous maximum criterion is met and a fit is attempted.  b) 11 June 2007 - although there is abundant rainfall in some locations, no band is visible and the continuous maximum criterion is failed. No fit is attempted.}
+\label{fig:f32}
+\end{figure}
+
+%%FIGURE 3.3 - How the convergent fit algorithm works.
+\begin{figure}[htbp]
+\centering
+\noindent\includegraphics[width=40pc]{Figures/S2}
+\caption{Display of the functionality of the recursive convergent fit. Dashed line shows estimated rainband position before each iteration and the solid lines indicate the window within we search for maxima. On 29 April 2007, a strong maximum in southernmost China skews our initial rainband fit (a), but the algorithm eventually converges on its true position via tighter windowing (d).}
+\label{fig:f33}
+\end{figure}
+
+\clearpage
+
+%%FIGURE 3.4 - Quality Control algorithm used to determine inclusion in statistics
+\begin{figure}[htbp]
+\centering
+\noindent\includegraphics[width=40pc]{Figures/S4}
+\caption{A quality control algorithm is used to exclude poor fits. a) 18 August 2007 - Days with a high Taiwan fraction (here, corresponding to the passage of Typhoon Sepat) are excluded from our statistics. b) June 4 2007 - A high-quality fit is achieved. c) 17 April 2007 - Although a tentative fit is obtained, it explains the distribution of rainfall poorly and is therefore unsuccessful. d) 21 May 2007 (same day as Figure~\ref{fig:f35}) - An initial fit appears to be of poor quality ($Q<.6$). However, after finding a secondary rainband, we determine that conditional quality scores $Q_1$ and $Q_2$ are sufficiently high, and the double rainband fit is successful.}
+\label{fig:f34}
+\end{figure}
+
+%%FIGURE 3.5 - Procedure for finding double rainbands
+\begin{figure}[htbp]
+\centering
+\noindent\includegraphics[width=42pc]{Figures/S3}
+\caption{a) The first pass of the recursive fit algorithm converges on the strongest rainband, around 37$^{\circ}$N (defined as the ``primary rainband''). The \textit{banded rainfall} associated with the primary band is shaded with red hatchmarks. b) All banded rainfall from the primary band is removed, and we check for the presence of another rainband (a ``secondary rainband''), again using the continuous maximum criterion. When this criterion is satisfied, we find the secondary rainband's position with the recursive fit algorithm.}
+\label{fig:f35}
+\end{figure}
+
+\clearpage
+
+% FIGURES SHOWING RESULTS %%
+
+%%FIGURE 3.6 Hovmöller diagram of Meiyu latitude occupancy, 1951-2007. Produced by MATLAB scripts meiyufig1.m and meiyustats_compact.m.
+\begin{figure}[htbp]
+\centering
+\noindent\includegraphics[width=32pc]{Figures/meiyu_hovmoller}
+\caption{Climatology of East Asian rainfall and rainbands, 1951-2007, with important time periods marked as follows: 1 - Spring Rains; 2 - Pre-Meiyu; 3 - Meiyu; 4 - Post-Meiyu; 5 - Fall Rains. a) Hovm\"oller diagram of precipitation (100-123$^{\circ}$E longitudinal average); b) Hovm\"oller diagram of absolute probability of observing a rainband (both primary and secondary), smoothed in time with a 9-day and 2$^{\circ}$-running box filter; c) Probability of primary rainband occurrence and mean intensity (9-day running mean); d) The conditional probability of a secondary rainband given the presence of a primary rainband, as well as the mean tilt and length of primary rainband events (9-day running mean).}
+\label{fig:hov}
+\end{figure}
+
+%%FIGURE 3.7 Percentage of total rainfall at each point that is delivered through rainbands
+\begin{figure}[htb]
+\centering
+\includegraphics[width=36pc]{Figures/frontpct}
+\caption{Yearly mean percentage of total rainfall that falls as banded rainfall. On a given day, banded rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$.}
+\label{fig:frontpct}
+\end{figure}
+
+%%FIGURE 3.8 Changes in Meiyu and rainfall behavior between 1951-1979 and 1980-2007
+\begin{figure}[htbp]
+\centering
+\noindent\includegraphics[width=36pc]{Figures/changes}
+\caption{a) 15-day running mean of the change in rainfall between 1951-1979 and 1980-07, with 95\%/99\% confidence level marked by single/double cross-hatches; b) 15-day running mean of the change in rainband frequency between 1951-1979 and 1980-07, with two-degree smoothing in latitude and confidence levels marked as in a). The significance of rainfall changes is calculated by a permutation method. Time periods are marked as in Figure~\ref{fig:hov}: 1 - Spring Rains; 2 - Pre-Meiyu; 3 - Meiyu; 4 - Post-Meiyu; 5 - Fall Rains.}
+\label{fig:changes}
+\end{figure}
+
+%%FIGURE 3.9 Climatology of alternative metrics of China rainfall
+\begin{figure}[htb]
+\centering
+\includegraphics[width=36pc]{Figures/met_climo}
+\caption{Yearly climatology of alternative metrics of China rainfall $M_1-M_8$. a) Latitude of maximum precipitation (blue dash, $M_1$) and intensity-weighted centroid of precipitation latitude (red, $M_2$); b) Intensity of maximum precipitation over China ($M_3$); c) Mean intensity of China rainfall (black, $M_4$), North China rainfall (thin light blue, $M_5$) and South China rainfall (red dash, $M_6$); d) Frequency of North China rainfall (light blue, $M_7$) and South China rainfall (red, $M_8$). China region is defined as 105-123$^{\circ}$E and 20-40$^{\circ}$N, North China as 107.5-125$^{\circ}$E and 37-42$^{\circ}$N and South China as 107.5-122.5$^{\circ}$E and 27-33$^{\circ}$N.}
+\label{fig:type_changes}
+\end{figure}
+
+%%FIGURE 3.10 Decadal changes in different rainfall types
+%potential change - add the total change in rainfall for each of the time periods (third column of panels)
+\begin{figure}[htb]
+\centering
+\noindent\includegraphics[width=36pc]{Figures/decadal_front}
+\caption{1980-2007 versus 1951-1979 changes in banded and local rainfall for full year (a and b respectively), Pre-Meiyu (c and d) and Post-Meiyu (e and f), with significance at the 95\%/99\% level marked by single/double hatches.  On a given day, \textit{banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$. \textit{Local} rainfall includes all other rainfall.}
+\label{fig:decadal_front}
+\end{figure}
 
 \end{document}
