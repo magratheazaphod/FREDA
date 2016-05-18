@@ -3,6 +3,7 @@
 references.bib
 *.aux
 *.synctex.gz
+*.synctex.gz(busy)
 *.log
 *.fff
 *.lof
