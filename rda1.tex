@@ -50,7 +50,7 @@
 
 %% May use \\ to break lines in title:
 
-\title{The Rainband Detection Algorithm (RDA): Frontal Rainfall in China. Part I: Climatology}
+\title{The Rainband Detection Algorithm (RDA) and Occurrence of Frontal Rainfall in China. Part I: Climatology}
 
 %%% Enter authors' names, as you see in this example:
 %%% Use \correspondingauthor{} and \thanks{Current Affiliation:...}
@@ -144,6 +144,10 @@
 	We have developed a recursive fitting algorithm, the Rainband Detection Algorithm (RDA), that locates frontal rainbands in a daily precipitation map and quantifies their attributes. Using the APHRODITE rain gauge product, we have created a 57-year (1951-2007) daily database of rainband attributes in China. Previous studies have investigated the statistics of the Meiyu front on decadal and even centennial timescales \citep{Chen2004,Ge2008,Xu2009}, but to our knowledge no previous author has compiled a multi-decadal daily catalog of events. 
 	
 	The climatology of the East Asian monsoon is unique when compared to other monsoon circulations \citep{Ding2005}. Whereas understanding of tropical monsoons has progressed greatly via theoretical studies \citep{Plumb1992,Prive2007,Bordoni2008}, the dynamics that favor the existence of frontal convection over East Asia in summer remain a point of debate, centering around the interplay of the tropospheric jet and Tibetan Plateau \citep{Molnar2010,Sampe2010,Chen2014}. It is known that the migration of the Meiyu front entails a series of large-scale circulation changes \citep{Chen2004}, and furthermore that anomalies in Meiyu front latitude produce corresponding rainfall anomalies \citep{Kosaka2011}. With the RDA Catalog, we quantify the seasonal progression of the East Asian monsoon and the Meiyu Front in unprecedented fashion.
+	
+%% NOTES
+Hadn't really considered this previously, but these frontal storms are both a response to large-scale, but also alter synoptic environment and play a climatological role in setting patterns of diabatic ascent and descent. A response and forcing - see Newman et al. 2016, where individual storms in Pacific effect heat transport.	
+O'Reilly and Czaja 2015
 	
 \section{Data Sets}
 
@@ -251,7 +255,8 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 	
 \end{itemize}
 
- The definitions of the North China and South China regions are the same as in \citet{Yu2010}. Each metric is subjected to the same tests of significance applied to changes in rainband behavior between time periods. The climatologies of $M_1-M_8$ are shown in Figure~\ref{fig:type_changes}a-d, and mean values during different seasons listed in Tables~\ref{tab:t39}-\ref{tab:t311}. The significance of changes in each metric between 1951-1979 and 1980-2007 is displayed in Table~\ref{tab:t312}. Section 3.6 discusses results.
+ The definitions of the North China and South China regions are the same as in \citet{Yu2010}. Each metric is subjected to the same tests of significance applied to changes in rainband behavior between time periods. The climatologies of $M_1-M_8$ are shown in Figure~\ref{fig:type_changes}a-d, and mean values during different seasons listed in Tables~\ref{tab:t39}-\ref{tab:t311}. The significance of changes in each metric between 1951-1979 and 1980-2007 is discussed in Part II.
+ 
 %
 %\subsection{Temporal Autocorrelation}
 %
@@ -289,9 +294,11 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 	
 	These results can be compared with the frontal event catalog of \citet{Xu2009}, which finds a similar date for the northward transition of the Meiyu front. The total number of rainband counts as well as the mean and standard deviation of rainband frequency, latitude and intensity during each time period are presented in Table~\ref{tab:t34}. Figure~\ref{fig:frontpct} shows that frontal rainfall constitutes at least 40\% of yearly total for all of mainland China east of 105$^\circ$E between 21$^\circ$N and 37$^\circ$N, over 60\% for most of central China, and up to 74\% in the vicinity of Jiangxi Province (28$^\circ$N, 116$^\circ$E). Thus, banded rainfall is an essential component of East China's yearly rainfall budget.
 	
+	The application of RDA to eastern China rainfall also provides information beyond what proposed simpler metrics $M_1-M_8$ can encompass. For instance, $M_6$, a measurement of mean rainfall over South China, demonstrates a resurgence around day 210 (beginning of August) but RDA reveals that these episodes of rainfall are not frontal. Instead, we know from meteorology that August and September are the months when northwestern Pacific typhoons can reach mainland China.
+	
 \section{Conclusion}
 
-	The goal of this work has been to present a clear summary of late-\nth{20}-century rainfall change in China as characterized by changes in frontal rainfall, a core element of the East Asian summer monsoon that constitutes 56\% of yearly rainfall to the region. We used the Rainband Detection Algorithm (RDA), a recursive image processing algorithm, to compile a 57-year catalog of daily rainband occurrence over China and the properties of each event, such as latitude, intensity, tilt, width and length, all of which we have made available to other researchers. The progression of the East Asian summer monsoon in China is displayed in unprecedented fashion as a sequence of 5 stages, each with preferred position, frequency and strength of frontal rainfall. With approximate duration listed, these are: 1) the Spring Rains (March 1-April 30); 2) the Pre-Meiyu (May 1-June 9); 3) the Meiyu (June 10-July 19); 4) the Post-Meiyu (July 20-September 30) and 5) the Fall Rains (October 1-November 16). The climatological transitions from one period to the next are abrupt rather than smooth. 
+	This work has aimed to quantify the role of frontal storms in the yearly rainfall climatology of eastern China. We used the Rainband Detection Algorithm (RDA), a recursive image processing algorithm, to compile a 57-year catalog of daily rainband occurrence over China and the properties of each event, such as latitude, intensity, tilt, width and length, all of which we have made available to other researchers. Over 50\% of yearly total precipitation is contributed by banded rainfall in most of eastern China. The progression of the East Asian summer monsoon in China is displayed in unprecedented fashion as a sequence of 5 stages, each with preferred position, frequency and strength of frontal rainfall. With approximate duration listed, these are: 1) the Spring Rains (March 1-April 30); 2) the Pre-Meiyu (May 1-June 9); 3) the Meiyu (June 10-July 19); 4) the Post-Meiyu (July 20-September 30) and 5) the Fall Rains (October 1-November 16). The climatological transitions from one period to the next are abrupt rather than smooth. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ACKNOWLEDGMENTS
