@@ -44,7 +44,6 @@
 %Citations should be of the form ``author year''  not ``author, year''
 \bibpunct{(}{)}{;}{a}{}{,}
 \usepackage[super]{nth} %adds superscripts for things like 20th
-\usepackage{pdflscape} %allows us to display individual pages within the  document in landscape mode.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -251,7 +250,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 	
 \end{itemize}
 
- The definitions of the North China and South China regions are the same as in \citet{Yu2010}. A seasonal climatology of each metric is presented in Figure~\ref{fig:type_changes}a-d, and mean values during different seasons listed in Tables~\ref{tab:t39}-\ref{tab:t311}. The significance of decadal changes in these metrics is presented in Part II.
+ The definitions of the North China and South China regions are the same as in \citet{Yu2010}. A seasonal climatology of each metric is presented in Figure~\ref{fig:met_climo}, and mean values during different seasons listed in Tables~\ref{tab:t35} and \ref{tab:t36} for the periods 1951-1979 and 1980-2007, with significant changes between the two time periods demarcated.
  
 %
 %\subsection{Temporal Autocorrelation}
@@ -294,9 +293,12 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 	
 \subsection{Decadal Change in Rainfall Types}
 
-	China experienced a well-known ``South Flood-North Drought'' pattern of rainfall change between the mid- and late-\nth{20} century that is detectable in APHRODITE data (Figure\ref{fig:sfnd}). As described above, rainfall for each day can be partitioned into its banded and local (non-banded) component. Therefore, we are curious if the South Flood-North Drought can be attributed in particular to changes in frontal or local rainfall. In Part II, we delve into greater detail on what particular attributes of rainband events have changed that might have produced a ``South Flood-North Drought'' response.
+	China experienced a well-known ``South Flood-North Drought'' pattern of rainfall change between the mid- and late-\nth{20} century that is detectable in APHRODITE data (Figure~\ref{fig:sfnd}). As described above, rainfall for each day can be partitioned into its banded and local (non-banded) component. Therefore, we are curious if the South Flood-North Drought can be attributed in particular to changes in frontal or local rainfall. In Part II, we delve into greater detail on what particular attributes of rainband events have changed that might have produced a ``South Flood-North Drought'' response.
 
-	Using our method for partitioning daily rainfall into its banded and local components, we can test whether one of these components accounts for the majority of decadal change. In Figure~\ref{fig:decadal_type}, we compare banded and local rainfall changes between the periods 1980-2007 and 1951-1979 over the whole year, and also during the Pre-Meiyu, Meiyu and Post-Meiyu seasons. In general, it can be seen that there are significant decadal changes in total yearly rainfall and in banded rainfall, but no yearly trend in local rainfall events. Furthermore, the patterns of change in each type of rainfall are distinct from one another. Looking more closely, northern China has seen a major decrease in total rainfall (significant at a 99\% level) which can be attributed largely to a decline in Post-Meiyu banded rainfall in the region. There is some evidence of a dipole in both total and banded rainfall between the Yangtze River Valley and northern China during this season. During the Pre-Meiyu season (Figure~\ref{fig:decadal_type}b), a marked decrease in banded rainfall over the Yangtze River Valley ($p<.005$) is partially offset by a general increase in local rainfall across all of China, especially in the vicinity of Hunan, Guizhou and Chongqing Provinces (108$^\circ$-114$^\circ$E, 26$^\circ$-30$^\circ$N). In contrast, The sharp decrease in yearly rainfall in Taiwan is overwhelmingly due to changes in local rainfall. Banded rainfall only makes up 20-30\% of total rainfall on the island (Figure~\ref{fig:f31}).
+	Using our method for partitioning daily rainfall into its banded and local components, we can test whether one of these components accounts for the majority of decadal change. In Figure~\ref{fig:decadal_type}, we compare banded and local rainfall changes between the periods 1980-2007 and 1951-1979 over the whole year, and also during the Pre-Meiyu, Meiyu and Post-Meiyu seasons. In general, it can be seen that there are significant decadal changes in total yearly rainfall and in banded rainfall, but no yearly trend in local rainfall events. Furthermore, the patterns of change in each type of rainfall are distinct from one another. Looking more closely, northern China has seen a major decrease in total rainfall (significant at a 99\% level) which can be attributed largely to a decline in Post-Meiyu banded rainfall in the region. There is some evidence of a dipole in both total and banded rainfall between the Yangtze River Valley and northern China during this season. During the Pre-Meiyu season, a marked decrease in banded rainfall over the Yangtze River Valley ($p<.005$) is partially offset by a general increase in local rainfall across all of China, especially in the vicinity of Hunan, Guizhou and Chongqing Provinces (108$^\circ$-114$^\circ$E, 26$^\circ$-30$^\circ$N). In contrast, The sharp decrease in yearly rainfall in Taiwan is overwhelmingly due to changes in local rainfall. Banded rainfall only makes up 20-30\% of total rainfall on the island (Figure~\ref{fig:frontpct}).
+	
+	We have also compared metrics $M_1-M_8$ between 1980-2007 and 1951-1979 for the whole year and during each of the five Meiyu stages described above. Very few significant changes are found. The most notable change is a significant decrease in $M_5$ (North China Rainfall) for both the full year and Post-Meiyu, in concurrence with our findings in Figure~\ref{fig:decadal_type}. The highly significant decrease in central China rainfall during the Pre-Meiyu and increase during the Post-Meiyu are not captured by any of the alternative metrics, and the metrics also cannot reflect the observed zonal symmetry. We conclude that the use of RDA captures key features of the South Flood-North Drought that are not revealed by analyzing simpler metrics.
+
 
 	In summary, the RDA method partitions Chinese rainfall into useful components, banded and local, each with distinct properties. We propose that the North Flood-South Drought has resulted primarily from changes in banded rainfall. In turn, these changes in banded rainfall are zonally symmetric and coherent across thousands of kilometers, suggesting the possible influence of larger-scale climate change.
 	
@@ -361,7 +363,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 %%
 %
 
-%% TABLE 3.1 - ALGORITHM FUNCTIONALITY - BIG PICTURE	
+%% TABLE 1 - ALGORITHM FUNCTIONALITY - BIG PICTURE	
 \begin{table}[!ht]
 
 \caption{Statistics on the functionality of the rainband detection algorithm. Number in parentheses indicates the percentage of days that fall into that category out of all 20,819 days.}
@@ -376,7 +378,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{tab:t31}
 \end{table}
 
-%%% TABLE 3.2 - ALGORITHM FUNCTIONALITY - DETAILS, PRIMARY RAINBAND
+%%% TABLE 2 - ALGORITHM FUNCTIONALITY - DETAILS, PRIMARY RAINBAND
 \begin{table}[h]
 
 \caption{Details on the application of quality control (QC) criteria to primary rainbands.}
@@ -395,7 +397,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{tab:t32}
 \end{table}
 
-%%% TABLE 3.3 - ALGORITHM FUNCTIONALITY - DETAILS, SECONDARY RAINBAND
+%%% TABLE 3 - ALGORITHM FUNCTIONALITY - DETAILS, SECONDARY RAINBAND
 \begin{table}[h]
 
 \caption{Details on the application of quality control (QC) criteria to secondary rainbands. Type I and Type II fits are explained in greater detail in Section 3.4.}
@@ -413,7 +415,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{tab:t33}
 \end{table}
 
-%%%% TABLE 3.4 - MEIYU STATISTICS %%%%
+%%%% TABLE 4 - MEIYU STATISTICS %%%%
 \begin{table}[h]
 \centering
 \small
@@ -435,6 +437,101 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{tab:t34}
 \end{table}
 
+%% TABLE 5 - ALTERNATIVE METRIC STATISTICS, 1951-1979
+\begin{landscape}
+\begin{table}[p]
+\footnotesize
+\centering
+
+\caption{Mean and standard deviation of mean for metrics $M_1$ to $M_8$ for 1951-1979. $M_1$: Latitude of maximum daily rainfall $(^\circ)$. $M_2$: Intensity-weighted centroid of daily rainfall $(^\circ)$. $M_3$: Intensity of maximum rainfall over China (100-123$^{\circ}$E and 20-40$^{\circ}$N, mm day$^{-1}$). $M_4$: Area-averaged intensity of China rainfall (mm day$^{-1}$). $M_5$: Area-averaged intensity of North China rainfall (107.5-125$^{\circ}$E and 37-42$^{\circ}$N,  mm day$^{-1}$). $M_6$: Mean intensity of South China rainfall (107.5-122.5$^{\circ}$E and 27-33$^{\circ}$N, mm day$^{-1}$). $M_7$: Frequency of North China rainfall (\%). $M_8$: Frequency of South China rainfall (\%). \textit{Frequency} denotes percentage of days where mean rainfall over specified area exceeds 1 mm day$^{-1}$. Standard deviations of means are obtained by a permutation method with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c c c c c}
+	 \multicolumn{9}{c}{1951-1979 Means}  \\
+	 Time Period 								& $M_1$ 		& $M_2$ 					& $M_3$ 		& $M_4$ 		& $M_5$ 						& $M_6$ 		& $M_7$ 		& $M_8$ \\
+	 \hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120) 	& $26.3 \pm 0.2$ 	&  $\boldsymbol{27.9 \pm 0.1}$	&  $31.2 \pm 1.1$ 	&$2.6 \pm 0.1$ 	& $.52 \pm 0.05$ 					& $3.9 \pm .2$	& $25.0 \pm 2.0$	& $71.7 \pm 2.1$  \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160) 		& $25.7 \pm 0.2$ 	&  $27.6 \pm 0.1$				&  $59.4 \pm 1.9$ 	&$4.4 \pm 0.2$	& $1.20 \pm 0.11$ 				& $5.5 \pm .3$	& $47.1 \pm 3.0$ 	& $82.6 \pm 2.2$ \\
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120) 		& $27.9 \pm 0.3$ 	&  $29.1 \pm 0.2$				&  $72.5 \pm 2.1$ 	&$5.1 \pm 0.1$ 	& $2.78 \pm 0.18$					& $5.9 \pm .3$ 	& $81.1 \pm 2.4$ 	& $91.0 \pm 1.7$ \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& $27.4 \pm 0.3 $	&  $29.4 \pm 0.1$ 				&  $69.1 \pm 1.9$ 	&$4.1 \pm 0.1$ 	& $\boldsymbol{3.20 \pm 0.16^*}$	& $3.7 \pm .2$ 	& $76.4 \pm 1.8$ 	& $82.0 \pm 1.7$ \\
+	\textbf{Fall Rains} (Oct 1-Nov 16) 				& $25.6 \pm 0.2 $ 	&  $28.5 \pm 0.2$				&  $36.9 \pm 1.8$ 	&$1.9 \pm 0.1$	& $.76 \pm 0.09$ 					& $2.3 \pm .2$ 	& $30.7 \pm 2.5$ 	& $57.2 \pm 2.6$ \\
+	\textbf{Full Year} (1-365) 					& $26.2 \pm 0.1$ 	&  $28.3 \pm 0.1$ 				&  $43.5 \pm 0.7$ 	&$2.8 \pm 0.1$ 	& $\boldsymbol{1.31 \pm 0.05}$		& $3.4 \pm .1$ 	& $40.0 \pm 1.0$ 	& $67.7 \pm 1.0$ \\
+\end{tabular}
+\label{tab:t35}
+\end{table}
+
+
+%% TABLE 6 - ALTERNATIVE METRIC STATISTICS, 1980-2007 %%%%
+\begin{table}[p]
+\footnotesize
+\centering
+
+\caption{Mean and standard deviation of mean of metrics $M_1$ to $M_8$ for 1980-2007. Standard deviations of means are obtained by a permutation method with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c c c c c}
+	 \multicolumn{9}{c}{1980-2007 Means} \\
+	 Time Period 								& $M_1$ 		& $M_2$ 					& $M_3$ 		& $M_4$ 		& $M_5$ 						& $M_6$ 		& $M_7$ 		& $M_8$ \\
+	\hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120)  	& $26.2 \pm 0.2$ 	&  $\boldsymbol{27.6 \pm 0.1}$	&  $32.4 \pm 1.0$ 	&$2.6 \pm 0.1$ 	& $.51 \pm 0.06$ 					& $3.8 \pm .2$ 	& $24.1 \pm 2.1$ 	& $72.5 \pm 2.2$  \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160)  	& $25.4 \pm 0.2$ 	&  $27.7 \pm 0.2$				&  $57.0 \pm 1.8$ 	&$4.2 \pm 0.2$	& $1.31 \pm 0.12$ 				& $5.0 \pm .3$ 	& $48.8 \pm 3.0$ 	& $79.6 \pm 2.4$ \\
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120)		& $27.6 \pm 0.3$ 	&  $29.1 \pm 0.1$				&  $73.6 \pm 2.2$ 	&$5.2 \pm 0.1$ 	& $2.79 \pm 0.18$					& $6.4 \pm .3$ 	& $81.3 \pm 2.3$ 	& $92.1 \pm 1.6$ \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& $27.0 \pm 0.2 $	&  $29.2 \pm 0.1$ 				&  $67.5 \pm 1.9$ 	&$4.0 \pm 0.1$ 	& $\boldsymbol{2.70 \pm 0.14^*}$	& $3.9 \pm .2$ 	& $75.3 \pm 1.9$ 	& $85.5 \pm 1.6$ \\
+	\textbf{Fall Rains} (Oct 1-Nov 16) 				& $26.0 \pm 0.3 $ 	&  $28.5 \pm 0.2$				&  $36.4 \pm 2.1$ 	&$1.8 \pm 0.1$	& $.65 \pm 0.08$ 					& $2.4 \pm .2$ 	& $28.0 \pm 2.5$ 	& $54.7 \pm 2.8$ \\
+	\textbf{Full Year} (1-365)					& $26.2 \pm 0.1$ 	&  $28.2 \pm 0.1$ 				&  $43.1 \pm 0.7$ 	&$2.8 \pm 0.1$ 	& $\boldsymbol{1.20 \pm 0.04}$		& $3.4 \pm .1$ 	& $39.4 \pm 1.0$ 	& $68.6 \pm 1.0$ \\
+\end{tabular}
+\label{tab:t36}
+\end{table}
+\end{landscape}
+
+
+%% The following two tables probably includes more detail than necessary for this paper, although the table in question was previously published in my thesis. Could either leave out or throw in appendix
+
+%%% TABLE 3.11 - AUTOCORRELATION TIME SCALE OF ALTERNATIVE METRICS
+%\begin{table}[p]
+%
+%\centering
+%
+%\caption{Autocorrelation timescale of metrics $M_1$-$M_8$. In subsequent calculations of significance, the block length for moving blocks bootstrapping is chosen for each season by rounding to the nearest whole number. Alternative choices of block length do not strongly influence estimations of significance.}
+%
+%\begin{tabular}{ l c c c c c c c c}
+%	 \multicolumn{9}{c}{\textbf{1980-2007 Means}} \\
+%	 \textbf{Time Period} 						& $\boldsymbol{M_1}$ & $\boldsymbol{M_2}$ & $\boldsymbol{M_3}$ & $\boldsymbol{M_4}$ & $\boldsymbol{M_5}$ & $\boldsymbol{M_6}$ & $\boldsymbol{M_7}$ & $\boldsymbol{M_8}$ \\	
+%	 \hline
+%	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120) 	& 2.20 & 2.52 & 2.49 & 1.77 & 1.94 & 1.57 & 1.60 & 1.92 \\
+%	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160) 		& 2.08 & 2.22 & 2.02 & 1.97 & 1.66 & 1.66 & 1.92 & 1.92 \\		
+%	\textbf{Meiyu} (Jun 10-Jul 19, 161-120) 		& 2.71 & 3.65 & 2.32 & 3.38 & 2.22 & 3.47 & 2.01 & 2.10 \\
+%	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& 1.93 & 2.76 & 2.05 & 3.20 & 2.31 & 3.24 & 2.13 & 2.46 \\
+%	\textbf{Fall Rains} (Oct 1-Nov 16) 				& 1.58 & 2.69 & 3.32 & 3.14 & 1.37 & 1.37 & 1.44 & 3.57 \\
+%	\textbf{Full Year} (1-365)	 				& 2.16 & 3.03 & 2.56 & 2.75 & 2.14 & 2.14 & 1.84 & 2.82 \\
+%\end{tabular}
+%\label{tab:t311}
+%\end{table}
+
+
+
+%%% TABLE 3.12 - p-value of change in metrics M_1-M_8 between 1951-1979 and 1980-2007
+%%% SUPPLEMENTARY?
+%\begin{table}[p]
+%
+%\centering
+%
+%\caption{Significance level $p$ of changes in metrics $M_1$-$M_8$ between 1951-1979 and 1980-2007, as calculated by a moving blocks bootstrap for latitude and intensity metrics with 10,000 iterations and block length of $\tau$ rounded up to nearest integer, and analytically calculated using effective degrees of freedom $N=n/\tau$ for frequency metrics $M_7$ and $M_8$. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+%
+%\begin{tabular}{ l c c c c c c c c}
+%	 \multicolumn{9}{c}{\textbf{1980-2007 Means}} \\
+%	 \textbf{Time Period} 						& $\boldsymbol{M_1}$ & $\boldsymbol{M_2}$ & $\boldsymbol{M_3}$ & $\boldsymbol{M_4}$ & $\boldsymbol{M_5}$ & $\boldsymbol{M_6}$ & $\boldsymbol{M_7}$ & $\boldsymbol{M_8}$ \\	 
+%	 \hline
+%	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120) 	& .180 & \textbf{.017} 	& .850 & .414 	& .346 			& .320 & .298 & .649 \\
+%	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160) 		& .077 & .819 			& .080 & .154 & .871 			& .038 & .729 & .091 \\		
+%	\textbf{Meiyu} (Jun 10-Jul 19, 161-120) 		& .091 & .468 			& .696 & .808 & .503 			& .943 & .538 & .745 \\
+%	\textbf{Post-Meiyu} (Jul 20-Sep 30) 			& .046 & .150 			& .162 & .132 & \textbf{.0004*} 	& .848 & .296 & .975 \\
+%	\textbf{Fall Rains} (Oct 1-Nov 16) 				& .965 & .412 			& .442 & .154 & .049 			& .620 & .107 & .244 \\
+%	\textbf{Full Year} (1-365)	 				& .726 & .068 			& .314 & .302 & \textbf{.0068} 	& .776 & .242 & .784 \\
+%	
+%\end{tabular}
+%\label{tab:t312}
+%\end{table}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FIGURES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -452,7 +549,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 
 %%EXPLANATORY FIGURES SHOWING ALGORITHM FUNCTIONALITY
 
-%%FIGURE 3.1 - displaying continuous maximum criterion required to attempt rainband fit
+%%FIGURE 1 - displaying continuous maximum criterion required to attempt rainband fit
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=40pc]{Figures/S1}
@@ -460,7 +557,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{fig:f32}
 \end{figure}
 
-%%FIGURE 3.2 - How the convergent fit algorithm works.
+%%FIGURE 2 - How the convergent fit algorithm works.
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=40pc]{Figures/S2}
@@ -470,7 +567,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 
 \clearpage
 
-%%FIGURE 3.3 - Quality Control algorithm used to determine inclusion in statistics
+%%FIGURE 3 - Quality Control algorithm used to determine inclusion in statistics
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=40pc]{Figures/S4}
@@ -478,7 +575,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{fig:f34}
 \end{figure}
 
-%%FIGURE 3.4 - Procedure for finding double rainbands
+%%FIGURE 4 - Procedure for finding double rainbands
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=42pc]{Figures/S3}
@@ -490,7 +587,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 
 % FIGURES SHOWING RESULTS %%
 
-%%FIGURE 3.5 Hovmöller diagram of Meiyu latitude occupancy, 1951-2007. Produced by MATLAB scripts meiyufig1.m and meiyustats_compact.m.
+%%FIGURE 5 Hovmöller diagram of Meiyu latitude occupancy, 1951-2007. Produced by MATLAB scripts meiyufig1.m and meiyustats_compact.m.
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=32pc]{Figures/meiyu_hovmoller}
@@ -498,7 +595,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{fig:hov}
 \end{figure}
 
-%%FIGURE 3.6 Percentage of total rainfall at each point that is delivered through rainbands
+%%FIGURE 6 Percentage of total rainfall at each point that is delivered through rainbands
 %% CAN I DO A SEASONAL VERSION OF THIS FILE?!
 \begin{figure}[htb]
 \centering
@@ -507,7 +604,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{fig:frontpct}
 \end{figure}
 
-%%FIGURE 3.7 - the South Flood-North Drought shown in a single figure.
+%%FIGURE 7 - the South Flood-North Drought shown in a single figure.
 \begin{figure}
 \centering
 \noindent\includegraphics[width=36pc]{Figures/SFND}
@@ -515,7 +612,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{fig:sfnd}
 \end{figure}
 
-%%FIGURE 3.8 Changes in Meiyu and rainfall behavior between 1951-1979 and 1980-2007
+%%FIGURE 8 Changes in Meiyu and rainfall behavior between 1951-1979 and 1980-2007
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=36pc]{Figures/changes}
@@ -523,15 +620,15 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \label{fig:changes}
 \end{figure}
 
-%%FIGURE 3.9 Climatology of alternative metrics of China rainfall
+%%FIGURE 9 Climatology of alternative metrics of China rainfall
 \begin{figure}[htb]
 \centering
 \includegraphics[width=36pc]{Figures/met_climo}
 \caption{Yearly climatology of alternative metrics of China rainfall $M_1-M_8$. a) Latitude of maximum precipitation (blue dash, $M_1$) and intensity-weighted centroid of precipitation latitude (red, $M_2$); b) Intensity of maximum precipitation over China ($M_3$); c) Mean intensity of China rainfall (black, $M_4$), North China rainfall (thin light blue, $M_5$) and South China rainfall (red dash, $M_6$); d) Frequency of North China rainfall (light blue, $M_7$) and South China rainfall (red, $M_8$). China region is defined as 105-123$^{\circ}$E and 20-40$^{\circ}$N, North China as 107.5-125$^{\circ}$E and 37-42$^{\circ}$N and South China as 107.5-122.5$^{\circ}$E and 27-33$^{\circ}$N.}
-\label{fig:type_changes}
+\label{fig:met_climo}
 \end{figure}
 
-%%FIGURE 3.10 Decadal changes in different rainfall types
+%%FIGURE 10 Decadal changes in different rainfall types
 %potential change - add the total change in rainfall for each of the time periods (third column of panels)
 \begin{figure}[htb]
 \centering
