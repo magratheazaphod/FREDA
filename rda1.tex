@@ -43,6 +43,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Citations should be of the form ``author year''  not ``author, year''
 \bibpunct{(}{)}{;}{a}{}{,}
+\usepackage[super]{nth} %adds superscripts for things like 20th
+\usepackage{pdflscape} %allows us to display individual pages within the  document in landscape mode.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -50,7 +52,7 @@
 
 %% May use \\ to break lines in title:
 
-\title{A 57-year catalog of frontal rainfall in China using the Rainband Detection Algorithm (RDA). Part I: Climatology and Decadal Change}
+\title{A 57-year catalog of rainbands over China using the Rainband Detection Algorithm (RDA). Part I: Climatology and Decadal Change in Banded Rainfall}
 
 %%% Enter authors' names, as you see in this example:
 %%% Use \correspondingauthor{} and \thanks{Current Affiliation:...}
@@ -128,30 +130,24 @@
 % \section{Section title}
 
 %%%
-% \section{First primary heading}
 
-% \subsection{First secondary heading}
-
-% \subsubsection{First tertiary heading}
-
-% \paragraph{First quaternary heading}
 
 
 \section{Introduction} 
 
- 	Eastern China receives about 60\% of its precipitation from May to August via the East Asian summer monsoon. The period of peak rainfall lasting from early June to mid-July is called ``Meiyu season'' (lit. ``plum rains,'' referring to the spectacular growth of plum blossoms in central China with the onset of heavy rains). During this time, heavy rainfall occurs in zonal bands resulting from frontal synoptic conditions (the ``Meiyu front''). The rainfall climatology of Japan and Korea also features similar phenomena, known as Baiu and Changma respectively, that deliver key fractions of total yearly rainfall. While banded rainfall is known to contribute a significant component of yearly totals across East Asia, no tool exists that isolates this component and distinguishes it from local storms, which likely originate from self-buoyancy (CITATIONS).
+ 	Eastern China receives about 60\% of its precipitation from May to August via the East Asian summer monsoon. The period of peak rainfall lasting from early June to mid-July is called ``Meiyu season'' (lit. ``plum rains,'' referring to the spectacular growth of plum blossoms in central China with the onset of heavy rains). During this time, heavy rainfall occurs in zonal bands resulting from frontal synoptic conditions (the ``Meiyu Front''). The rainfall climatology of Japan and Korea also features similar phenomena, known as Baiu and Changma respectively, that deliver key fractions of total yearly rainfall. While banded rainfall is known to contribute a significant component of yearly totals across East Asia, its role has not been quantified across a large sample of days.
 		
-	We have developed a recursive fitting algorithm, the Rainband Detection Algorithm (RDA), that locates frontal rainbands in a daily precipitation map and quantifies their attributes. Using the APHRODITE rain gauge product, we have created a 57-year (1951-2007) daily database of rainband attributes in China. Previous studies have investigated the statistics of the Meiyu front on decadal and even centennial timescales \citep{Chen2004,Ge2008,Xu2009}, but to our knowledge no previous author has compiled a multi-decadal daily catalog of events. 
+	We have developed a recursive image processing algorithm, the Rainband Detection Algorithm (RDA), that locates frontal rainbands in a daily precipitation map and quantifies their attributes. By applying this algorithm to the APHRODITE historical record of Asian monsoon rainfall, we have created a 57-year (1951-2007) daily database of rainband attributes in China. Previous studies have investigated the statistics of the Meiyu front on decadal and even centennial timescales \citep{Chen2004,Ge2008,Xu2009}, but to our knowledge no previous author has compiled a multi-decadal daily catalog of events. 
 	
-	The climatology of the East Asian monsoon is unique when compared to other monsoon circulations \citep{Ding2005}. Whereas understanding of tropical monsoons has progressed greatly via theoretical studies \citep{Plumb1992,Prive2007,Bordoni2008}, the dynamics that favor the existence of frontal convection over East Asia in summer remain a point of debate, centering around the interplay of the tropospheric jet and Tibetan Plateau \citep{Molnar2010,Sampe2010,Chen2014}. It is known that the migration of the Meiyu front entails a series of large-scale circulation changes \citep{Chen2004}, and furthermore that anomalies in Meiyu front latitude produce corresponding rainfall anomalies \citep{Kosaka2011}. With the RDA Catalog, we quantify the seasonal progression of the East Asian monsoon and the Meiyu Front in unprecedented fashion.
+	The climatology of the East Asian monsoon is unique when compared to other monsoon circulations \citep{Ding2005}. Whereas understanding of tropical monsoons has progressed greatly via theoretical studies \citep{Plumb1992,Prive2007,Bordoni2008}, the dynamics that favor the existence of frontal convection over East Asia in summer remain a point of debate, centering around the interplay of the tropospheric jet and Tibetan Plateau \citep{Molnar2010,Sampe2010,Chen2014}. It is known that the migration of the Meiyu front entails a series of large-scale circulation changes \citep{Chen2004}, and furthermore that anomalies in Meiyu front latitude produce corresponding rainfall anomalies \citep{Kosaka2011}. Using the RDA catalog, we quantify the seasonal progression of the East Asian monsoon and the Meiyu Front in unprecedented fashion. Abrupt transitions are shown between different Meiyu stages, each of which demonstrates a characteristic spatial distribution and intensity of rainbands. The resulting climatology may serve as a useful quantitative reference to other authors.
 	
-%% NOTES
-Hadn't really considered this previously, but these frontal storms are both a response to large-scale, but also alter synoptic environment and play a climatological role in setting patterns of diabatic ascent and descent. A response and forcing - see Newman et al. 2016, where individual storms in Pacific effect heat transport.	
-O'Reilly and Czaja 2015
+	Lastly, our algorithm allows us to separate daily rainfall into two components: Banded rainfall (extending zonally at least 500 km) and local storms. We argue that each of these observed rainfall types reflects the mechanism that produces them. Local storms can occur due to anomalous self-buoyancy or orographic triggering, while banded rainfall likely reflects the existence of larger-scale frontal conditions. We believe that we can use rainfall observations from the past half-century to obtain insight into how different mechanisms of rainfall have changed over the past few decades. In future work, we hope to show that changes in banded rainfall are tied to other observed changes in components of the East Asian monsoon.
+	
+%Hadn't really considered this previously, but these frontal storms are both a response to large-scale, but also alter synoptic environment and play a climatological role in setting patterns of diabatic ascent and descent. A response and forcing - see Newman et al. 2016, where individual storms in Pacific effect heat transport. Also O'Reilly and Czaja 2015
 	
 \section{Data Sets}
 
-	The APHRO\_MA\_V1101 product from APHRODITE (Asian Precipitation - Highly-Resolved Observational Data Integration Towards Evaluation of the Water Resources) includes 57 years (1951-2007) of daily rainfall (PRECIP product) on a .25$^{\circ} \times .25^{\circ}$ grid over 60$^{\circ}$-150$^{\circ}$E and 15$^{\circ}$S-55$^{\circ}$N \citep{Yatagai2012}. Values are assimilated from weather station observations and therefore available over land only. We focus on the subregion inside of 100$^{\circ}$E-123$^{\circ}$E and 20$^{\circ}$N-40$^{\circ}$N, where Meiyu rainbands occur. Stations in this region are spaced at 100-200 km intervals (shown by RSTN product), such that rainbands are clearly resolved. APHRODITE's resolution cannot capture some features visible in TRMM satellite data \citet{Xu2009}, but its length allows for the study of decadal change. Since almost all precipitation in this region falls as rain, we use the words ``rainfall'' and ``precipitation'' interchangeably in the rest of this work.
+	The APHRO\_MA\_V1101 product from APHRODITE (Asian Precipitation - Highly-Resolved Observational Data Integration Towards Evaluation of the Water Resources) includes 57 years (1951-2007) of daily rainfall (PRECIP product) on a .25$^{\circ} \times .25^{\circ}$ grid over 60$^{\circ}$-150$^{\circ}$E and 15$^{\circ}$S-55$^{\circ}$N \citep{Yatagai2012}. Values are assimilated from weather station observations and therefore available over land only. We focus on the subregion inside of 105$^{\circ}$E-123$^{\circ}$E and 20$^{\circ}$N-40$^{\circ}$N, where rainbands are known to occur frequently, especially during Meiyu season. Stations in this region are spaced at 100-200 km intervals (shown by RSTN product), such that rainbands are clearly resolved. APHRODITE's resolution cannot capture some features visible in TRMM satellite data \citet{Xu2009}, but its length allows for the study of decadal change. Since almost all precipitation in this region falls as rain, we use the words ``rainfall'' and ``precipitation'' interchangeably in the rest of this work.
 	
 \section{Rainband Detection Algorithm (RDA) Functionality}
 
@@ -227,7 +223,7 @@ O'Reilly and Czaja 2015
 
 \subsection{Rainfall Types}
 	
-	RDA allows us to classify all rainfall on each day as either \textit{banded} (falls within a rainband) or \textit{local}. \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$, the same definition as in step 5 of the recursive algorithm above. An example is shown in Figure~\ref{fig:f35}a. Rainfall on each of the 20,819 available days was partitioned into its banded and local components. This allows us to determine what fraction of rainfall at each point in East China is supplied via banded rainfall (Figure~\ref{fig:frontpct}). We also test for the significance of decadal changes in banded and local rainfall separately (Figure~\ref{fig:decadal_front}). These results are discussed below. Videos of the climatological progression of banded and local rainfall are available at the author's website and on request, as well as daily maps of banded and local rainfall for the years 1951-2007.
+	RDA allows us to classify all rainfall on each day as either \textit{banded} (falls within a rainband) or \textit{local}. \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$, the same definition as in step 5 of the recursive algorithm above. An example is shown in Figure~\ref{fig:f35}a. Rainfall on each of the 20,819 available days was partitioned into its banded and local components. This allows us to determine what fraction of rainfall at each point in East China is supplied via banded rainfall (Figure~\ref{fig:frontpct}). We also test for the significance of decadal changes in banded and local rainfall separately (Figure~\ref{fig:decadal_type}). These results are discussed below. Videos of the climatological progression of banded and local rainfall are available at the author's website and on request, as well as daily maps of banded and local rainfall for the years 1951-2007.
 	
 \section{Methods}	
 
@@ -255,7 +251,7 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 	
 \end{itemize}
 
- The definitions of the North China and South China regions are the same as in \citet{Yu2010}. Each metric is subjected to the same tests of significance applied to changes in rainband behavior between time periods. The climatologies of $M_1-M_8$ are shown in Figure~\ref{fig:type_changes}a-d, and mean values during different seasons listed in Tables~\ref{tab:t39}-\ref{tab:t311}. The significance of changes in each metric between 1951-1979 and 1980-2007 is discussed in Part II.
+ The definitions of the North China and South China regions are the same as in \citet{Yu2010}. A seasonal climatology of each metric is presented in Figure~\ref{fig:type_changes}a-d, and mean values during different seasons listed in Tables~\ref{tab:t39}-\ref{tab:t311}. The significance of decadal changes in these metrics is presented in Part II.
  
 %
 %\subsection{Temporal Autocorrelation}
@@ -294,23 +290,24 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 	
 	These results can be compared with the frontal event catalog of \citet{Xu2009}, which finds a similar date for the northward transition of the Meiyu front. The total number of rainband counts as well as the mean and standard deviation of rainband frequency, latitude and intensity during each time period are presented in Table~\ref{tab:t34}. Figure~\ref{fig:frontpct} shows that frontal rainfall constitutes at least 40\% of yearly total for all of mainland China east of 105$^\circ$E between 21$^\circ$N and 37$^\circ$N, over 60\% for most of central China, and up to 74\% in the vicinity of Jiangxi Province (28$^\circ$N, 116$^\circ$E). Thus, banded rainfall is an essential component of East China's yearly rainfall budget.
 	
-	The application of RDA to eastern China rainfall also provides information beyond what proposed simpler metrics $M_1-M_8$ can encompass. For instance, $M_6$, a measurement of mean rainfall over South China, demonstrates a resurgence around day 210 (beginning of August) but RDA reveals that these episodes of rainfall are not frontal. Instead, we know from meteorology that August and September are the months when northwestern Pacific typhoons can reach mainland China (CITATION).
+	The application of RDA to eastern China rainfall also provides information beyond what proposed simpler metrics $M_1-M_8$ can encompass. For instance, $M_6$, a measurement of mean rainfall over South China, demonstrates a resurgence around day 210 (beginning of August) but RDA reveals that these episodes of rainfall are not frontal. Instead, we know from meteorology that August and September are the months when northwestern Pacific typhoons can reach mainland China \citep{Chen2007,Chen2011}.
 	
 \subsection{Decadal Change in Rainfall Types}
 
-	China experienced a well-known ``South Flood-North Drought'' pattern of rainfall change between the mid- and late-\nth{20} century that is detectable in APHRODITE data (Figure\ref...). As described above, rainfall for each day can be partitioned into its banded and local (non-banded) component. Therefore, we are curious if the South Flood-North Drought can be attributed in particular to changes in frontal or local rainfall. In Part II, we delve into greater detail on what particular attributes of rainband events have changed that might have produced a ``South Flood-North Drought'' response.
+	China experienced a well-known ``South Flood-North Drought'' pattern of rainfall change between the mid- and late-\nth{20} century that is detectable in APHRODITE data (Figure\ref{fig:sfnd}). As described above, rainfall for each day can be partitioned into its banded and local (non-banded) component. Therefore, we are curious if the South Flood-North Drought can be attributed in particular to changes in frontal or local rainfall. In Part II, we delve into greater detail on what particular attributes of rainband events have changed that might have produced a ``South Flood-North Drought'' response.
 
-	Using our method for partitioning daily rainfall into its banded and local components, we can test whether one of these components accounts for the majority of decadal change. In Figure~\ref{fig:decadal_front}, we compare banded and local rainfall changes between the periods 1980-2007 and 1951-1979 over the whole year, and also during the Pre-Meiyu and Post-Meiyu seasons during which we have already identified substantial change. The significant decrease in yearly rainfall in northern China (Figure~\ref{fig:f31}) is overwhelmingly due to a regional decrease in banded rainfall (significant at a 99\% level) without a corresponding decrease in local rainfall (Figure~\ref{fig:decadal_front}a). During the Pre-Meiyu season (Figure~\ref{fig:decadal_front}b), a marked decrease in banded rainfall over the Yangtze River Valley ($p<.005$) is partially offset by a general increase in local rainfall across all of China, especially in the vicinity of Hunan, Guizhou and Chongqing Provinces (108$^\circ$-114$^\circ$E, 26$^\circ$-30$^\circ$N). The Post-Meiyu dipole between northern and southern China is clearly visible in changes in banded rainfall, and indistinct in local rainfall changes (Figure~\ref{fig:decadal_front}c). In contrast, the sharp decrease in yearly rainfall in Taiwan is overwhelmingly due to changes in local rainfall. Banded rainfall only makes up 20-30\% of total rainfall on the island (Figure~\ref{fig:f31}).
+	Using our method for partitioning daily rainfall into its banded and local components, we can test whether one of these components accounts for the majority of decadal change. In Figure~\ref{fig:decadal_type}, we compare banded and local rainfall changes between the periods 1980-2007 and 1951-1979 over the whole year, and also during the Pre-Meiyu, Meiyu and Post-Meiyu seasons. In general, it can be seen that there are significant decadal changes in total yearly rainfall and in banded rainfall, but no yearly trend in local rainfall events. Furthermore, the patterns of change in each type of rainfall are distinct from one another. Looking more closely, northern China has seen a major decrease in total rainfall (significant at a 99\% level) which can be attributed largely to a decline in Post-Meiyu banded rainfall in the region. There is some evidence of a dipole in both total and banded rainfall between the Yangtze River Valley and northern China during this season. During the Pre-Meiyu season (Figure~\ref{fig:decadal_type}b), a marked decrease in banded rainfall over the Yangtze River Valley ($p<.005$) is partially offset by a general increase in local rainfall across all of China, especially in the vicinity of Hunan, Guizhou and Chongqing Provinces (108$^\circ$-114$^\circ$E, 26$^\circ$-30$^\circ$N). In contrast, The sharp decrease in yearly rainfall in Taiwan is overwhelmingly due to changes in local rainfall. Banded rainfall only makes up 20-30\% of total rainfall on the island (Figure~\ref{fig:f31}).
 
-	In conclusion, \textbf{the North Flood-South Drought has resulted primarily from changes in banded rainfall}. In turn, these changes in banded rainfall are zonally symmetric and coherent across thousands of kilometers. 
+	In summary, the RDA method partitions Chinese rainfall into useful components, banded and local, each with distinct properties. We propose that the North Flood-South Drought has resulted primarily from changes in banded rainfall. In turn, these changes in banded rainfall are zonally symmetric and coherent across thousands of kilometers, suggesting the possible influence of larger-scale climate change.
 	
 \section{Conclusion}
 
 	This work has aimed to quantify the role of frontal storms in the yearly rainfall climatology of eastern China. We used the Rainband Detection Algorithm (RDA), a recursive image processing algorithm, to compile a 57-year catalog of daily rainband occurrence over China and the properties of each event, such as latitude, intensity, tilt, width and length, all of which we have made available to other researchers. Over 50\% of yearly total precipitation is contributed by banded rainfall in most of eastern China. The progression of the East Asian summer monsoon in China is displayed in unprecedented fashion as a sequence of 5 stages, each with preferred position, frequency and strength of frontal rainfall. With approximate duration listed, these are: 1) the Spring Rains (March 1-April 30); 2) the Pre-Meiyu (May 1-June 9); 3) the Meiyu (June 10-July 19); 4) the Post-Meiyu (July 20-September 30) and 5) the Fall Rains (October 1-November 16). The climatological transitions from one period to the next are abrupt rather than smooth.
 	
-	The use of RDA runs the risk of conflating storms produced by different mechanisms in spite of our quality control screening. For instance, a zonally propagating cyclone would be registered by RDA although its dynamics are much different and its direction of propagation opposite. Nonetheless, we assert that it is generally successful in differentiating between storm tracks that are produced by large-scale synoptic conditions and local storms powered by orographic effects or self-buoyancy, whose spatial extent will be much more limited. As shown in Figure~\ref{fig:f31}, decadal changes in China rainfall (the ``South Flood-North Drought'') primarily reflect changes in banded rainfall, as opposed to local storms. The existence of banded rainfall depends on large-scale attributes of the East Asian monsoon such as a sharp gradient in moisture between southern and northern China,  and standing eddies in the East Asian tropospheric jet due to topographic blocking by the Tibetan Plateau \citep{Molnar2010,Chen2015}. Therefore, we suggest that observed changes in banded rainfall reflect a change in the large-scale dynamics of the East Asian summer monsoon in the late \nth{20} century. This idea is further investigated in Part II.
+	The use of RDA runs the risk of conflating storms produced by different mechanisms in spite of our quality control screening. For instance, a zonally propagating cyclone would be registered by RDA as an instance of banded rainfall, even though the direction of propagation is opposite that of a typical Meiyu event, and the causative dynamics very different. Nonetheless, we assert that it is generally successful in differentiating between storm tracks that are produced by large-scale synoptic conditions and local storms powered by orographic effects or self-buoyancy, whose spatial extent will be much more limited. The use of the available satellite record for the past couple of decades has revealed many further insights into the character of Meiyu storms and frontal rainfall in general \citep{Luo2009,Luo2011,Luo2013}.
 	
-
+	As shown in Figure~\ref{fig:decadal_type}, decadal changes in China rainfall (the ``South Flood-North Drought'') primarily reflect changes in banded rainfall, as opposed to local storms. In general, we assert that the decadal changes over the plains of eastern China that constitute the South Flood-North Drought can be described predominantly as changes in the distribution of banded rainfall. It is also clear that this characterization is less appropriate for locales such as Taiwan, the Sichuan Basin or southernmost China, where local storms contribute a greater part of yearly total rainfall, and have also undergone significant changes during the late \nth{20} century. The existence of banded rainfall depends on unique attributes of the East Asian monsoon such as mechanical forcing by the Tibetan Plateau and southerly inflow of moisture due to zonal land-sea contrast \citep{Molnar2010,Chen2014}. We suggest that changes in banded rainfall reflect large-scale changes in East Asian summer monsoon dynamics at the end of the \nth{20} century. This idea is further investigated in Part II.
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ACKNOWLEDGMENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -417,7 +414,6 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 \end{table}
 
 %%%% TABLE 3.4 - MEIYU STATISTICS %%%%
-\begin{landscape} %rotates the page of the PDF showing this table (too big otherwise)
 \begin{table}[h]
 \centering
 \small
@@ -427,19 +423,17 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 	 \multicolumn{10}{c}{1951-2007 Means} \\
 	 Time Period & $N$ & $N_1$ & 1f. (\%) & $\tau_1$ (days) & $N_2$ & 2f. (\%) & $\tau_2$ (days) & Lat. ($^\circ$) & Int. (mm day$^{-1}$) \\
 	 \hline
-	\textbf{Spring Rains} (60-120) 		& 1661 & 1635 	& $47.0 \pm 1.2$ 	& 1.96	& 26 	&$0.7 \pm 0.1$ 	& .95 	& $27.5 \pm .1$ & $20.1 \pm .4$ \\
-	\textbf{Pre-Meiyu} (121-160) 		& 1371 & 1279  	& $56.1 \pm 1.5$ 	& 2.01	& 92 	&$4.0 \pm 0.4$	& .98 	& $27.4 \pm .2$ & $25.5 \pm .5$ \\
-	\textbf{Meiyu} (161-200) 			& 1688 & 1499 		& $65.8 \pm 1.5$ 	& 2.19	& 189 	&$8.3 \pm 0.6$ 	& 1.11	& $29.5 \pm .2$ & $28.3 \pm .5$ \\
-	\textbf{Post-Meiyu} (201-273) & 2113 & 1757 			& $42.2 \pm 1.1 $	& 1.91 	& 356 	&$8.6 \pm 0.5$ 	& 1.44	& $29.9 \pm .2$ & $25.6 \pm .5$ \\
-	\textbf{Post-Meiyu}, $>27^\circ$N 	& 1368 & 1215 	& $27.1 \pm 1.0 $ 	& -		& 153 	&$3.4 \pm 0.3$ 	& -	& $33.3 \pm .2$ & $23.9 \pm .5$ \\
-	\textbf{Post-Meiyu}, $<27^\circ$N 	& 745 & 556 		& $15.2 \pm 0.8 $ 	& -		& 189 	&$5.1 \pm 0.4$ 	& -		& $23.7 \pm .1$ & $28.8 \pm .9$ \\
-	\textbf{Fall Rains} (274-320) 			& 744 & 714 				& $26.6 \pm 1.3 $ 	& 2.15	& 30 	&$1.1 \pm 0.2$	& 1.48 		& $29.2 \pm .3$ & $20.5 \pm .7$ \\
-	\textbf{Full Year} (1-365)			& 8682 & 7984 					& $38.4 \pm 0.5$ 	& 1.81 	& 698 	&$3.4 \pm 0.1$ 	& 1.12	& $28.6 \pm .1$ & $23.5 \pm .2$ \\
+	\textbf{Spring Rains} (60-120) 		& 1661 	& 1635 	& $47.0 \pm 1.2$ 	& 1.96	& 26 	&$0.7 \pm 0.1$ 	& .95 	& $27.5 \pm .1$ & $20.1 \pm .4$ \\
+	\textbf{Pre-Meiyu} (121-160) 		& 1371 	& 1279  	& $56.1 \pm 1.5$ 	& 2.01	& 92 	&$4.0 \pm 0.4$	& .98 	& $27.4 \pm .2$ & $25.5 \pm .5$ \\
+	\textbf{Meiyu} (161-200) 			& 1688 	& 1499 	& $65.8 \pm 1.5$ 	& 2.19	& 189 	&$8.3 \pm 0.6$ 	& 1.11	& $29.5 \pm .2$ & $28.3 \pm .5$ \\
+	\textbf{Post-Meiyu} (201-273) 		& 2113 	& 1757 	& $42.2 \pm 1.1 $	& 1.91 	& 356 	&$8.6 \pm 0.5$ 	& 1.44	& $29.9 \pm .2$ & $25.6 \pm .5$ \\
+	\textbf{Post-Meiyu}, $>27^\circ$N 	& 1368 	& 1215 	& $27.1 \pm 1.0 $ 	& -		& 153 	&$3.4 \pm 0.3$ 	& -		& $33.3 \pm .2$ & $23.9 \pm .5$ \\
+	\textbf{Post-Meiyu}, $<27^\circ$N 	& 745 	& 556 	& $15.2 \pm 0.8 $ 	& -		& 189 	&$5.1 \pm 0.4$ 	& -		& $23.7 \pm .1$ & $28.8 \pm .9$ \\
+	\textbf{Fall Rains} (274-320) 			& 744	& 714 	& $26.6 \pm 1.3 $ 	& 2.15	& 30 	&$1.1 \pm 0.2$	& 1.48 	& $29.2 \pm .3$ & $20.5 \pm .7$ \\
+	\textbf{Full Year} (1-365)			& 8682 	& 7984 	& $38.4 \pm 0.5$ 	& 1.81 	& 698 	&$3.4 \pm 0.1$ 	& 1.12	& $28.6 \pm .1$ & $23.5 \pm .2$ \\
 \end{tabular}
 \label{tab:t34}
 \end{table}
-\end{landscape}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FIGURES
@@ -516,9 +510,9 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 %%FIGURE 3.7 - the South Flood-North Drought shown in a single figure.
 \begin{figure}
 \centering
-\noindent\includegraphics[width=36pc]{Figures/changes_2d_nojet}
-\caption{Difference in yearly mean rainfall between 1980-2007 and 1951-1979. The South Flood-North Drought pattern is visible between 110-124$^{\circ}$E and 22-42$^{\circ}$N over mainland China (marked by box). Changes significant at a 95\%/99\% level are marked with single/double cross-hatches respectively.}
-\label{fig:f31}
+\noindent\includegraphics[width=36pc]{Figures/SFND}
+\caption{Difference in East Asian yearly mean rainfall for 1980-2007 relative to a baseline of 1951-1979. The region of application of RDA spans 105-123$^{\circ}$E and 20-40$^{\circ}$N over eastern China and Taiwan (marked by box). Changes significant at a 95\%/99\% level are marked with single/double cross-hatches respectively as calculated by permutation test with 1,000 iterations.}
+\label{fig:sfnd}
 \end{figure}
 
 %%FIGURE 3.8 Changes in Meiyu and rainfall behavior between 1951-1979 and 1980-2007
@@ -541,9 +535,9 @@ Since the RDA method is complex, we must justify its use by proving that it supp
 %potential change - add the total change in rainfall for each of the time periods (third column of panels)
 \begin{figure}[htb]
 \centering
-\noindent\includegraphics[width=36pc]{Figures/decadal_front}
-\caption{1980-2007 versus 1951-1979 changes in banded and local rainfall for full year (a and b respectively), Pre-Meiyu (c and d) and Post-Meiyu (e and f), with significance at the 95\%/99\% level marked by single/double hatches.  On a given day, \textit{banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$. \textit{Local} rainfall includes all other rainfall.}
-\label{fig:decadal_front}
+\noindent\includegraphics[width=38pc]{Figures/RDA_decadal_type}
+\caption{1980-2007 versus 1951-1979 changes in total, banded and local rainfall for full year, Pre-Meiyu (days 121-160), Meiyu (days 161-200) and Post-Meiyu (days 201-273), with significance at the 95\%/99\% level marked by single/double hatches (permutation test with 1,000 iterations).  On a given day, \textit{banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$. \textit{Local} rainfall includes all rainfall not meeting these criteria.}
+\label{fig:decadal_type}
 \end{figure}
 
 
