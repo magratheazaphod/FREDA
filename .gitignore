@@ -1,5 +1,6 @@
 *.bbl
 *.blg
+*.docx
 *.pdf
 *.txt
 references.bib
