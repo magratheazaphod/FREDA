@@ -1,0 +1,38 @@
+Timer unit: 1e-06 s
+
+Total time: 0.002725 s
+File: /Users/Siwen/RDA/bootstrap.py
+Function: bs_resample_block_ensemble at line 285
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   285                                           def bs_resample_block_ensemble(V,sampshape,blklen):
+   286                                               
+   287                                               #SIZE OF INPUT DATA
+   288         1            3      3.0      0.1      Vlen = V.shape[0]
+   289         1            1      1.0      0.0      Vmem = V.shape[1]
+   290                                               
+   291                                               #INTENDED SIZE OF OUTPUT DATA
+   292         1            1      1.0      0.0      nn = sampshape[0]
+   293         1           25     25.0      0.9      nblks = np.ceil(nn/blklen).astype(int)
+   294         1            1      1.0      0.0      wdth = sampshape[1]
+   295                                               
+   296                                               #the number of possible different blocks is nn-blklen+1
+   297         1           38     38.0      1.4      x_indices = np.floor((Vlen-blklen+1) * rnd.random_sample((nblks,wdth))).astype(int)    
+   298         1           15     15.0      0.6      y_indices = np.floor(Vmem * rnd.random_sample((nblks,wdth))).astype(int)
+   299                                               
+   300                                               #print(x_indices)
+   301                                               #print(y_indices)
+   302                                               #time.sleep(10)
+   303                                               
+   304         1            6      6.0      0.2      Vnew = np.zeros(sampshape)
+   305                                               
+   306         9           16      1.8      0.6      for i in np.arange(nblks):
+   307                                                          
+   308       240          309      1.3     11.3          for j in np.arange(wdth):
+   309                                                   
+   310                                                       #final block may not be of full length - must account for it
+   311       232          701      3.0     25.7              myblklen = np.minimum(blklen,nn-blklen*i)
+   312       232         1609      6.9     59.0              Vnew[blklen*i : (blklen*i+myblklen), j] = V[x_indices[i,j] : x_indices[i,j]+myblklen, y_indices[i,j]]
+   313                                           
+   314         1            0      0.0      0.0      return Vnew
