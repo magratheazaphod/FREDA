@@ -224,7 +224,7 @@
 
 \subsection{Rainfall Types}
 	
-	RDA allows us to classify all rainfall on each day as either \textit{banded} (falls within a rainband) or \textit{local}. \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$, the same definition as in step 5 of the recursive algorithm above. An example is shown in Figure~\ref{fig:algo_4}a. Rainfall on each of the 20,819 available days was partitioned into its banded and local components. This allows us to determine what fraction of rainfall at each point in East China is supplied via banded rainfall (Figure~\ref{fig:frontpct}). We also test for the significance of decadal changes in banded and local rainfall separately (Figure~\ref{fig:type_decadal}). These results are discussed below, and data publicly available as detailed in the Acknowledgements section.
+	RDA allows us to classify all rainfall on each day as either \textit{banded} (falls within a rainband) or \textit{local}. \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$, the same definition as in step 5 of the recursive algorithm above. An example is shown in Figure~\ref{fig:algo_4}a. Rainfall on each of the 20,819 available days was partitioned into its banded and local components. This allows us to determine what fraction of rainfall at each point in East China is supplied via banded rainfall (Figure~\ref{fig:banded_frac_climo}). We also test for the significance of decadal changes in banded and local rainfall separately (Figure~\ref{fig:type_decadal}). These results are discussed below, and data publicly available as detailed in the Acknowledgements section.
 	
 \section{Methods of Analysis}	
 
@@ -340,7 +340,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 	
 \subsubsection{Banded vs Local Rainfall}	
 	
-	As described in detail in the Methods section, the RDA method allows us to classify all rainfall as either \textit{banded} or \textit{local}. Figure~\ref{fig:frontpct} shows that frontal rainfall constitutes at least 40\% of yearly total for all of mainland China east of 105$^\circ$E between 21$^\circ$N and 37$^\circ$N, over 60\% for most of central China, and up to 74\% in the vicinity of Jiangxi Province (28$^\circ$N, 116$^\circ$E). Thus, banded rainfall is an essential component of East China's yearly rainfall budget. In Figure~\ref{fig:type_climo}, we show a yearly climatology as well as seasonal means for the Pre-Meiyu, Meiyu and Post-Meiyu seasons. Banded rainfall constitutes the majority of rainfall during the Pre-Meiyu and Meiyu, but not the Post-Meiyu. 
+	As described in detail in the Methods section, the RDA method allows us to classify all rainfall as either \textit{banded} or \textit{local}. Figure~\ref{fig:banded_frac_climo} shows that frontal rainfall constitutes at least 40\% of yearly total for all of mainland China east of 105$^\circ$E between 21$^\circ$N and 37$^\circ$N, over 60\% for most of central China, and up to 74\% in the vicinity of Jiangxi Province (28$^\circ$N, 116$^\circ$E). Thus, banded rainfall is an essential component of East China's yearly rainfall budget. In Figure~\ref{fig:type_climo}, we show a yearly climatology as well as seasonal means for the Pre-Meiyu, Meiyu and Post-Meiyu seasons. Banded rainfall constitutes the majority of rainfall during the Pre-Meiyu and Meiyu, but not the Post-Meiyu. 
 
 	Banded rainfall undergoes a dramatic progression previously evidenced in Figure~\ref{fig:hov}. In contrast, local rainfall retains a similar spatial configuration from season to season, with regions of local rainfall anchored by topography. For instance, a recurrent rainy band is visible along the southern edge of the South China/Qinling mountains. The Sichuan Basin also shows up as a locus of local rainfall; previous studies have shown that Sichuan experiences an unusual local rainfall climatology due to being directly in the lee of the Tibetan Plateau. Banded rainfall only constitutes a noticeable fraction of Taiwanese rainfall during the Pre-Meiyu. In fact, the term Meiyu season as used in Taiwan is typically centered around late May, although our study defines the Meiyu as June 10-July 19 \citep{Chen1994,Xu2009}.
 
@@ -584,16 +584,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \label{fig:hov_freq_int_climo}
 \end{figure}
 
-%%FIGURE 7 Percentage of total rainfall at each point that is delivered through rainbands
-%% CAN I DO A SEASONAL VERSION OF THIS FILE?!
-\begin{figure}[htb]
-\centering
-\includegraphics[width=36pc]{Figures/frontpct_topo}
-\caption{Yearly mean percentage of total rainfall that falls as banded rainfall. On a given day, banded rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$.}
-\label{fig:frontpct}
-\end{figure}
-
-%%FIGURE 8 Decadal mean in different rainfall types during different time periods
+%%FIGURE 7 Decadal mean in different rainfall types during different time periods
 \begin{figure}[htb]
 \centering
 \noindent\includegraphics[width=38pc]{Figures/RDA_type_climo_topo}
@@ -601,7 +592,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \label{fig:type_climo}
 \end{figure}
 
-%%FIGURE 8.5 Decadal mean in different rainfall types during different time periods
+%%FIGURE 8 Decadal mebanded_frac_climoan in different rainfall types during different time periods
 \begin{figure}[htb]
 \centering
 \noindent\includegraphics[width=38pc]{Figures/banded_frac_climo}
@@ -617,7 +608,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \label{fig:alternative_metrics}
 \end{figure}
 
-%%FIGURE 9.5 Comparison of alternative metrics of China rainfall, 1994-2007 versus 1980-1993
+%%FIGURE 10 Comparison of alternative metrics of China rainfall, 1994-2007 versus 1980-1993
 \begin{figure}[htb]
 \centering
 \includegraphics[width=36pc]{Figures/alternative_metrics_9407_8093}
@@ -625,7 +616,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \label{fig:alternative_metrics}
 \end{figure}
 
-%%FIGURE 10 - the South Flood-North Drought shown in a single figure.
+%%FIGURE 11 - the South Flood-North Drought shown in a single figure.
 \begin{figure}
 \centering
 \noindent\includegraphics[width=32pc]{Figures/SFND}
@@ -635,16 +626,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 
 % Time periods are marked as in Figure~\ref{fig:hov}: 1 - Spring Rains; 2 - Pre-Meiyu; 3 - Meiyu; 4 - Post-Meiyu; 5 - Fall Rains.
 
-%%FIGURE 11 Decadal changes in different rainfall types
-%potential change - add the total change in rainfall for each of the time periods (third column of panels)
-\begin{figure}[htb]
-\centering
-\noindent\includegraphics[width=38pc]{Figures/RDA_type_decadal}
-\caption{1980-2007 versus 1951-1979 changes in total, banded and local rainfall for full year, Pre-Meiyu (days 121-160), Meiyu (days 161-200) and Post-Meiyu (days 201-273), with significance at the 95\%/99\% level marked by single/double hatches (permutation test with 1,000 iterations). \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$. \textit{Local} rainfall includes all rainfall not meeting these criteria.}
-\label{fig:type_decadal}
-\end{figure}
-
-%%FIGURE 11b Decadal changes in different rainfall types, 1951-1979 v 1980-2007
+%%FIGURE 12 Decadal changes in different rainfall types, 1951-1979 v 1980-2007
 \begin{figure}[htb]
 \centering
 \noindent\includegraphics[width=36pc]{Figures/changes_by_type_8007_5179}
@@ -653,7 +635,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \end{figure}
 
 
-%%FIGURE 11c Decadal changes in different rainfall types, 1994-2007 v 1980-1993
+%%FIGURE 13 Decadal changes in different rainfall types, 1994-2007 v 1980-1993
 \begin{figure}[htb]
 \centering
 \noindent\includegraphics[width=36pc]{Figures/changes_by_type_9407_8093}
@@ -662,7 +644,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \end{figure}
 
 
-%%FIGURE 12 Significance of attribute changes in rainbands between decades
+%%FIGURE 14 Significance of attribute changes in rainbands between decades
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=34pc]{Figures/RDA_bars}
@@ -670,7 +652,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \label{fig:bar}
 \end{figure}
 
-%%FIGURE 13 Changes in rainfall by type between 1951-1979 and 1980-2007
+%%FIGURE 15 Changes in rainfall by type between 1951-1979 and 1980-2007
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=43pc]{Figures/hov_summary_8007_5179}
@@ -678,7 +660,7 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \label{fig:hov_8007_5179}
 \end{figure}
 
-%%FIGURE 14 Changes in rainfall by type between 1980-1993 and 1994-2007
+%%FIGURE 16 Changes in rainfall by type between 1980-1993 and 1994-2007
 \begin{figure}[htbp]
 \centering
 \noindent\includegraphics[width=43pc]{Figures/hov_summary_9407_8093}
