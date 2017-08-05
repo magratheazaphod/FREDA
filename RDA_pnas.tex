@@ -69,6 +69,8 @@ The topography and continental configuration of East Asia favor the year-round e
 	
 \section*{Rainband Detection Algorithm (RDA)}
 
+\subsection*{Overview}
+
 	As mentioned in the introduction, rainbands formed by westerly storms are observed year-round in East China (defined hereafter as the subregion 105-123$^{\circ}$E and 20-40$^{\circ}$N). Rainbands are defined as a continuous chain of longitudinal rainfall maxima in excess of 10 mm day$^{-1}$ spanning at least 5$^{\circ}$ of longitude. This study employs the APHRODITE APHRO\_MA v1101 product \citep{Yatagai2012}, which contains daily rainfall maps of the study region at $.25^{\circ} \times .25^{\circ}$ resolution for each day from 1 January 1951 to 31 December 2007 (20,819 days total). On each day, RDA first performs a weighted linear fit of the latitude of maximum rainfall at each longitude, using intensity as weighting and discarding outliers far from the centroid of precipitation, and then recursively repeats the fit using an increasingly narrow window around the previous best guess (Figure S4). The exact algorithm is described in greater detail in \citep{Day2016}. Once a fit is achieved, the following key metrics are calculated:
 				
  \begin{itemize}
@@ -89,31 +91,21 @@ The topography and continental configuration of East Asia favor the year-round e
 	
 \subsection*{Quality Control}
 
-	After running the algorithm for all 20,819 days from 1 January 1951 to 31 December 2007, we obtained 11,228 days with at least one rainband and 1,116 days with two rainbands. Subsequently, we apply a quality control (QC) algorithm to eliminate days with poor fit, based on the quality scores $Q$, $Q_1$ and $Q_2$ as well as the ``Taiwan fraction'' $TW$, defined as the percentage of daily total East China rainfall falling over the island of Taiwan (roughly 120-$122^{\circ}$E and 22-$26^{\circ}$N). Rainband fits are deemed successful if they satisfy the following two criteria:
-
-\begin{enumerate}
-
-	\item $TW < 20\%$. If $TW > 20\%$, the day's fit is thrown out (238 cases total, 2.1\% of total fits). Such days are dominated by tropical storms reaching Taiwan and do not exhibit a strong rainband (example shown in Figure~\ref{fig:algo_3}a).  
-	
-	\item The quality scores of the fit must meet either of the two following benchmarks:
+	 Out of 20,819 days, at least one rainband was detected on 11,228 days, and two rainbands on 1,116 days. Subsequently, we use quality scores $Q$, $Q_1$ and $Q_2$ to identify poor fits. We also use the ``Taiwan fraction'' $TW$ (percentage of daily East China rainfall falling over the island of Taiwan, 120-$122^{\circ}$E and 22-$26^{\circ}$N), which identifies days where Taiwan receives much more rain than East China, skewing the RDA best fit (Figure S1). Fits on days where $TW > 20\%$ are thrown out. Subsequently, one of two criteria must be met:
 	
 	\begin{enumerate} 
 	
-	\item If $Q>.6$, the fit is deemed successful (7,522 days, 67.0\% of total fits; Figure~\ref{fig:algo_3}b). If $Q_2$ is also greater than .6, the day will be classified as a double rainband day (Type I double rainband; 232 cases). 3.1\% of days where $Q>.6$ also achieve $Q_2>.6$.
+	\item If $Q>.6$, the fit is deemed successful (7,522 days, 67.0\% of total fits; Figure S2). If $Q_2$ is also greater than .6, the day will be classified as a double rainband day (Type I double rainband; 232 cases). 3.1\% of days where $Q>.6$ also achieve $Q_2>.6$.
 		
-	\item If $Q<.6$, the fit is discarded unless two rainbands are detected and both $Q_1 > .6\mathrm{\ \textbf{and}\ }Q_2 > .6$ (where again $Q_1$ and $Q_2$ are \textit{conditional} quality scores as defined above). In such cases, the presence of multiple rainbands of similar intensity initially obscures the goodness of fit (Figure~\ref{fig:algo_3}d). Such days are also classified as double rainband days (Type II double rainband; 466 cases).
+	\item If $Q<.6$, the fit is discarded unless two rainbands are detected and conditional quality scores $Q_1$ and $Q_2$  both exceed .6. In such cases, the presence of multiple rainbands of comparable intensity initially obscures the goodness of fit (Figure S4). Such days are also classified as double rainband days (Type II double rainband; 466 cases).
 	
 	\end{enumerate}
-	
-	If neither criterion 2a nor 2b is satisfied, the fit is thrown out (Figure~\ref{fig:algo_3}c).
-	
-\end{enumerate}	
-
+		
 	The use of conditional quality scores $Q_1$ and $Q_2$ adds 466 double rainband fits (6.2\% of all successful fits) that would otherwise have been missed due to $Q<.6$. 33.2\% of double rainband days are Type I ($Q>.6$) and 66.8\% Type II ($Q<.6$) as defined above. Double rainbands are more common during certain months, particularly July-September. Supplementary Tables S1-S3 contain detailed results of the application of RDA to years 1951-2007 in APHRODITE.
 
 \subsection*{Rainfall Types}
 	
-	RDA allows us to classify all rainfall on each day as either \textit{banded} (falls within a rainband) or \textit{local}. \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$, the same definition as in step 5 of the recursive algorithm above. An example is shown in Figure~\ref{fig:algo_4}a. Rainfall on each of the 20,819 available days was partitioned into its banded and local components. This allows us to determine what fraction of rainfall at each point in East China is supplied via banded rainfall (Figure~\ref{fig:type_climo}). We also test for the significance of decadal changes in banded and local rainfall separately (Figure~\ref{fig:type_changes}). 
+	RDA allows us to classify all rainfall on each day as either \textit{banded} (falls within a rainband) or \textit{local}. \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$, the same definition as in step 5 of the recursive algorithm above. An example is shown in Figure S4. Rainfall on each of the 20,819 available days was partitioned into its banded and local components. This allows us to determine what fraction of rainfall at each point in East China is supplied via banded rainfall (Figure~\ref{fig:type_climo}). We also test for the significance of decadal changes in banded and local rainfall separately (Figure~\ref{fig:type_changes}). 
 
 %%FIGURE 1 Hovmöller diagram of Meiyu latitude occupancy, 1951-2007. Produced by MATLAB scripts meiyufig1.m and meiyustats_compact.m.
 \begin{figure}[htbp]
@@ -125,9 +117,9 @@ The topography and continental configuration of East Asia favor the year-round e
 
 \section*{Results}
 
-\subsection*{Rainband Climatology}
+\subsection*{Climatology}
 
-	We compile our daily rainband catalog into a 57-year daily climatology (1951-2007). Abrupt climatological shifts occur simultaneously in both rainfall and rainband climatology. We define 5 periods of distinct behavior as demarcated in Figure~\ref{fig:hov_climo}, with the Pre-Meiyu, Meiyu and Post-Meiyu equivalent to the three stages of Meiyu rainfall described in reference \cite{Ding2005}.
+	We compile our daily rainband catalog into a 57-year daily climatology (1951-2007). Abrupt climatological shifts occur simultaneously in both rainfall and rainband climatology. We define 5 periods of distinct behavior as demarcated in Figure~\ref{fig:hov_climo}, with the Pre-Meiyu, Meiyu and Post-Meiyu equivalent to the three stages of Meiyu rainfall described in reference \cite{Ding2005}:
 
 \begin{enumerate}
 
@@ -143,6 +135,8 @@ The topography and continental configuration of East Asia favor the year-round e
 
 \end{enumerate}
 
+	These time periods are chosen subjectively, but our subsequent analysis is not dependent on their exact duration. The yearly progression of precipitation over eastern China is shown in Figure~\ref{fig:hov_climo}a, longitudinally averaged over $100-123^\circ$E with a 5-day running mean, similar to \cite{Ding2005}. Unlike other monsoonal regions, which tend to be very dry in winter \citep{Wang2002}, Eastern China receives about 40\% of yearly precipitation between September and April. Our estimate of onset day of Meiyu season roughly matches that estimated in \cite{Xu2009} based on TRMM satellite data for 1998-2007.
+
 %%FIGURE 2 Decadal mean in different rainfall types during different time periods
 \begin{figure}[htb]
 \centering
@@ -150,13 +144,8 @@ The topography and continental configuration of East Asia favor the year-round e
 \caption{Climatology of the amount of total rainfall, banded rainfall and local rainfall for the full year, Pre-Meiyu (days 121-160), Meiyu (days 161-200) and Post-Meiyu (days 201-273). \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$. \textit{Local} rainfall includes all rainfall not meeting these criteria. Note that color bar switches from .5 to 1 mm day$^{-1}$ increment past 5 mm day$^{-1}$.}
 \label{fig:type_climo}
 \end{figure}
-
-
-	The total number of rainband counts as well as the mean and standard deviation of rainband frequency, latitude and intensity during each time period are presented in Table S4. These results are comparable with the frontal event catalog of \cite{Xu2009}, who analyzed Meiyu rainbands in TRMM data for 1998-2007 and found a similar date for the northward transition of the Meiyu front. 
-
-	The yearly progression of precipitation over eastern China is shown in Figure~\ref{fig:hov_climo}a, longitudinally averaged over $100-123^\circ$E with a 5-day running mean, similar to \cite{Ding2005}. Unlike other monsoonal regions, which tend to be very dry in winter \citep{Wang2002}, Eastern China receives about 40\% of yearly precipitation between September and April. Though these time periods are chosen subjectively, we also reproduce our analysis in the form of Hovm\"oller plots of climatology and decadal differences, which confirm our analysis.
 	
-	Figure~\ref{fig:hov_climo}b shows a Hovm\"oller diagram of the probability of rainband occurrence at each latitude, including both primary and secondary rainbands. The transition from Pre-Meiyu to Meiyu and from Meiyu to Post-Meiyu both entail a rapid northward migration in rainfall (Figure~\ref{fig:hov_climo}b) and abrupt changes in rainband statistics (Figure~\ref{fig:hov_climo}b). The onset of the Meiyu is marked by a climatological jump both in rainband frequency and intensity around day 160 (June 9) that persists for 20 days when rainbands are concentrated between 26$^\circ$ and 30$^\circ$N. Yet by day 200 (July 19), this same region is less likely than any other latitude to feature a rainband, featuring roughly an 80\% local decline in rainband frequency and a decline in total rainfall from 7.6 mm day$^{-1}$ (days 161-180 mean) to 4.1 mm day$^{-1}$ (days 201-220 mean).
+	Panel b shows a Hovm\"oller diagram of the probability of rainband occurrence at each latitude, including both primary and secondary rainbands. The transition from Pre-Meiyu to Meiyu and from Meiyu to Post-Meiyu both entail rapid northward migrations in preferred location of banded rainfall (Figure~\ref{fig:type_climo}). During days 160-180, likelihood of observing a rainfall maximizes between 26$^\circ$ and 30$^\circ$N, yet by days 200-220, the same region is less likely than any other latitude to feature a rainband (an 80\% decline in rainband frequency, and a decline in total rainfall from 7.6 mm day$^{-1}$ to 4.1 mm day$^{-1}$).
 	
 	Figure~\ref{fig:hov_climo}c shows the probability of rainband occurrence and mean intensity on each day. Frontal rainbands over China can appear in any month, with their probability of occurrence and intensity maximizing in late June (80\% probability of occurrence, mean intensity of 31 mm day$^{-1}$) and minimizing in January (10\% probability occurrence, mean intensity of 12 mm day$^{-1}$). Rainbands are generally more probable and stronger during spring than in fall, with notable intensity jumps around days 120 and 160. Some periods of heavy rainfall, in particular the August peak over southern China (over 10 mm day$^{-1}$ around 20$^{\circ}$N), do not correspond to a surge in rainband frequency. Instead, August and September are known as the months when northwestern Pacific typhoons reach mainland China, which tends to leave locally favorable rainfall conditions in their wake \citep{Chen2007,Chen2011}. The most intense rainbands registered occur at low latitudes during October (days 270-300), likely corresponding to peak cyclone season \citep{Liu2003}. Figure~\ref{fig:hov_climo}d shows mean rainband tilt and length, as well as the conditional probability of observing a secondary rainband given the presence of a primary rainband. 
 	
