@@ -12,7 +12,7 @@
 % {pnasmathematics} = Template for a one-column mathematics article
 % {pnasinvited} = Template for a PNAS invited submission
 
-\title{The Changing Character of Banded Rainfall in China, 1951-2007}
+\title{The Changing Character of Banded and Local Rainfall in China, 1951-2007}
 
 % Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
 \author[a,1]{Jesse Day}
@@ -57,64 +57,36 @@ The topography and continental configuration of East Asia favor the year-round e
 \thispagestyle{firststyle}
 \ifthenelse{\boolean{shortarticle}}{\ifthenelse{\boolean{singlecolumn}}{\abscontentformatted}{\abscontent}}{}
 
-\dropcap{E}astern China receives about 60\% of its precipitation from May to August via the East Asian summer monsoon. The period of peak rainfall lasting from early June to mid-July is called ``Meiyu season'' (lit. ``plum rains,'' referring to the spectacular growth of plum blossoms in central China with the onset of heavy rains). During this time, heavy rainfall occurs in zonal bands resulting from frontal synoptic conditions (the ``Meiyu Front''). The rainfall climatology of Japan and Korea also features similar time periods, known as Baiu and Changma respectively. The contribution from these rainbands leads to a rainfall seasonality in the East Asian monsoon that is unique relative to other monsoon circulations \citep{Ding2005}. More generally, rainbands are a year-round feature of Asian rainfall, attributed to the interplay between the East Asian tropospheric jet and Tibetan Plateau \citep{Molnar2010,Sampe2010,Chen2014}. The contribution of banded rainfall to seasonal and yearly totals has never been quantified across a large sample of days.
+\dropcap{E}astern China receives about 60\% of its precipitation from May to August via the East Asian summer monsoon. The period of peak rainfall lasting from early June to mid-July is called ``Meiyu season'' (lit. ``plum rains,'' referring to the spectacular growth of plum blossoms in central China with the onset of heavy rains). During this time, heavy rainfall occurs in zonal bands resulting from frontal synoptic conditions (the ``Meiyu Front''). The rainfall climatology of Japan and Korea also features similar time periods, known as Baiu and Changma respectively. The contribution from these rainbands leads to a rainfall seasonality in the East Asian monsoon that is unique relative to other monsoon circulations \citep{Ding2005}. More generally, rainbands are a year-round feature of Asian rainfall, attributed to the interplay between the East Asian tropospheric jet and Tibetan Plateau \citep{Molnar2010,Sampe2010,Chen2014}.
 		
-	We present a recursive image processing algorithm, the Rainband Detection Algorithm (RDA), which locates rainbands in a daily precipitation map and quantifies their attributes. By applying this algorithm to aggregated weather station data from APHRODITE, we create a 57-year (1951-2007) daily database of rainband occurrences in China. Several authors have compiled information on the variability of the Meiyu front on decadal and even centennial timescales \citep{Chen2004,Ge2008,Xu2009}, but to our knowledge no previous author has compiled a multi-decadal daily catalog of events. We hope that our results can complement existing studies that discuss the characteristics of China rainfall obtained from the satellite record \citep{Luo2009,Luo2011,Luo2013}.
+	We present a recursive image processing algorithm, the Rainband Detection Algorithm (RDA), which locates rainbands in a daily precipitation map and quantifies their attributes. By applying this algorithm to aggregated weather station data from APHRODITE, we create a 57-year (1951-2007) daily database of rainband occurrences in China. Several authors have compiled information on the variability of the Meiyu front on decadal and even centennial timescales \citep{Chen2004,Ge2008,Xu2009}, but to our knowledge no previous author has compiled a multi-decadal daily catalog of events. Likewise, the contribution of banded rainfall to seasonal and yearly totals has never been quantified across a large sample of days. We hope that our results can complement existing studies that discuss the characteristics of China rainfall obtained from the satellite record \citep{Luo2009,Luo2011,Luo2013}.
 	
 	 All rainfall on each day is further characterized as belonging to a rainband (``banded'' rainfall) or outside of any band (``local'' rainfall). We believe that this classification scheme ultimately corresponds to different causal mechanisms: Banded rainfall reflects large-scale convergence due to frontal conditions, whereas local rainfall likely results from mechanisms with shorter length scales such as convective self-buoyancy and orographic rainfall. We cannot rule out that multiple mechanisms are capable of forming rainbands. For instance, westward propagating cyclone tracks in late summer sometimes produce zonal bands. However, in reference \cite{Day2015}, it was shown that the typical radius of East Asian summer monsoon storms is only 200-300 km, while mean yearly rainband length is about 1200 km (Figure~\ref{fig:hov_climo}). Thus, our data show that storms propagate zonally across large distances at all times of year in East Asia. We attribute this notable feature to persistent frontal conditions that favor large-scale convergence.
 	 
 	 The temporal extent of our data set allows us to examine potential decadal changes. It has been broadly reported that China experienced a long-term shift in the distribution of rainfall known as the ``South Flood-North Drought'' (SFND), where the Yangtze River Valley witnessed an uptick in flooding and northern China an increased susceptibility to drought beginning in the 1980 \citep{Hu1997,Gong2002,Nigam2013}. A permanent change would have major humanitarian impacts on densely-populated eastern China, where a sizable fraction of the population depends on agriculture for subsistence. Under such circumstances, it is vital to understand whether this pattern will strengthen under global warming, or represents only a temporary deviation from the mean. The RDA algorithm presented before allows for partitioning of rainfall changes between banded and local components, and also a further decomposition of changes in banded rainfall \textit{events} between frequency and intensity changes. These changes are not captured by other existing metrics of China rainfall, as shown subsequently. We hope that the accurate characterization of these decadal rainfall changes can reveal underlying mechanisms in future work.
 	 	 
-	 In the following text, Chapter 2 describes the source APHRODITE data for rainfall and then details functionality of the RDA algorithm. Chapter 3 details the statistical methods used to evaluate significance. In Chapter 4, we present a climatology of rainbands (frequency and intensity). Chapter 5 investigates how previously reported changes in eastern China rainfall, one at the end of the late 1970s (the ``South Flood-North Drought'') and another during the early 1990s, are represented in our data set. Finally, in the conclusion, we propose potential applications of our data to understanding East Asian monsoon dynamics, and consider potential relation to other large-scale changes.
-	 
-\section*{Rainband Detection Algorithm (RDA) Functionality}
+	The following manuscript first describes the functionality of the Rainband Detection Algorithm, and then presents the seasonal progression of both banded and local rainfall and the intensity and frequency of rainband events. We then investigate decadal change in these properties, and suggest in conclusion potential relationships between these changes and other observed large-scale changes in recent decades.
+	
+\section*{Rainband Detection Algorithm (RDA)}
 
-\subsection*{Overview}
-
-	For each day from 1 January 1951 to 31 December 2007 (20,819 days total), RDA determines whether a rainband exists inside the window of 105-123$^{\circ}$E and 20-40$^{\circ}$N, a region hereafter referred to as ``East China.'' A rainband is defined as a continuous chain of rainfall maxima exceeding 10 mm day$^{-1}$ spanning at least 5$^{\circ}$ of longitude. If a rainband exists, its properties are calculated including latitude, intensity, tilt, length and width, as well as a ``quality score'' $Q$, defined as the fraction of daily total East China rainfall falling within the band. Fits with poor $Q$ are not classified as bands. We also test for the existence of two rainbands on a single day, an arrangement commonly found in August and September. In such a case, the first and second fitted rainbands are referred to as ``primary'' and ``secondary'' rainbands respectively. 
-	
-	Our product makes no assumptions about the causative mechanisms of eastern China rainfall. Any storm that propagates zonally over the course of a day will be interpreted as a rainband, regardless even of whether it propagates westward or eastward. However, from observation, storms reaching East China during the rainiest months of the East Asian summer monsoon are predominantly westerly \citep{Day2015}. Therefore, we expect that RDA detects similar types of rainfall events from one summer to the next, allowing for meaningful analysis of decadal changes.  The fact that bands of rainfall spanning over 10$^{\circ}$ in longitude occur at all times of year suggests a consistent mechanism of formation, and also that the classification between banded and local rainfall effectively sorts between between large-scale convergence and other mechanisms with shorter length scale such as local convection and orographic triggering. 
+	As mentioned in the introduction, rainbands formed by westerly storms are observed year-round in East China (defined hereafter as the subregion 105-123$^{\circ}$E and 20-40$^{\circ}$N). Rainbands are defined as a continuous chain of longitudinal rainfall maxima in excess of 10 mm day$^{-1}$ spanning at least 5$^{\circ}$ of longitude. This study employs the APHRODITE APHRO\_MA v1101 product \citep{Yatagai2012}, which contains daily rainfall maps of the study region at $.25^{\circ} \times .25^{\circ}$ resolution for each day from 1 January 1951 to 31 December 2007 (20,819 days total). On each day, RDA first performs a weighted linear fit of the latitude of maximum rainfall at each longitude, using intensity as weighting and discarding outliers far from the centroid of precipitation, and then recursively repeats the fit using an increasingly narrow window around the previous best guess (Figure S4). The exact algorithm is described in greater detail in \citep{Day2016}. Once a fit is achieved, the following key metrics are calculated:
+				
+ \begin{itemize}
 	 
-\subsection*{Finding Rainbands with a Convergent Algorithm}
-
-\begin{enumerate}
-	\item Given a daily map of East China rainfall (105-123$^{\circ}$E, 20-40$^{\circ}$N) at $.25^{\circ} \times .25^{\circ}$ resolution, the maximum rainfall intensity $int_{max}$ and its latitude $lat_{max}$ are recorded at each longitude. If there exists a continuous chain of maxima spanning $5^{\circ}$ of longitude (20 points in a row) where $int_{max}$ exceeds 10 mm day$^{-1}$, we proceed to step 2 and attempt a rainband fit (Figure~\ref{fig:algo_1}a). Otherwise, there is no rainband and no fit is attempted for that day (Figure~\ref{fig:algo_1}b).
-	
-	\item A weighted least-squares linear regression of $lat_{max}$ using $int_{max}$ as weighting approximates the position of the rainband with a straight line (a reasonable assumption from observation). To encourage convergence, the weight of outlying maxima is set to zero. An outlier is defined as any maximum where $lat_{max}$ is over $5^{\circ}$ of latitude away from  $\left<lat_{max}\right>$, the centroid of $lat_{max}$ weighted by $int_{max}$\footnote{In rare cases with two rainbands of roughly equal strength that are well-separated in latitude, the centroid of precipitation may lie midway between the bands such that all maxima will be thrown out as outliers. To avoid this scenario, we verify after removing outliers that
-
-%% FOOTNOTE
-	\begin{equation*}
-	 \sum\limits_{long} weights > 200 \mathrm{\ mm\ day}^{-1}
-	\end{equation*}
-	
- 	When this condition is failed, which can only occur when too many of our maxima have been discarded, we return to step 1 and find maxima inside a subwindow with latitude range of 20$^{\circ}$N-$\left<lat_{max}\right>$ or $\left<lat_{max}\right>$-40$^{\circ}$N, depending on which half of our domain has a longer chain of maxima exceeding 10 mm day$^{-1}$. The remaining steps of our algorithm are applied as usual. The search for a secondary rainband and calculation of quality scores are performed over the whole East China window (20$^{\circ}$N-40$^{\circ}$N).}, calculated as %%END FOOTNOTE
-
-	\begin{equation*}
-	\left<lat_{max}\right>=\frac{\sum_{long} lat_{max}*int_{max}}{\sum_{long} int_{\max}}
-	\end{equation*}
-
-	\item A recursive algorithm converges from this initial fit to a best estimate of rainband position. In each iteration, we find a new set of maxima within \textit{k} degrees of the previous best fit line, and again perform a weighted linear fit of the maxima (Figure~\ref{fig:algo_2}a). $k$ is progressively decreased with each iteration from $5^{\circ}$ to $2^{\circ}$ by $.25^{\circ}$ increments, and then from $2^{\circ}$ to $.25^{\circ}$ by $.25^{\circ}$ increments repeating each width $k$ twice in a row (Figures~\ref{fig:algo_2}b-c). The fit obtained in the final iteration is taken as our best estimate (Figure~\ref{fig:algo_2}d).
-	
-	\item We define the ``quality score'' $Q$ as the fraction of daily total East China rainfall (the sum of all rainfall inside of 105-123$^{\circ}$E and 20-40$^{\circ}$N) that falls within $2.5^{\circ}$ degrees of the best estimate line (Figure~\ref{fig:algo_3}b). Other rainband properties are calculated as follows:
-	
-	 \begin{enumerate}
+	\item \textit{Quality Score (Q)}: The fraction of daily total East China rainfall that falls within $2.5^{\circ}$ degrees of the best estimate line (Figure S3).
 	 
-	 	\item \textit{Latitude}: The latitude of the best fit line at 115$^{\circ}$E. 
+	 \item \textit{Latitude}: The latitude of the best fit line at 115$^{\circ}$E. 
 	 
-	 	\item \textit{Intensity}: Mean rainfall of all ``rainband points'' (points along the best fit line where daily rainfall exceeds 5 mm day$^{-1}$).
+	 \item \textit{Intensity}: Mean rainfall of all ``rainband points'' (any point along the best fit line where daily rainfall exceeds 5 mm day$^{-1}$).
 	 
-	 	\item \textit{Length}: Total number of rainband points (units of degrees longitude)
+	 \item \textit{Length}: Total number of rainband points (units of degrees longitude)
 	 
-	 	\item \textit{Width}: Mean distance between half-maxima ($int_{max}$/2) on either side of each rainband point (units of degrees latitude).
+	 \item \textit{Width}: Mean distance between half-maxima ($int_{max}$/2) on either side of each rainband point (units of degrees latitude).
 	 
-	 \end{enumerate}
+\end{itemize}
 	
-	\item After finding a primary rainband, we check for the existence of a secondary rainband by removing all \textit{banded rainfall} associated with the primary band from the daily rainfall map. \textit{Banded rainfall} is defined as all rainfall falling within 4$^{\circ}$ of a rainband axis and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$ (see Figure~\ref{fig:algo_4}a for an example). After removing primary rainband rainfall, we reapply the continuous maximum criterion from step 1 (Figure~\ref{fig:algo_4}b). If passed, steps 2-4 are repeated to find a best estimate for the position of the secondary rainband, and its attributes calculated.
+	 In some cases two rainbands exist simultaneously, in which case the more intense of the two is termed ``primary,'' and the weaker ``secondary.'' Secondary rainbands are detected by first removing all ``banded rainfall'' associated with the primary rainband (defined as all rainfall falling within 4$^{\circ}$ of a rainband axis, and any other adjacent points where rainfall exceeds 10 mm day$^{-1}$; Figure S1). If two rainbands coexist, \textit{conditional} quality scores $Q_1$ and $Q_2$ are calculated. $Q_1$ is defined as the fraction of daily East China rainfall that fell within $2.5^{\circ}$ degrees of the primary rainband \textit{after removing secondary rainband rainfall}, and vice-versa for $Q_2$ (Figure S3).
 	
-	\item If a secondary rainband is found, two additional \textit{conditional} quality scores $Q_1$ and $Q_2$ are calculated. $Q_1$ is the fraction of total daily East China rainfall that fell within $2.5^{\circ}$ degrees of the primary rainband \textit{after removing all rainfall associated with the secondary rainband} (effectively the $Q$ score if the secondary rainband didn't exist). Likewise, $Q_2$ is the $Q$ score of the second rainband \textit{after removing all rainfall from the primary rainband}. An example is shown in Figure~\ref{fig:algo_3}d.		
-	
-\end{enumerate} 
-
 \subsection*{Quality Control}
 
 	After running the algorithm for all 20,819 days from 1 January 1951 to 31 December 2007, we obtained 11,228 days with at least one rainband and 1,116 days with two rainbands. Subsequently, we apply a quality control (QC) algorithm to eliminate days with poor fit, based on the quality scores $Q$, $Q_1$ and $Q_2$ as well as the ``Taiwan fraction'' $TW$, defined as the percentage of daily total East China rainfall falling over the island of Taiwan (roughly 120-$122^{\circ}$E and 22-$26^{\circ}$N). Rainband fits are deemed successful if they satisfy the following two criteria:
@@ -153,9 +125,7 @@ The topography and continental configuration of East Asia favor the year-round e
 
 \section*{Results}
 
-\subsection*{Climatology}
-
-\subsubsection*{Rainbands}
+\subsection*{Rainband Climatology}
 
 	We compile our daily rainband catalog into a 57-year daily climatology (1951-2007). Abrupt climatological shifts occur simultaneously in both rainfall and rainband climatology. We define 5 periods of distinct behavior as demarcated in Figure~\ref{fig:hov_climo}, with the Pre-Meiyu, Meiyu and Post-Meiyu equivalent to the three stages of Meiyu rainfall described in reference \cite{Ding2005}.
 
@@ -284,7 +254,7 @@ Significance changes at the 95\%/99\% level are marked by single/double hatches 
 
 \showmatmethods % Display the Materials and Methods section
 
-\acknow{	APHRODITE precipitation data is publicly available at \url{http://www.chikyu.ac.jp/precip/index.html}. The rainband detection algorithm was written in MATLAB and subsequent data analysis carried out within Jupyter Notebook. The author's data analysis is freely available on Github. Ferret, a NOAA product, was used for some figure generation and is freely available at \url{http://ferret.pmel.noaa.gov/Ferret/}. A full database of rainband statistics from 1 January 1951 to 31 December 2007 and associated MATLAB and Ferret codes used to produce results are available on the author's Github repository. This work was supported by NSF grants EAR-0909195 and EAR-1211925, which allowed the presentation of preliminary results in conference settings and the feedback of our peers, as well as DOE grant DE-SC0014078. We also acknowledge NSFC (National Natural Science Foundation of China) grant \#40921120406 for enabling our collaboration with Professor Yanjun Cai of IEECAS in Xi'an, which led to the present work. We thank Jinqiang Chen and an anonymous reviewer for valuable suggestions on a previous version of this manuscript.}
+\acknow{	APHRODITE precipitation data is publicly available at \url{http://www.chikyu.ac.jp/precip/index.html}. The rainband detection algorithm was written in MATLAB and subsequent data analysis carried out within Jupyter Notebook. The author's data analysis is freely available on Github. Ferret, a NOAA product, was used for some figure generation and is freely available at \url{http://ferret.pmel.noaa.gov/Ferret/}. A full database of rainband statistics from 1 January 1951 to 31 December 2007 and associated MATLAB and Ferret codes used to produce results are available on the author's Github repository. This work was supported by NSF grants EAR-0909195 and EAR-1211925, which allowed the presentation of preliminary results in conference settings, as well as DOE grant DE-SC0014078. We also acknowledge NSFC (National Natural Science Foundation of China) grant \#40921120406 for enabling our collaboration with Professor Yanjun Cai of IEECAS in Xi'an, which led to the present work. We thank Jinqiang Chen and an anonymous reviewer for valuable suggestions on a previous version of this manuscript.}
 
 \showacknow % Display the acknowledgments section
 
