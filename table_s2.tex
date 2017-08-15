@@ -1,0 +1,49 @@
+\documentclass[singlecolumn,11pt]{pnas-new}
+% Use the lineno option to display guide line numbers if required.
+% Note that the use of elements such as single-column equations
+% may affect the guide line number alignment. 
+
+%Many authors find it useful to organize their manuscripts with the following order of sections;  Title, Author Affiliation, Keywords, Abstract, Significance Statement, Results, Discussion, Materials and methods, Acknowledgments, and References. Other orders and headings are permitted.
+
+\usepackage[super]{nth} %adds superscripts for things like 20th
+
+\templatetype{pnasresearcharticle} % Choose template 
+% {pnasresearcharticle} = Template for a two-column research article
+% {pnasmathematics} = Template for a one-column mathematics article
+% {pnasinvited} = Template for a PNAS invited submission
+
+% Please give the surname of the lead author for the running footer
+\leadauthor{Day} 
+
+\begin{document}
+
+\dates{This manuscript was compiled on \today}
+
+\makeatletter 
+\renewcommand{\thetable}{S\@arabic\c@table}
+\makeatother
+\setcounter{table}{1}
+
+%% SUPPLEMENTARY TABLE S2 - statistical significance of changes in distribution, 1994-2007 v 1980-1993
+\begin{table}[p]
+
+\centering
+\caption{Statistical significance (expressed as $p$-value) of change in distribution of latitude and intensity of rainbands between 1980-1993 and 1994-2007, as calculated by a bootstrap Kolmogorov-Smirnov (K-S) and bootstrap Anderson-Darling (A-D) test, each with 10,000 iterations. Statistically significant changes at the 95\%/99\% level are indicated by bold font/bold font and asterisk respectively.}
+
+\begin{tabular}{ l c c c c}
+												& \multicolumn{2}{c}{Latitude ($^\circ$)} & \multicolumn{2}{c}{Intensity (mm day$^{-1}$)} \\
+	 \textbf{Time Period} 							& K-S 			& A-D 			& K-S 			& A-D \\
+	 \hline
+	\textbf{Spring Rains} (Mar 1-Apr 30, 60-120)  		& .34			& .12			& .35			& .60 \\
+	\textbf{Pre-Meiyu} (May 1-Jun 9, 121-160)  		& .76			&  .57 			& .32			& .29 \\
+	\textbf{Meiyu} (Jun 10-Jul 19, 161-120)			& \textbf{.0006*}	&  \textbf{.0002*}	&  \textbf{.0009*}	& \textbf{.0006*} \\	
+	\textbf{Post-Meiyu} (Jul 20-Sep 30) 				& .14			&  .15 			&  .48			& .87 \\
+	\textbf{Post-Meiyu} (Jul 20-Sep 30), $>28^{\circ}N$   & .13			&  .35 			&  .26 			& .35 \\	
+	\textbf{Post-Meiyu} (Jul 20-Sep 30), $<28^{\circ}N$   & .67			&  .60			&  .70			& .36 \\	
+	\textbf{Fall Rains} (Oct 1-Nov 16) 					& .16	 		&  .092			&  .40 			& .17 \\	
+	\textbf{Full Year} (1-365)						& .14			&  .29			&  .090	 		& .062 \\	
+	
+\end{tabular}
+\end{table}
+
+\end{document}
