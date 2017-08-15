@@ -30,6 +30,10 @@
 
 \dates{This manuscript was compiled on \today}
 
+\makeatletter 
+\renewcommand{\thefigure}{S\@arabic\c@figure}
+\makeatother
+
 
 \subsection*{Supporting Information (SI)}
 
@@ -149,20 +153,20 @@ $D$ can then be inverted to derive a $p$-value. The Anderson-Darling (A-D) test 
 \label{fig:algo_4}
 \end{figure}
 
-%%FIGURE 5 - Climatology of banded and local rainfall + area average
-\begin{figure}[htbp]
-\centering
-\noindent\includegraphics[width=39pc]{Figures/hov_types_climo}
-\caption{a) The first pass of the recursive fit algorithm converges on the strongest rainband, around 37$^{\circ}$N (defined as the ``primary rainband''). The \textit{banded rainfall} associated with the primary band is shaded with red hatchmarks. b) All banded rainfall from the primary band is removed, and we check for the presence of another rainband (a ``secondary rainband''), again using the continuous maximum criterion. When this criterion is satisfied, we find the secondary rainband's position with the recursive fit algorithm.}
-\label{fig:algo_4}
-\end{figure}
-
-%%FIGURE 6 Decadal mebanded_frac_climoan in different rainfall types during different time periods
+%%FIGURE 5 Decadal mean of banded_frac_climo in different rainfall types during different time periods
 \begin{figure}[htb]
 \centering
 \noindent\includegraphics[width=38pc]{Figures/banded_frac_climo}
 \caption{Climatology of the fraction of all rainfall that falls as banded rainfall for full year, Spring Rains (days 81-120), Pre-Meiyu (days 121-160), Meiyu (days 161-200), Post-Meiyu (days 201-273) and Fall Rains (days 274-320). \textit{Banded} rainfall consists of all rainfall falling within 4$^{\circ}$ of a rainband axis and rainfall at any other adjacent point exceeding 10 mm day$^{-1}$. \textit{Local} rainfall includes all rainfall not meeting these criteria. Note that color bar switches from .5 to 1 mm day$^{-1}$ increment past 5 mm day$^{-1}$.}
 \label{fig:banded_frac_climo}
+\end{figure}
+
+%%FIGURE 6 - Climatology of banded and local rainfall + area average
+\begin{figure}[htbp]
+\centering
+\noindent\includegraphics[width=39pc]{Figures/hov_types_climo}
+\caption{a) The first pass of the recursive fit algorithm converges on the strongest rainband, around 37$^{\circ}$N (defined as the ``primary rainband''). The \textit{banded rainfall} associated with the primary band is shaded with red hatchmarks. b) All banded rainfall from the primary band is removed, and we check for the presence of another rainband (a ``secondary rainband''), again using the continuous maximum criterion. When this criterion is satisfied, we find the secondary rainband's position with the recursive fit algorithm.}
+\label{fig:algo_4}
 \end{figure}
 
 %%FIGURE 7 Comparison of alternative metrics of China rainfall, 1980-2007 versus 1951-1979
